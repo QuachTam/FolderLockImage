@@ -1,0 +1,808 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A64BAEC623FC1F0CF2EED009 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FB6E2432CC91780849EB3 /* libPods.a */; };
+		D97458691B5369E2009E5175 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D97458681B5369E2009E5175 /* main.m */; };
+		D974586C1B5369E2009E5175 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D974586B1B5369E2009E5175 /* AppDelegate.m */; };
+		D974586F1B5369E2009E5175 /* FolderLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D974586D1B5369E2009E5175 /* FolderLock.xcdatamodeld */; };
+		D97458771B5369E2009E5175 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D97458761B5369E2009E5175 /* Images.xcassets */; };
+		D974587A1B5369E2009E5175 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D97458781B5369E2009E5175 /* LaunchScreen.xib */; };
+		D97458861B5369E2009E5175 /* FolderLockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D97458851B5369E2009E5175 /* FolderLockTests.m */; };
+		D97458921B536B91009E5175 /* LTHPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97458911B536B91009E5175 /* LTHPasscodeViewController.m */; };
+		D97458971B536E25009E5175 /* FLFolderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97458951B536E25009E5175 /* FLFolderListViewController.m */; };
+		D97458981B536E25009E5175 /* FLFolderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D97458961B536E25009E5175 /* FLFolderListViewController.xib */; };
+		D974589B1B537398009E5175 /* LTHKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D974589A1B537398009E5175 /* LTHKeychainUtils.m */; };
+		D97458A41B5376DF009E5175 /* VCLocalizeCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D97458A01B5376DF009E5175 /* VCLocalizeCenter.m */; };
+		D97458A51B5376DF009E5175 /* VCLocalizeKey.m in Sources */ = {isa = PBXBuildFile; fileRef = D97458A21B5376DF009E5175 /* VCLocalizeKey.m */; };
+		D97458B11B53A7B0009E5175 /* FLButtonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D97458B01B53A7B0009E5175 /* FLButtonHelper.m */; };
+		D98439831B549F2700A1676E /* Locked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D984397D1B549F2700A1676E /* Locked@2x.png */; };
+		D98439841B549F2700A1676E /* Locked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D984397E1B549F2700A1676E /* Locked@3x.png */; };
+		D98439851B549F2700A1676E /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D984397F1B549F2700A1676E /* Settings@2x.png */; };
+		D98439861B549F2700A1676E /* Settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98439801B549F2700A1676E /* Settings@3x.png */; };
+		D98439871B549F2700A1676E /* More@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98439811B549F2700A1676E /* More@2x.png */; };
+		D98439881B549F2700A1676E /* More@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98439821B549F2700A1676E /* More@3x.png */; };
+		D984398C1B54A07E00A1676E /* FLImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D984398B1B54A07E00A1676E /* FLImageHelper.m */; };
+		D98439911B54A6A600A1676E /* FLFolderListViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = D98439931B54A6A600A1676E /* FLFolderListViewController.strings */; };
+		D984399B1B54A90300A1676E /* LTHPasscodeViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = D984399D1B54A90300A1676E /* LTHPasscodeViewController.strings */; };
+		D98439A11B54AAD200A1676E /* Cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D984399F1B54AAD200A1676E /* Cancel@2x.png */; };
+		D98439A21B54AAD200A1676E /* Cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98439A01B54AAD200A1676E /* Cancel@3x.png */; };
+		D98439A71B54B9AD00A1676E /* FLSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439A51B54B9AD00A1676E /* FLSettingViewController.m */; };
+		D98439A81B54B9AD00A1676E /* FLSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98439A61B54B9AD00A1676E /* FLSettingViewController.xib */; };
+		D98439AB1B54BABB00A1676E /* SettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439AA1B54BABB00A1676E /* SettingModel.m */; };
+		D98439AE1B54BBA400A1676E /* FLSettingViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = D98439B01B54BBA400A1676E /* FLSettingViewController.strings */; };
+		D98439B61B55186600A1676E /* FLTableViewCellAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439B41B55186600A1676E /* FLTableViewCellAccount.m */; };
+		D98439B71B55186600A1676E /* FLTableViewCellAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98439B51B55186600A1676E /* FLTableViewCellAccount.xib */; };
+		D98439BB1B551C6500A1676E /* FLTableViewCellPasscode.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439B91B551C6500A1676E /* FLTableViewCellPasscode.m */; };
+		D98439BC1B551C6500A1676E /* FLTableViewCellPasscode.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98439BA1B551C6500A1676E /* FLTableViewCellPasscode.xib */; };
+		D98439C01B551DE200A1676E /* FLTableViewCellSignText.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439BE1B551DE200A1676E /* FLTableViewCellSignText.m */; };
+		D98439C11B551DE200A1676E /* FLTableViewCellSignText.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98439BF1B551DE200A1676E /* FLTableViewCellSignText.xib */; };
+		D98439C41B5521AE00A1676E /* AccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439C31B5521AE00A1676E /* AccountModel.m */; };
+		D98439C71B55259C00A1676E /* FLStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439C61B55259C00A1676E /* FLStringHelper.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D97458801B5369E2009E5175 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D974585B1B5369E2009E5175 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D97458621B5369E2009E5175;
+			remoteInfo = FolderLock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4D85AD2188FF9DB4EB87B21E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		635FB6E2432CC91780849EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D97458631B5369E2009E5175 /* FolderLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FolderLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D97458671B5369E2009E5175 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D97458681B5369E2009E5175 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D974586A1B5369E2009E5175 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D974586B1B5369E2009E5175 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D974586E1B5369E2009E5175 /* FolderLock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FolderLock.xcdatamodel; sourceTree = "<group>"; };
+		D97458761B5369E2009E5175 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D97458791B5369E2009E5175 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		D974587F1B5369E2009E5175 /* FolderLockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FolderLockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D97458841B5369E2009E5175 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D97458851B5369E2009E5175 /* FolderLockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FolderLockTests.m; sourceTree = "<group>"; };
+		D97458901B536B91009E5175 /* LTHPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHPasscodeViewController.h; sourceTree = "<group>"; };
+		D97458911B536B91009E5175 /* LTHPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTHPasscodeViewController.m; sourceTree = "<group>"; };
+		D97458941B536E25009E5175 /* FLFolderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLFolderListViewController.h; sourceTree = "<group>"; };
+		D97458951B536E25009E5175 /* FLFolderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFolderListViewController.m; sourceTree = "<group>"; };
+		D97458961B536E25009E5175 /* FLFolderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLFolderListViewController.xib; sourceTree = "<group>"; };
+		D97458991B537398009E5175 /* LTHKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHKeychainUtils.h; sourceTree = "<group>"; };
+		D974589A1B537398009E5175 /* LTHKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTHKeychainUtils.m; sourceTree = "<group>"; };
+		D974589F1B5376DF009E5175 /* VCLocalizeCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLocalizeCenter.h; sourceTree = "<group>"; };
+		D97458A01B5376DF009E5175 /* VCLocalizeCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLocalizeCenter.m; sourceTree = "<group>"; };
+		D97458A11B5376DF009E5175 /* VCLocalizeKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLocalizeKey.h; sourceTree = "<group>"; };
+		D97458A21B5376DF009E5175 /* VCLocalizeKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLocalizeKey.m; sourceTree = "<group>"; };
+		D97458A61B537759009E5175 /* VCMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMacro.h; sourceTree = "<group>"; };
+		D97458A81B537799009E5175 /* FolderLock-PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FolderLock-PrefixHeader.pch"; sourceTree = "<group>"; };
+		D97458A91B537799009E5175 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		D97458AF1B53A7B0009E5175 /* FLButtonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLButtonHelper.h; sourceTree = "<group>"; };
+		D97458B01B53A7B0009E5175 /* FLButtonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLButtonHelper.m; sourceTree = "<group>"; };
+		D984397D1B549F2700A1676E /* Locked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Locked@2x.png"; sourceTree = "<group>"; };
+		D984397E1B549F2700A1676E /* Locked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Locked@3x.png"; sourceTree = "<group>"; };
+		D984397F1B549F2700A1676E /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@2x.png"; sourceTree = "<group>"; };
+		D98439801B549F2700A1676E /* Settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@3x.png"; sourceTree = "<group>"; };
+		D98439811B549F2700A1676E /* More@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More@2x.png"; sourceTree = "<group>"; };
+		D98439821B549F2700A1676E /* More@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More@3x.png"; sourceTree = "<group>"; };
+		D984398A1B54A07E00A1676E /* FLImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLImageHelper.h; sourceTree = "<group>"; };
+		D984398B1B54A07E00A1676E /* FLImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLImageHelper.m; sourceTree = "<group>"; };
+		D98439961B54A79B00A1676E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D98439971B54A79B00A1676E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FLFolderListViewController.strings; sourceTree = "<group>"; };
+		D98439981B54A7BA00A1676E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FLFolderListViewController.strings; sourceTree = "<group>"; };
+		D984399C1B54A90300A1676E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LTHPasscodeViewController.strings; sourceTree = "<group>"; };
+		D984399E1B54A90400A1676E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LTHPasscodeViewController.strings; sourceTree = "<group>"; };
+		D984399F1B54AAD200A1676E /* Cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cancel@2x.png"; sourceTree = "<group>"; };
+		D98439A01B54AAD200A1676E /* Cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cancel@3x.png"; sourceTree = "<group>"; };
+		D98439A41B54B9AD00A1676E /* FLSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSettingViewController.h; sourceTree = "<group>"; };
+		D98439A51B54B9AD00A1676E /* FLSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSettingViewController.m; sourceTree = "<group>"; };
+		D98439A61B54B9AD00A1676E /* FLSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLSettingViewController.xib; sourceTree = "<group>"; };
+		D98439A91B54BABB00A1676E /* SettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingModel.h; sourceTree = "<group>"; };
+		D98439AA1B54BABB00A1676E /* SettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingModel.m; sourceTree = "<group>"; };
+		D98439AF1B54BBA400A1676E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FLSettingViewController.strings; sourceTree = "<group>"; };
+		D98439B11B54BBA500A1676E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FLSettingViewController.strings; sourceTree = "<group>"; };
+		D98439B31B55186600A1676E /* FLTableViewCellAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTableViewCellAccount.h; sourceTree = "<group>"; };
+		D98439B41B55186600A1676E /* FLTableViewCellAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTableViewCellAccount.m; sourceTree = "<group>"; };
+		D98439B51B55186600A1676E /* FLTableViewCellAccount.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTableViewCellAccount.xib; sourceTree = "<group>"; };
+		D98439B81B551C6500A1676E /* FLTableViewCellPasscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTableViewCellPasscode.h; sourceTree = "<group>"; };
+		D98439B91B551C6500A1676E /* FLTableViewCellPasscode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTableViewCellPasscode.m; sourceTree = "<group>"; };
+		D98439BA1B551C6500A1676E /* FLTableViewCellPasscode.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTableViewCellPasscode.xib; sourceTree = "<group>"; };
+		D98439BD1B551DE200A1676E /* FLTableViewCellSignText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTableViewCellSignText.h; sourceTree = "<group>"; };
+		D98439BE1B551DE200A1676E /* FLTableViewCellSignText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTableViewCellSignText.m; sourceTree = "<group>"; };
+		D98439BF1B551DE200A1676E /* FLTableViewCellSignText.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTableViewCellSignText.xib; sourceTree = "<group>"; };
+		D98439C21B5521AE00A1676E /* AccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountModel.h; sourceTree = "<group>"; };
+		D98439C31B5521AE00A1676E /* AccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountModel.m; sourceTree = "<group>"; };
+		D98439C51B55259C00A1676E /* FLStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringHelper.h; sourceTree = "<group>"; };
+		D98439C61B55259C00A1676E /* FLStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringHelper.m; sourceTree = "<group>"; };
+		F4980FF9AD38BC5CC211DA12 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D97458601B5369E2009E5175 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A64BAEC623FC1F0CF2EED009 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D974587C1B5369E2009E5175 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		17AFCA82DD796090C13A28E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F4980FF9AD38BC5CC211DA12 /* Pods.debug.xcconfig */,
+				4D85AD2188FF9DB4EB87B21E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A268CEB29ED361CE2C67B80A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				635FB6E2432CC91780849EB3 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D974585A1B5369E2009E5175 = {
+			isa = PBXGroup;
+			children = (
+				D97458651B5369E2009E5175 /* FolderLock */,
+				D97458821B5369E2009E5175 /* FolderLockTests */,
+				D97458641B5369E2009E5175 /* Products */,
+				17AFCA82DD796090C13A28E5 /* Pods */,
+				A268CEB29ED361CE2C67B80A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D97458641B5369E2009E5175 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D97458631B5369E2009E5175 /* FolderLock.app */,
+				D974587F1B5369E2009E5175 /* FolderLockTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D97458651B5369E2009E5175 /* FolderLock */ = {
+			isa = PBXGroup;
+			children = (
+				D97458AD1B53A75E009E5175 /* AppDeletate */,
+				D97458AC1B53A6D6009E5175 /* FLUtinity */,
+				D97458AB1B53A6C7009E5175 /* FLModels */,
+				D97458AA1B53A6B3009E5175 /* FLViewControllers */,
+				D97458761B5369E2009E5175 /* Images.xcassets */,
+				D97458781B5369E2009E5175 /* LaunchScreen.xib */,
+				D974586D1B5369E2009E5175 /* FolderLock.xcdatamodeld */,
+				D97458661B5369E2009E5175 /* Supporting Files */,
+			);
+			path = FolderLock;
+			sourceTree = "<group>";
+		};
+		D97458661B5369E2009E5175 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D984397C1B549EF900A1676E /* Image */,
+				D97458A71B537799009E5175 /* Resource */,
+				D97458671B5369E2009E5175 /* Info.plist */,
+				D97458681B5369E2009E5175 /* main.m */,
+				D98439901B54A69000A1676E /* Localize */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D97458821B5369E2009E5175 /* FolderLockTests */ = {
+			isa = PBXGroup;
+			children = (
+				D97458851B5369E2009E5175 /* FolderLockTests.m */,
+				D97458831B5369E2009E5175 /* Supporting Files */,
+			);
+			path = FolderLockTests;
+			sourceTree = "<group>";
+		};
+		D97458831B5369E2009E5175 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D97458841B5369E2009E5175 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D974588F1B536B65009E5175 /* LTHPasscodeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D97458991B537398009E5175 /* LTHKeychainUtils.h */,
+				D974589A1B537398009E5175 /* LTHKeychainUtils.m */,
+				D97458901B536B91009E5175 /* LTHPasscodeViewController.h */,
+				D97458911B536B91009E5175 /* LTHPasscodeViewController.m */,
+			);
+			name = LTHPasscodeViewController;
+			sourceTree = "<group>";
+		};
+		D97458931B536DF5009E5175 /* FLFolderListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D97458941B536E25009E5175 /* FLFolderListViewController.h */,
+				D97458951B536E25009E5175 /* FLFolderListViewController.m */,
+				D97458961B536E25009E5175 /* FLFolderListViewController.xib */,
+			);
+			name = FLFolderListViewController;
+			sourceTree = "<group>";
+		};
+		D974589C1B5376CC009E5175 /* FLConfig */ = {
+			isa = PBXGroup;
+			children = (
+				D97458A61B537759009E5175 /* VCMacro.h */,
+				D974589F1B5376DF009E5175 /* VCLocalizeCenter.h */,
+				D97458A01B5376DF009E5175 /* VCLocalizeCenter.m */,
+				D97458A11B5376DF009E5175 /* VCLocalizeKey.h */,
+				D97458A21B5376DF009E5175 /* VCLocalizeKey.m */,
+			);
+			name = FLConfig;
+			sourceTree = "<group>";
+		};
+		D97458A71B537799009E5175 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D97458A81B537799009E5175 /* FolderLock-PrefixHeader.pch */,
+				D97458A91B537799009E5175 /* PrefixHeader.pch */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D97458AA1B53A6B3009E5175 /* FLViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D98439A31B54B99300A1676E /* FLSettingViewController */,
+				D97458931B536DF5009E5175 /* FLFolderListViewController */,
+			);
+			name = FLViewControllers;
+			sourceTree = "<group>";
+		};
+		D97458AB1B53A6C7009E5175 /* FLModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FLModels;
+			sourceTree = "<group>";
+		};
+		D97458AC1B53A6D6009E5175 /* FLUtinity */ = {
+			isa = PBXGroup;
+			children = (
+				D984398D1B54A3D600A1676E /* FLStringHelper */,
+				D98439891B54A06A00A1676E /* FLImageHelper */,
+				D97458AE1B53A78B009E5175 /* FLButtonHelper */,
+				D974589C1B5376CC009E5175 /* FLConfig */,
+				D974588F1B536B65009E5175 /* LTHPasscodeViewController */,
+			);
+			name = FLUtinity;
+			sourceTree = "<group>";
+		};
+		D97458AD1B53A75E009E5175 /* AppDeletate */ = {
+			isa = PBXGroup;
+			children = (
+				D974586A1B5369E2009E5175 /* AppDelegate.h */,
+				D974586B1B5369E2009E5175 /* AppDelegate.m */,
+			);
+			name = AppDeletate;
+			sourceTree = "<group>";
+		};
+		D97458AE1B53A78B009E5175 /* FLButtonHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D97458AF1B53A7B0009E5175 /* FLButtonHelper.h */,
+				D97458B01B53A7B0009E5175 /* FLButtonHelper.m */,
+			);
+			name = FLButtonHelper;
+			sourceTree = "<group>";
+		};
+		D984397C1B549EF900A1676E /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				D984399F1B54AAD200A1676E /* Cancel@2x.png */,
+				D98439A01B54AAD200A1676E /* Cancel@3x.png */,
+				D984397D1B549F2700A1676E /* Locked@2x.png */,
+				D984397E1B549F2700A1676E /* Locked@3x.png */,
+				D984397F1B549F2700A1676E /* Settings@2x.png */,
+				D98439801B549F2700A1676E /* Settings@3x.png */,
+				D98439811B549F2700A1676E /* More@2x.png */,
+				D98439821B549F2700A1676E /* More@3x.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		D98439891B54A06A00A1676E /* FLImageHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D984398A1B54A07E00A1676E /* FLImageHelper.h */,
+				D984398B1B54A07E00A1676E /* FLImageHelper.m */,
+			);
+			name = FLImageHelper;
+			sourceTree = "<group>";
+		};
+		D984398D1B54A3D600A1676E /* FLStringHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D98439C51B55259C00A1676E /* FLStringHelper.h */,
+				D98439C61B55259C00A1676E /* FLStringHelper.m */,
+			);
+			name = FLStringHelper;
+			sourceTree = "<group>";
+		};
+		D98439901B54A69000A1676E /* Localize */ = {
+			isa = PBXGroup;
+			children = (
+				D98439931B54A6A600A1676E /* FLFolderListViewController.strings */,
+				D984399D1B54A90300A1676E /* LTHPasscodeViewController.strings */,
+				D98439B01B54BBA400A1676E /* FLSettingViewController.strings */,
+			);
+			name = Localize;
+			sourceTree = "<group>";
+		};
+		D98439A31B54B99300A1676E /* FLSettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D98439A41B54B9AD00A1676E /* FLSettingViewController.h */,
+				D98439A51B54B9AD00A1676E /* FLSettingViewController.m */,
+				D98439A61B54B9AD00A1676E /* FLSettingViewController.xib */,
+				D98439B21B55183A00A1676E /* FLSettingCustomCell */,
+				D98439A91B54BABB00A1676E /* SettingModel.h */,
+				D98439AA1B54BABB00A1676E /* SettingModel.m */,
+				D98439C21B5521AE00A1676E /* AccountModel.h */,
+				D98439C31B5521AE00A1676E /* AccountModel.m */,
+			);
+			name = FLSettingViewController;
+			sourceTree = "<group>";
+		};
+		D98439B21B55183A00A1676E /* FLSettingCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				D98439B31B55186600A1676E /* FLTableViewCellAccount.h */,
+				D98439B41B55186600A1676E /* FLTableViewCellAccount.m */,
+				D98439B51B55186600A1676E /* FLTableViewCellAccount.xib */,
+				D98439B81B551C6500A1676E /* FLTableViewCellPasscode.h */,
+				D98439B91B551C6500A1676E /* FLTableViewCellPasscode.m */,
+				D98439BA1B551C6500A1676E /* FLTableViewCellPasscode.xib */,
+				D98439BD1B551DE200A1676E /* FLTableViewCellSignText.h */,
+				D98439BE1B551DE200A1676E /* FLTableViewCellSignText.m */,
+				D98439BF1B551DE200A1676E /* FLTableViewCellSignText.xib */,
+			);
+			name = FLSettingCustomCell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D97458621B5369E2009E5175 /* FolderLock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D97458891B5369E2009E5175 /* Build configuration list for PBXNativeTarget "FolderLock" */;
+			buildPhases = (
+				8F1C60FE87A3E11FC8B1256A /* Check Pods Manifest.lock */,
+				D974585F1B5369E2009E5175 /* Sources */,
+				D97458601B5369E2009E5175 /* Frameworks */,
+				D97458611B5369E2009E5175 /* Resources */,
+				905EA7AA09FB92F4208BBFB2 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FolderLock;
+			productName = FolderLock;
+			productReference = D97458631B5369E2009E5175 /* FolderLock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D974587E1B5369E2009E5175 /* FolderLockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D974588C1B5369E2009E5175 /* Build configuration list for PBXNativeTarget "FolderLockTests" */;
+			buildPhases = (
+				D974587B1B5369E2009E5175 /* Sources */,
+				D974587C1B5369E2009E5175 /* Frameworks */,
+				D974587D1B5369E2009E5175 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D97458811B5369E2009E5175 /* PBXTargetDependency */,
+			);
+			name = FolderLockTests;
+			productName = FolderLockTests;
+			productReference = D974587F1B5369E2009E5175 /* FolderLockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D974585B1B5369E2009E5175 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = QSOFT;
+				TargetAttributes = {
+					D97458621B5369E2009E5175 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					D974587E1B5369E2009E5175 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = D97458621B5369E2009E5175;
+					};
+				};
+			};
+			buildConfigurationList = D974585E1B5369E2009E5175 /* Build configuration list for PBXProject "FolderLock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				vi,
+			);
+			mainGroup = D974585A1B5369E2009E5175;
+			productRefGroup = D97458641B5369E2009E5175 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D97458621B5369E2009E5175 /* FolderLock */,
+				D974587E1B5369E2009E5175 /* FolderLockTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D97458611B5369E2009E5175 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D98439A11B54AAD200A1676E /* Cancel@2x.png in Resources */,
+				D98439AE1B54BBA400A1676E /* FLSettingViewController.strings in Resources */,
+				D98439831B549F2700A1676E /* Locked@2x.png in Resources */,
+				D98439C11B551DE200A1676E /* FLTableViewCellSignText.xib in Resources */,
+				D98439851B549F2700A1676E /* Settings@2x.png in Resources */,
+				D98439861B549F2700A1676E /* Settings@3x.png in Resources */,
+				D98439881B549F2700A1676E /* More@3x.png in Resources */,
+				D98439871B549F2700A1676E /* More@2x.png in Resources */,
+				D98439A21B54AAD200A1676E /* Cancel@3x.png in Resources */,
+				D974587A1B5369E2009E5175 /* LaunchScreen.xib in Resources */,
+				D97458771B5369E2009E5175 /* Images.xcassets in Resources */,
+				D97458981B536E25009E5175 /* FLFolderListViewController.xib in Resources */,
+				D984399B1B54A90300A1676E /* LTHPasscodeViewController.strings in Resources */,
+				D98439841B549F2700A1676E /* Locked@3x.png in Resources */,
+				D98439B71B55186600A1676E /* FLTableViewCellAccount.xib in Resources */,
+				D98439911B54A6A600A1676E /* FLFolderListViewController.strings in Resources */,
+				D98439A81B54B9AD00A1676E /* FLSettingViewController.xib in Resources */,
+				D98439BC1B551C6500A1676E /* FLTableViewCellPasscode.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D974587D1B5369E2009E5175 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8F1C60FE87A3E11FC8B1256A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		905EA7AA09FB92F4208BBFB2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D974585F1B5369E2009E5175 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D974586F1B5369E2009E5175 /* FolderLock.xcdatamodeld in Sources */,
+				D97458971B536E25009E5175 /* FLFolderListViewController.m in Sources */,
+				D97458A41B5376DF009E5175 /* VCLocalizeCenter.m in Sources */,
+				D98439C71B55259C00A1676E /* FLStringHelper.m in Sources */,
+				D984398C1B54A07E00A1676E /* FLImageHelper.m in Sources */,
+				D98439C01B551DE200A1676E /* FLTableViewCellSignText.m in Sources */,
+				D98439AB1B54BABB00A1676E /* SettingModel.m in Sources */,
+				D974589B1B537398009E5175 /* LTHKeychainUtils.m in Sources */,
+				D98439C41B5521AE00A1676E /* AccountModel.m in Sources */,
+				D974586C1B5369E2009E5175 /* AppDelegate.m in Sources */,
+				D98439BB1B551C6500A1676E /* FLTableViewCellPasscode.m in Sources */,
+				D98439B61B55186600A1676E /* FLTableViewCellAccount.m in Sources */,
+				D97458691B5369E2009E5175 /* main.m in Sources */,
+				D97458A51B5376DF009E5175 /* VCLocalizeKey.m in Sources */,
+				D97458921B536B91009E5175 /* LTHPasscodeViewController.m in Sources */,
+				D97458B11B53A7B0009E5175 /* FLButtonHelper.m in Sources */,
+				D98439A71B54B9AD00A1676E /* FLSettingViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D974587B1B5369E2009E5175 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D97458861B5369E2009E5175 /* FolderLockTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D97458811B5369E2009E5175 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D97458621B5369E2009E5175 /* FolderLock */;
+			targetProxy = D97458801B5369E2009E5175 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D97458781B5369E2009E5175 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D97458791B5369E2009E5175 /* Base */,
+				D98439961B54A79B00A1676E /* vi */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		D98439931B54A6A600A1676E /* FLFolderListViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D98439971B54A79B00A1676E /* vi */,
+				D98439981B54A7BA00A1676E /* en */,
+			);
+			name = FLFolderListViewController.strings;
+			sourceTree = "<group>";
+		};
+		D984399D1B54A90300A1676E /* LTHPasscodeViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D984399C1B54A90300A1676E /* en */,
+				D984399E1B54A90400A1676E /* vi */,
+			);
+			name = LTHPasscodeViewController.strings;
+			sourceTree = "<group>";
+		};
+		D98439B01B54BBA400A1676E /* FLSettingViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D98439AF1B54BBA400A1676E /* en */,
+				D98439B11B54BBA500A1676E /* vi */,
+			);
+			name = FLSettingViewController.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D97458871B5369E2009E5175 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D97458881B5369E2009E5175 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D974588A1B5369E2009E5175 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4980FF9AD38BC5CC211DA12 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/FolderLock/Resource/FolderLock-PrefixHeader.pch";
+				INFOPLIST_FILE = FolderLock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D974588B1B5369E2009E5175 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D85AD2188FF9DB4EB87B21E /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/FolderLock/Resource/FolderLock-PrefixHeader.pch";
+				INFOPLIST_FILE = FolderLock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D974588D1B5369E2009E5175 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FolderLockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FolderLock.app/FolderLock";
+			};
+			name = Debug;
+		};
+		D974588E1B5369E2009E5175 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FolderLockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FolderLock.app/FolderLock";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D974585E1B5369E2009E5175 /* Build configuration list for PBXProject "FolderLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D97458871B5369E2009E5175 /* Debug */,
+				D97458881B5369E2009E5175 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D97458891B5369E2009E5175 /* Build configuration list for PBXNativeTarget "FolderLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D974588A1B5369E2009E5175 /* Debug */,
+				D974588B1B5369E2009E5175 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D974588C1B5369E2009E5175 /* Build configuration list for PBXNativeTarget "FolderLockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D974588D1B5369E2009E5175 /* Debug */,
+				D974588E1B5369E2009E5175 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D974586D1B5369E2009E5175 /* FolderLock.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D974586E1B5369E2009E5175 /* FolderLock.xcdatamodel */,
+			);
+			currentVersion = D974586E1B5369E2009E5175 /* FolderLock.xcdatamodel */;
+			path = FolderLock.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D974585B1B5369E2009E5175 /* Project object */;
+}

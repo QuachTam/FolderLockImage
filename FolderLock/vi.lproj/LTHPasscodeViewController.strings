@@ -1,0 +1,37 @@
+/* 
+  LTHPasscodeViewController.strings
+  FolderLock
+
+  Created by QSOFT on 7/14/15.
+  Copyright (c) 2015 QSOFT. All rights reserved.
+*/
+
+/*Password failed*/
+"failedAttemp.strings" = "Nhập sai mật khẩu.";
+
+/*Password not match*/
+"passcodes.did.not.match.try.again" = "Mật khẩu không khớp. Thử lại.";
+
+/*Old Passcode*/
+"enter.your.old.passcode" = "Nhập mật khẩu cũ của bạn";
+
+/*Enter your passcode*/
+"enter.your.pass.code" = "Nhập mật khẩu của bạn";
+
+/*Enable Passcode*/
+"enable.pass.code" = "Bật mật khẩu";
+
+/*Change Passcode*/
+"change.pass.code" = "Thay đổi mật khẩu";
+
+/*Turn Off Passcode*/
+"turn.off.passcode" = "Tắt Mật khẩu";
+
+/*Re-enter your passcode*/
+"reenter.your.passcode" = "Nhập lại mật khẩu của bạn";
+
+/*Re-enter your new passcode*/
+"reenter.your.new.passcode" = "Nhập lại mật khẩu mới của bạn";
+
+/*Enter your new passcode*/
+"enter.your.new.password" = "Nhập mật khẩu mới của bạn";

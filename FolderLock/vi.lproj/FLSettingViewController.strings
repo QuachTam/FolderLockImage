@@ -1,0 +1,19 @@
+/* 
+  FLSettingViewController.strings
+  FolderLock
+
+  Created by QSOFT on 7/14/15.
+  Copyright (c) 2015 QSOFT. All rights reserved.
+*/
+
+/*title*/
+"setting.title" = "Thiết lập";
+
+/*Legal*/
+"setting.legal" = "Phần mềm hợp pháp";
+
+/*"About"*/
+"settting.about" = "Về chúng tôi";
+
+/*"Passcode"*/
+"setting.passcode" = "Mật khẩu";
