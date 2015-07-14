@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4B3D207C-4F4A-4054-B8D9-ECB055D581E3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FolderLock</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>758AF07BB34DA3BE3D7B27A5DB2FE3143F31F716</key>
+		<string>https://github.com/QuachTam/FolderLockImage.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FolderLock.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>758AF07BB34DA3BE3D7B27A5DB2FE3143F31F716</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/QuachTam/FolderLockImage.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>758AF07BB34DA3BE3D7B27A5DB2FE3143F31F716</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>758AF07BB34DA3BE3D7B27A5DB2FE3143F31F716</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FolderLock</string>
+		</dict>
+	</array>
+</dict>
+</plist>
