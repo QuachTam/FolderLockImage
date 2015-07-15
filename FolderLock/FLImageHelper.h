@@ -13,4 +13,6 @@ extern NSString *const kImageSetting;
 extern NSString *const kImageLock;
 extern NSString *const kImageMore;
 extern NSString *const kImageCancel;
+extern NSString *const kImageCamera;
+extern NSString *const kImageSave;
 @end

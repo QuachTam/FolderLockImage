@@ -341,8 +341,8 @@ options:NSNumericSearch] != NSOrderedAscending)
     [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsCompact];
     
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:H3_COLOR}];
+    [[UINavigationBar appearance] setTintColor:H3_COLOR];
     
     _backgroundImageView = [[UIImageView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:_backgroundImageView];
@@ -369,7 +369,7 @@ options:NSNumericSearch] != NSOrderedAscending)
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[self _addObservers];
-	[self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:H1_COLOR, NSForegroundColorAttributeName, VCTitleFont(18), NSFontAttributeName, nil]];
+	[self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:H3_COLOR, NSForegroundColorAttributeName, VCTitleFont(18), NSFontAttributeName, nil]];
     _backgroundImageView.image = _backgroundImage;
     if (!_backgroundImage) {
         [_backgroundImageView setFrame:CGRectZero];

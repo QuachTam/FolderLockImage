@@ -44,6 +44,15 @@
 		D98439C11B551DE200A1676E /* FLTableViewCellSignText.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98439BF1B551DE200A1676E /* FLTableViewCellSignText.xib */; };
 		D98439C41B5521AE00A1676E /* AccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439C31B5521AE00A1676E /* AccountModel.m */; };
 		D98439C71B55259C00A1676E /* FLStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439C61B55259C00A1676E /* FLStringHelper.m */; };
+		D9FD23621B560CDC000F15B7 /* Camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FD23601B560CDC000F15B7 /* Camera@2x.png */; };
+		D9FD23631B560CDC000F15B7 /* Camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FD23611B560CDC000F15B7 /* Camera@3x.png */; };
+		D9FD23681B561192000F15B7 /* FLAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FD23661B561192000F15B7 /* FLAccountViewController.m */; };
+		D9FD23691B561192000F15B7 /* FLAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FD23671B561192000F15B7 /* FLAccountViewController.xib */; };
+		D9FD23701B56148D000F15B7 /* Save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FD236E1B56148D000F15B7 /* Save@2x.png */; };
+		D9FD23711B56148D000F15B7 /* Save@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FD236F1B56148D000F15B7 /* Save@3x.png */; };
+		D9FD23761B5615A1000F15B7 /* FLAccountViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9FD23781B5615A1000F15B7 /* FLAccountViewController.strings */; };
+		D9FD237F1B5673DA000F15B7 /* FLAccountCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FD237D1B5673DA000F15B7 /* FLAccountCustomCell.m */; };
+		D9FD23801B5673DA000F15B7 /* FLAccountCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FD237E1B5673DA000F15B7 /* FLAccountCustomCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +130,18 @@
 		D98439C31B5521AE00A1676E /* AccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountModel.m; sourceTree = "<group>"; };
 		D98439C51B55259C00A1676E /* FLStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringHelper.h; sourceTree = "<group>"; };
 		D98439C61B55259C00A1676E /* FLStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringHelper.m; sourceTree = "<group>"; };
+		D9FD23601B560CDC000F15B7 /* Camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera@2x.png"; sourceTree = "<group>"; };
+		D9FD23611B560CDC000F15B7 /* Camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera@3x.png"; sourceTree = "<group>"; };
+		D9FD23651B561192000F15B7 /* FLAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAccountViewController.h; sourceTree = "<group>"; };
+		D9FD23661B561192000F15B7 /* FLAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAccountViewController.m; sourceTree = "<group>"; };
+		D9FD23671B561192000F15B7 /* FLAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAccountViewController.xib; sourceTree = "<group>"; };
+		D9FD236E1B56148D000F15B7 /* Save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Save@2x.png"; sourceTree = "<group>"; };
+		D9FD236F1B56148D000F15B7 /* Save@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Save@3x.png"; sourceTree = "<group>"; };
+		D9FD23771B5615A1000F15B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FLAccountViewController.strings; sourceTree = "<group>"; };
+		D9FD23791B5615A3000F15B7 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FLAccountViewController.strings; sourceTree = "<group>"; };
+		D9FD237C1B5673DA000F15B7 /* FLAccountCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAccountCustomCell.h; sourceTree = "<group>"; };
+		D9FD237D1B5673DA000F15B7 /* FLAccountCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAccountCustomCell.m; sourceTree = "<group>"; };
+		D9FD237E1B5673DA000F15B7 /* FLAccountCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLAccountCustomCell.xib; sourceTree = "<group>"; };
 		F4980FF9AD38BC5CC211DA12 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,9 +259,7 @@
 		D97458931B536DF5009E5175 /* FLFolderListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D97458941B536E25009E5175 /* FLFolderListViewController.h */,
-				D97458951B536E25009E5175 /* FLFolderListViewController.m */,
-				D97458961B536E25009E5175 /* FLFolderListViewController.xib */,
+				D9FD236D1B56126E000F15B7 /* ViewController */,
 			);
 			name = FLFolderListViewController;
 			sourceTree = "<group>";
@@ -269,6 +288,7 @@
 		D97458AA1B53A6B3009E5175 /* FLViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D9FD23641B561169000F15B7 /* FLAccountViewController */,
 				D98439A31B54B99300A1676E /* FLSettingViewController */,
 				D97458931B536DF5009E5175 /* FLFolderListViewController */,
 			);
@@ -315,6 +335,8 @@
 		D984397C1B549EF900A1676E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				D9FD236E1B56148D000F15B7 /* Save@2x.png */,
+				D9FD236F1B56148D000F15B7 /* Save@3x.png */,
 				D984399F1B54AAD200A1676E /* Cancel@2x.png */,
 				D98439A01B54AAD200A1676E /* Cancel@3x.png */,
 				D984397D1B549F2700A1676E /* Locked@2x.png */,
@@ -323,6 +345,8 @@
 				D98439801B549F2700A1676E /* Settings@3x.png */,
 				D98439811B549F2700A1676E /* More@2x.png */,
 				D98439821B549F2700A1676E /* More@3x.png */,
+				D9FD23601B560CDC000F15B7 /* Camera@2x.png */,
+				D9FD23611B560CDC000F15B7 /* Camera@3x.png */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -351,6 +375,7 @@
 				D98439931B54A6A600A1676E /* FLFolderListViewController.strings */,
 				D984399D1B54A90300A1676E /* LTHPasscodeViewController.strings */,
 				D98439B01B54BBA400A1676E /* FLSettingViewController.strings */,
+				D9FD23781B5615A1000F15B7 /* FLAccountViewController.strings */,
 			);
 			name = Localize;
 			sourceTree = "<group>";
@@ -358,14 +383,9 @@
 		D98439A31B54B99300A1676E /* FLSettingViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D98439A41B54B9AD00A1676E /* FLSettingViewController.h */,
-				D98439A51B54B9AD00A1676E /* FLSettingViewController.m */,
-				D98439A61B54B9AD00A1676E /* FLSettingViewController.xib */,
+				D9FD236B1B561253000F15B7 /* ViewController */,
 				D98439B21B55183A00A1676E /* FLSettingCustomCell */,
-				D98439A91B54BABB00A1676E /* SettingModel.h */,
-				D98439AA1B54BABB00A1676E /* SettingModel.m */,
-				D98439C21B5521AE00A1676E /* AccountModel.h */,
-				D98439C31B5521AE00A1676E /* AccountModel.m */,
+				D9FD236A1B561218000F15B7 /* SettingModel */,
 			);
 			name = FLSettingViewController;
 			sourceTree = "<group>";
@@ -384,6 +404,74 @@
 				D98439BF1B551DE200A1676E /* FLTableViewCellSignText.xib */,
 			);
 			name = FLSettingCustomCell;
+			sourceTree = "<group>";
+		};
+		D9FD23641B561169000F15B7 /* FLAccountViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D9FD237B1B5673BB000F15B7 /* FLAccountCustomCell */,
+				D9FD23731B561530000F15B7 /* AccountModel */,
+				D9FD236C1B561262000F15B7 /* ViewController */,
+			);
+			name = FLAccountViewController;
+			sourceTree = "<group>";
+		};
+		D9FD236A1B561218000F15B7 /* SettingModel */ = {
+			isa = PBXGroup;
+			children = (
+				D98439A91B54BABB00A1676E /* SettingModel.h */,
+				D98439AA1B54BABB00A1676E /* SettingModel.m */,
+			);
+			name = SettingModel;
+			sourceTree = "<group>";
+		};
+		D9FD236B1B561253000F15B7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D98439A41B54B9AD00A1676E /* FLSettingViewController.h */,
+				D98439A51B54B9AD00A1676E /* FLSettingViewController.m */,
+				D98439A61B54B9AD00A1676E /* FLSettingViewController.xib */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		D9FD236C1B561262000F15B7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D9FD23651B561192000F15B7 /* FLAccountViewController.h */,
+				D9FD23661B561192000F15B7 /* FLAccountViewController.m */,
+				D9FD23671B561192000F15B7 /* FLAccountViewController.xib */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		D9FD236D1B56126E000F15B7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D97458941B536E25009E5175 /* FLFolderListViewController.h */,
+				D97458951B536E25009E5175 /* FLFolderListViewController.m */,
+				D97458961B536E25009E5175 /* FLFolderListViewController.xib */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		D9FD23731B561530000F15B7 /* AccountModel */ = {
+			isa = PBXGroup;
+			children = (
+				D98439C21B5521AE00A1676E /* AccountModel.h */,
+				D98439C31B5521AE00A1676E /* AccountModel.m */,
+			);
+			name = AccountModel;
+			sourceTree = "<group>";
+		};
+		D9FD237B1B5673BB000F15B7 /* FLAccountCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				D9FD237C1B5673DA000F15B7 /* FLAccountCustomCell.h */,
+				D9FD237D1B5673DA000F15B7 /* FLAccountCustomCell.m */,
+				D9FD237E1B5673DA000F15B7 /* FLAccountCustomCell.xib */,
+			);
+			name = FLAccountCustomCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,15 +557,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9FD23631B560CDC000F15B7 /* Camera@3x.png in Resources */,
 				D98439A11B54AAD200A1676E /* Cancel@2x.png in Resources */,
 				D98439AE1B54BBA400A1676E /* FLSettingViewController.strings in Resources */,
 				D98439831B549F2700A1676E /* Locked@2x.png in Resources */,
+				D9FD23801B5673DA000F15B7 /* FLAccountCustomCell.xib in Resources */,
 				D98439C11B551DE200A1676E /* FLTableViewCellSignText.xib in Resources */,
+				D9FD23711B56148D000F15B7 /* Save@3x.png in Resources */,
+				D9FD23701B56148D000F15B7 /* Save@2x.png in Resources */,
 				D98439851B549F2700A1676E /* Settings@2x.png in Resources */,
 				D98439861B549F2700A1676E /* Settings@3x.png in Resources */,
 				D98439881B549F2700A1676E /* More@3x.png in Resources */,
 				D98439871B549F2700A1676E /* More@2x.png in Resources */,
 				D98439A21B54AAD200A1676E /* Cancel@3x.png in Resources */,
+				D9FD23691B561192000F15B7 /* FLAccountViewController.xib in Resources */,
+				D9FD23761B5615A1000F15B7 /* FLAccountViewController.strings in Resources */,
+				D9FD23621B560CDC000F15B7 /* Camera@2x.png in Resources */,
 				D974587A1B5369E2009E5175 /* LaunchScreen.xib in Resources */,
 				D97458771B5369E2009E5175 /* Images.xcassets in Resources */,
 				D97458981B536E25009E5175 /* FLFolderListViewController.xib in Resources */,
@@ -543,6 +638,8 @@
 				D98439C71B55259C00A1676E /* FLStringHelper.m in Sources */,
 				D984398C1B54A07E00A1676E /* FLImageHelper.m in Sources */,
 				D98439C01B551DE200A1676E /* FLTableViewCellSignText.m in Sources */,
+				D9FD237F1B5673DA000F15B7 /* FLAccountCustomCell.m in Sources */,
+				D9FD23681B561192000F15B7 /* FLAccountViewController.m in Sources */,
 				D98439AB1B54BABB00A1676E /* SettingModel.m in Sources */,
 				D974589B1B537398009E5175 /* LTHKeychainUtils.m in Sources */,
 				D98439C41B5521AE00A1676E /* AccountModel.m in Sources */,
@@ -610,6 +707,15 @@
 				D98439B11B54BBA500A1676E /* vi */,
 			);
 			name = FLSettingViewController.strings;
+			sourceTree = "<group>";
+		};
+		D9FD23781B5615A1000F15B7 /* FLAccountViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9FD23771B5615A1000F15B7 /* en */,
+				D9FD23791B5615A3000F15B7 /* vi */,
+			);
+			name = FLAccountViewController.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -98,7 +98,7 @@ typedef void(^databaseHandler)(NSError * error, id result);
 #define SBSeparateTableViewColor [UIColor colorWithRed:188.0/255 green:188.0/255 blue:188.0/255 alpha:1.0]
 #define H1_COLOR RGBCOLOR(255,255,255,1)
 #define H2_COLOR RGBCOLOR(0,0,0,1)
-#define H3_COLOR RGBCOLOR(135,135,135,1)
+#define H3_COLOR RGBCOLOR(125,187,38,1)
 #define H4_COLOR RGBCOLOR(255,255,255,1)
 #define H5_COLOR RGBCOLOR(0,0,0,1)
 #define H6_COLOR RGBCOLOR(135,135,135,1)

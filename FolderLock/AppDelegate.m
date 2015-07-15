@@ -24,6 +24,8 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [MagicalRecord setupCoreDataStackWithStoreNamed:kCoreDataFileName];
     
+    [[UINavigationBar appearanceWhenContainedIn:[UINavigationController class], nil] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:H3_COLOR, NSForegroundColorAttributeName,VCTitleFont(30), NSFontAttributeName, nil]];
+    
     FLFolderListViewController *folderList = [[FLFolderListViewController alloc] initWithNibName:NSStringFromClass([FLFolderListViewController class]) bundle:nil];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:folderList];

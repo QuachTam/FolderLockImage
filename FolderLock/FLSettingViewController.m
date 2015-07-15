@@ -31,9 +31,9 @@ NSString *const idendifyLegal = @"FLTableViewCellSignText";
     self.settingModel = [[SettingModel alloc] init];
     self.title = self.settingModel.title;
     
-    UIButton *settingButton = fl_buttonCancel();
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
-    [settingButton addTarget:self action:@selector(cancelDidSelect:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *cancelButton = fl_buttonCancel();
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
+    [cancelButton addTarget:self action:@selector(cancelDidSelect:) forControlEvents:UIControlEventTouchUpInside];
     [self setupCustomCell];
     [self setupPasscode];
 }
@@ -41,11 +41,6 @@ NSString *const idendifyLegal = @"FLTableViewCellSignText";
 #pragma mark Passcode
 
 - (void)setupPasscode {
-    NSString *stringPassword = [LTHPasscodeViewController sharedUser].password;
-    self.isOnSercurity = stringPassword.length ? 1:0;
-    
-    [self setupCustomCell];
-    
     [[LTHPasscodeViewController sharedUser] setKeychainPasscodeUsername:kKeychainPasscode];
     [[LTHPasscodeViewController sharedUser] setKeychainServiceName:kKeychainService];
     [LTHPasscodeViewController sharedUser].delegate = self;
@@ -55,6 +50,9 @@ NSString *const idendifyLegal = @"FLTableViewCellSignText";
     [[LTHPasscodeViewController sharedUser] setPasscodeTextColor:[UIColor blackColor]];
     [[LTHPasscodeViewController sharedUser] setLabelTextColor:[UIColor blackColor]];
     [[LTHPasscodeViewController sharedUser] setLabelFont:[UIFont systemFontOfSize:20]];
+    
+    NSString *stringPassword = [LTHPasscodeViewController sharedUser].password;
+    self.isOnSercurity = stringPassword.length ? 1:0;
 }
 
 #pragma mark action

@@ -13,4 +13,6 @@ NSString *const kImageSetting = @"Settings.png";
 NSString *const kImageLock = @"Locked.png";
 NSString *const kImageMore = @"More.png";
 NSString *const kImageCancel = @"Cancel.png";
+NSString *const kImageCamera = @"Camera.png";
+NSString *const kImageSave = @"Save.png";
 @end

@@ -9,6 +9,7 @@
 #import "FLFolderListViewController.h"
 #import "FLButtonHelper.h"
 #import "FLSettingViewController.h"
+#import "FLAccountViewController.h"
 
 @interface FLFolderListViewController ()
 
@@ -23,6 +24,14 @@
     UIButton *settingButton = fl_buttonSetting();
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
     [settingButton addTarget:self action:@selector(settingTap:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *cameraButton = fl_buttonCamera();
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cameraButton];
+    [settingButton addTarget:self action:@selector(cameraTap:) forControlEvents:UIControlEventTouchUpInside];
+    
+    FLAccountViewController *account = [[FLAccountViewController alloc] initWithNibName:NSStringFromClass([FLAccountViewController class]) bundle:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:account];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark Action
@@ -31,6 +40,10 @@
     FLSettingViewController *setting = [[FLSettingViewController alloc] initWithNibName:NSStringFromClass([FLSettingViewController class]) bundle:nil];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:setting];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void)cameraTap:(id)sencer {
+    
 }
 
 - (void)didReceiveMemoryWarning {
