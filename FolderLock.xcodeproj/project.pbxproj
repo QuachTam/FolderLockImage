@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A64BAEC623FC1F0CF2EED009 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FB6E2432CC91780849EB3 /* libPods.a */; };
+		D92721571B5898DF001A741D /* STAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92721561B5898DF001A741D /* STAViewController.m */; };
 		D97458691B5369E2009E5175 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D97458681B5369E2009E5175 /* main.m */; };
 		D974586C1B5369E2009E5175 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D974586B1B5369E2009E5175 /* AppDelegate.m */; };
 		D974586F1B5369E2009E5175 /* FolderLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D974586D1B5369E2009E5175 /* FolderLock.xcdatamodeld */; };
@@ -44,6 +45,19 @@
 		D98439C11B551DE200A1676E /* FLTableViewCellSignText.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98439BF1B551DE200A1676E /* FLTableViewCellSignText.xib */; };
 		D98439C41B5521AE00A1676E /* AccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439C31B5521AE00A1676E /* AccountModel.m */; };
 		D98439C71B55259C00A1676E /* FLStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439C61B55259C00A1676E /* FLStringHelper.m */; };
+		D9ED84321B57977000A1D1DA /* StartApp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D9ED84301B57977000A1D1DA /* StartApp.bundle */; };
+		D9ED84361B5798EC00A1D1DA /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED84351B5798EC00A1D1DA /* CoreMedia.framework */; };
+		D9ED84381B5798FC00A1D1DA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED84371B5798FC00A1D1DA /* AVFoundation.framework */; };
+		D9ED843A1B57990B00A1D1DA /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED84391B57990B00A1D1DA /* AdSupport.framework */; };
+		D9ED843C1B57991A00A1D1DA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED843B1B57991A00A1D1DA /* StoreKit.framework */; };
+		D9ED843E1B57992800A1D1DA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED843D1B57992800A1D1DA /* SystemConfiguration.framework */; };
+		D9ED84401B57993900A1D1DA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED843F1B57993900A1D1DA /* CoreTelephony.framework */; };
+		D9ED84421B57995500A1D1DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED84411B57995500A1D1DA /* UIKit.framework */; };
+		D9ED84441B5799EE00A1D1DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED84431B5799EE00A1D1DA /* Foundation.framework */; };
+		D9ED84461B579B6100A1D1DA /* StartApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED84451B579B6100A1D1DA /* StartApp.framework */; };
+		D9ED84481B579B8500A1D1DA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED84471B579B8500A1D1DA /* libz.dylib */; };
+		D9ED844B1B57BD8E00A1D1DA /* startApp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9ED84491B57BD8E00A1D1DA /* startApp@2x.png */; };
+		D9ED844C1B57BD8E00A1D1DA /* startApp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9ED844A1B57BD8E00A1D1DA /* startApp@3x.png */; };
 		D9FD23621B560CDC000F15B7 /* Camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FD23601B560CDC000F15B7 /* Camera@2x.png */; };
 		D9FD23631B560CDC000F15B7 /* Camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FD23611B560CDC000F15B7 /* Camera@3x.png */; };
 		D9FD23681B561192000F15B7 /* FLAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FD23661B561192000F15B7 /* FLAccountViewController.m */; };
@@ -68,6 +82,8 @@
 /* Begin PBXFileReference section */
 		4D85AD2188FF9DB4EB87B21E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		635FB6E2432CC91780849EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D92721551B5898DF001A741D /* STAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAViewController.h; sourceTree = "<group>"; };
+		D92721561B5898DF001A741D /* STAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAViewController.m; sourceTree = "<group>"; };
 		D97458631B5369E2009E5175 /* FolderLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FolderLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97458671B5369E2009E5175 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D97458681B5369E2009E5175 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -130,6 +146,19 @@
 		D98439C31B5521AE00A1676E /* AccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountModel.m; sourceTree = "<group>"; };
 		D98439C51B55259C00A1676E /* FLStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringHelper.h; sourceTree = "<group>"; };
 		D98439C61B55259C00A1676E /* FLStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringHelper.m; sourceTree = "<group>"; };
+		D9ED84301B57977000A1D1DA /* StartApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StartApp.bundle; sourceTree = "<group>"; };
+		D9ED84351B5798EC00A1D1DA /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		D9ED84371B5798FC00A1D1DA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D9ED84391B57990B00A1D1DA /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		D9ED843B1B57991A00A1D1DA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D9ED843D1B57992800A1D1DA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D9ED843F1B57993900A1D1DA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		D9ED84411B57995500A1D1DA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D9ED84431B5799EE00A1D1DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D9ED84451B579B6100A1D1DA /* StartApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StartApp.framework; sourceTree = "<group>"; };
+		D9ED84471B579B8500A1D1DA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D9ED84491B57BD8E00A1D1DA /* startApp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startApp@2x.png"; sourceTree = "<group>"; };
+		D9ED844A1B57BD8E00A1D1DA /* startApp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startApp@3x.png"; sourceTree = "<group>"; };
 		D9FD23601B560CDC000F15B7 /* Camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera@2x.png"; sourceTree = "<group>"; };
 		D9FD23611B560CDC000F15B7 /* Camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera@3x.png"; sourceTree = "<group>"; };
 		D9FD23651B561192000F15B7 /* FLAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAccountViewController.h; sourceTree = "<group>"; };
@@ -150,6 +179,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9ED84481B579B8500A1D1DA /* libz.dylib in Frameworks */,
+				D9ED84461B579B6100A1D1DA /* StartApp.framework in Frameworks */,
+				D9ED84441B5799EE00A1D1DA /* Foundation.framework in Frameworks */,
+				D9ED84421B57995500A1D1DA /* UIKit.framework in Frameworks */,
+				D9ED84401B57993900A1D1DA /* CoreTelephony.framework in Frameworks */,
+				D9ED843E1B57992800A1D1DA /* SystemConfiguration.framework in Frameworks */,
+				D9ED843C1B57991A00A1D1DA /* StoreKit.framework in Frameworks */,
+				D9ED843A1B57990B00A1D1DA /* AdSupport.framework in Frameworks */,
+				D9ED84381B5798FC00A1D1DA /* AVFoundation.framework in Frameworks */,
+				D9ED84361B5798EC00A1D1DA /* CoreMedia.framework in Frameworks */,
 				A64BAEC623FC1F0CF2EED009 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +215,16 @@
 		A268CEB29ED361CE2C67B80A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D9ED84471B579B8500A1D1DA /* libz.dylib */,
+				D9ED84451B579B6100A1D1DA /* StartApp.framework */,
+				D9ED84431B5799EE00A1D1DA /* Foundation.framework */,
+				D9ED84411B57995500A1D1DA /* UIKit.framework */,
+				D9ED843F1B57993900A1D1DA /* CoreTelephony.framework */,
+				D9ED843D1B57992800A1D1DA /* SystemConfiguration.framework */,
+				D9ED843B1B57991A00A1D1DA /* StoreKit.framework */,
+				D9ED84391B57990B00A1D1DA /* AdSupport.framework */,
+				D9ED84371B5798FC00A1D1DA /* AVFoundation.framework */,
+				D9ED84351B5798EC00A1D1DA /* CoreMedia.framework */,
 				635FB6E2432CC91780849EB3 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -184,6 +233,7 @@
 		D974585A1B5369E2009E5175 = {
 			isa = PBXGroup;
 			children = (
+				D9ED84341B57977400A1D1DA /* StartApp SDK */,
 				D97458651B5369E2009E5175 /* FolderLock */,
 				D97458821B5369E2009E5175 /* FolderLockTests */,
 				D97458641B5369E2009E5175 /* Products */,
@@ -305,6 +355,8 @@
 		D97458AC1B53A6D6009E5175 /* FLUtinity */ = {
 			isa = PBXGroup;
 			children = (
+				D92721551B5898DF001A741D /* STAViewController.h */,
+				D92721561B5898DF001A741D /* STAViewController.m */,
 				D984398D1B54A3D600A1676E /* FLStringHelper */,
 				D98439891B54A06A00A1676E /* FLImageHelper */,
 				D97458AE1B53A78B009E5175 /* FLButtonHelper */,
@@ -335,6 +387,8 @@
 		D984397C1B549EF900A1676E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				D9ED84491B57BD8E00A1D1DA /* startApp@2x.png */,
+				D9ED844A1B57BD8E00A1D1DA /* startApp@3x.png */,
 				D9FD236E1B56148D000F15B7 /* Save@2x.png */,
 				D9FD236F1B56148D000F15B7 /* Save@3x.png */,
 				D984399F1B54AAD200A1676E /* Cancel@2x.png */,
@@ -404,6 +458,14 @@
 				D98439BF1B551DE200A1676E /* FLTableViewCellSignText.xib */,
 			);
 			name = FLSettingCustomCell;
+			sourceTree = "<group>";
+		};
+		D9ED84341B57977400A1D1DA /* StartApp SDK */ = {
+			isa = PBXGroup;
+			children = (
+				D9ED84301B57977000A1D1DA /* StartApp.bundle */,
+			);
+			name = "StartApp SDK";
 			sourceTree = "<group>";
 		};
 		D9FD23641B561169000F15B7 /* FLAccountViewController */ = {
@@ -558,6 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9FD23631B560CDC000F15B7 /* Camera@3x.png in Resources */,
+				D9ED844B1B57BD8E00A1D1DA /* startApp@2x.png in Resources */,
 				D98439A11B54AAD200A1676E /* Cancel@2x.png in Resources */,
 				D98439AE1B54BBA400A1676E /* FLSettingViewController.strings in Resources */,
 				D98439831B549F2700A1676E /* Locked@2x.png in Resources */,
@@ -575,6 +638,8 @@
 				D9FD23621B560CDC000F15B7 /* Camera@2x.png in Resources */,
 				D974587A1B5369E2009E5175 /* LaunchScreen.xib in Resources */,
 				D97458771B5369E2009E5175 /* Images.xcassets in Resources */,
+				D9ED84321B57977000A1D1DA /* StartApp.bundle in Resources */,
+				D9ED844C1B57BD8E00A1D1DA /* startApp@3x.png in Resources */,
 				D97458981B536E25009E5175 /* FLFolderListViewController.xib in Resources */,
 				D984399B1B54A90300A1676E /* LTHPasscodeViewController.strings in Resources */,
 				D98439841B549F2700A1676E /* Locked@3x.png in Resources */,
@@ -645,6 +710,7 @@
 				D98439C41B5521AE00A1676E /* AccountModel.m in Sources */,
 				D974586C1B5369E2009E5175 /* AppDelegate.m in Sources */,
 				D98439BB1B551C6500A1676E /* FLTableViewCellPasscode.m in Sources */,
+				D92721571B5898DF001A741D /* STAViewController.m in Sources */,
 				D98439B61B55186600A1676E /* FLTableViewCellAccount.m in Sources */,
 				D97458691B5369E2009E5175 /* main.m in Sources */,
 				D97458A51B5376DF009E5175 /* VCLocalizeKey.m in Sources */,
@@ -760,6 +826,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "2e82be7d-b263-412d-93cf-006f5b3576da";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -797,6 +864,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "2e82be7d-b263-412d-93cf-006f5b3576da";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -808,12 +876,17 @@
 			baseConfigurationReference = F4980FF9AD38BC5CC211DA12 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FolderLock/Resource/FolderLock-PrefixHeader.pch";
 				INFOPLIST_FILE = FolderLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2e82be7d-b263-412d-93cf-006f5b3576da";
 			};
 			name = Debug;
 		};
@@ -822,12 +895,17 @@
 			baseConfigurationReference = 4D85AD2188FF9DB4EB87B21E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FolderLock/Resource/FolderLock-PrefixHeader.pch";
 				INFOPLIST_FILE = FolderLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2e82be7d-b263-412d-93cf-006f5b3576da";
 			};
 			name = Release;
 		};

@@ -10,6 +10,8 @@
 #import "LTHPasscodeViewController.h"
 #import "FLFolderListViewController.h"
 #import <MagicalRecord/MagicalRecord.h>
+/* Import StartApp SDK framework */
+#import <StartApp/StartApp.h>
 
 NSString * const kCoreDataFileName = @"FolderLock.sqlite";
 @interface AppDelegate ()
@@ -24,6 +26,9 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [MagicalRecord setupCoreDataStackWithStoreNamed:kCoreDataFileName];
     
+    [self settingPasscode];
+    [self settingStartAppSDK];
+    
     [[UINavigationBar appearanceWhenContainedIn:[UINavigationController class], nil] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:H3_COLOR, NSForegroundColorAttributeName,VCTitleFont(30), NSFontAttributeName, nil]];
     
     FLFolderListViewController *folderList = [[FLFolderListViewController alloc] initWithNibName:NSStringFromClass([FLFolderListViewController class]) bundle:nil];
@@ -32,6 +37,21 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
     [self.window setRootViewController:nav];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)settingStartAppSDK {
+    // initialize the SDK with your appID and devID
+    STAStartAppSDK* sdk = [STAStartAppSDK sharedInstance];
+    sdk.appID = @"206725671";
+    sdk.devID = @"106165566";
+    sdk.preferences = [STASDKPreferences prefrencesWithAge:22 andGender:STAGender_Male];
+    
+    STASplashPreferences *splashPreferences = [[STASplashPreferences alloc] init];
+    splashPreferences.splashMode = STASplashModeTemplate;
+    splashPreferences.splashTemplateTheme = STASplashTemplateThemeOcean;
+    splashPreferences.splashLoadingIndicatorType = STASplashLoadingIndicatorTypeDots;
+    splashPreferences.splashTemplateIconImageName = @"startApp";
+    splashPreferences.splashTemplateAppName = @"Folder Lock Start";
 }
 
 - (void)settingPasscode {
