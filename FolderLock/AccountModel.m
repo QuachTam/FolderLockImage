@@ -10,16 +10,38 @@
 
 @implementation AccountModel
 
+- (instancetype)initWithUser:(User*)user {
+    self = [super init];
+    if (self) {
+        self.user = user;
+    }
+    return self;
+}
+
+- (NSString *)password {
+    if (!_password) {
+        _password = self.user.password ? self.user.password : @"";
+    }
+    return _password;
+}
+
+- (NSString *)rePassword {
+    if (!_rePassword) {
+        _rePassword = self.password;
+    }
+    return _rePassword;
+}
+
 - (NSString *)name {
     if (!_name) {
-        _name = @"Quach Ngoc Tam";
+        _name = self.user.name ? self.user.name : @"";
     }
     return _name;
 }
 
 - (NSString *)email {
     if (!_email) {
-        _email = @"tamqn@gemvietnam.com";
+        _email = self.user.email ? self.user.email : @"";
     }
     return _email;
 }
@@ -60,7 +82,11 @@
 }
 
 - (NSInteger)numberRow {
-    return ACCOUNT_ROW_CONFIRM_PASSWORD + 1;
+    if (self.type==ACCOUNT_SETUP) {
+        return ACCOUNT_ROW_CONFIRM_PASSWORD + 1;
+    }else{
+        return ACCOUNT_ROW_EMAIL +1;
+    }
 }
 
 @end

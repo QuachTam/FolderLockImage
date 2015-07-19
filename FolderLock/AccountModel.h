@@ -9,6 +9,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 typedef NS_ENUM(NSInteger, ACCOUNT_ROW) {
     ACCOUNT_ROW_NAME = 0,
@@ -17,13 +18,25 @@ typedef NS_ENUM(NSInteger, ACCOUNT_ROW) {
     ACCOUNT_ROW_CONFIRM_PASSWORD = 3
 };
 
+typedef NS_ENUM(NSInteger, TYPE) {
+    ACCOUNT_SETUP = 0,
+    ACCOUNT_CHANGE = 1,
+};
+
 @interface AccountModel : NSObject
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSString *rePassword;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *titleName;
 @property (nonatomic, strong) NSString *titleEmail;
 @property (nonatomic, strong) NSString *titlePassword;
 @property (nonatomic, strong) NSString *titleRepassword;
 @property (nonatomic, readwrite) NSInteger numberRow;
+
+@property (nonatomic, readwrite) TYPE type;
+@property (nonatomic, strong) User *user;
+
+- (instancetype)initWithUser:(User*)user;
 @end

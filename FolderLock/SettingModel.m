@@ -8,6 +8,7 @@
 
 #import "SettingModel.h"
 #import "AccountModel.h"
+#import "FLAccountSetting.h"
 
 @implementation SettingModel
 
@@ -20,7 +21,7 @@
 
 - (NSArray *)section_account {
     if (!_accountModel) {
-        _accountModel = [[AccountModel alloc] init];
+        _accountModel = [[AccountModel alloc] initWithUser:[FLAccountSetting findUser]];
     }
     return @[_accountModel];
 }

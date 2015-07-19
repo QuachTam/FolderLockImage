@@ -10,9 +10,11 @@
 #import "FLButtonHelper.h"
 #import "AccountModel.h"
 #import "FLAccountCustomCell.h"
+#import "FLAccountSetting.h"
 
-@interface FLAccountViewController ()
+@interface FLAccountViewController ()<UITextFieldDelegate>
 @property (nonatomic, strong) AccountModel *accountModel;
+@property (nonatomic, strong) FLAccountSetting *accountSetting;
 @end
 
 @implementation FLAccountViewController
@@ -21,26 +23,55 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIButton *cancelButton = fl_buttonCancel();
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
-    [cancelButton addTarget:self action:@selector(cancelDidSelect:) forControlEvents:UIControlEventTouchUpInside];
-    
     UIButton *saveButton = fl_buttonSave();
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
     [saveButton addTarget:self action:@selector(saveAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.accountModel = [[AccountModel alloc] init];
+    self.accountSetting = [[FLAccountSetting alloc] init];
+    self.accountModel = [[AccountModel alloc] initWithUser:[FLAccountSetting findUser]];
     self.title = self.accountModel.title;
+    if (self.type==ACCOUNT_SETUP) {
+        self.accountModel.type = ACCOUNT_SETUP;
+    }else{
+        self.accountModel.type = ACCOUNT_CHANGE;
+        
+        UIButton *cancelButton = fl_buttonCancel();
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
+        [cancelButton addTarget:self action:@selector(cancelDidSelect:) forControlEvents:UIControlEventTouchUpInside];
+    }
     [self setupCustomCell];
 }
 
 #pragma mark action
 - (void)cancelDidSelect:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.type==ACCOUNT_CHANGE) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)saveAction:(id)sender {
-    
+    [self.view endEditing:YES];
+    [self.accountSetting validWithModel:self.accountModel success:^(NSString *message) {
+        if (message) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            [alert show];
+        }else{
+            [self.accountSetting saveAccountInfo:self.accountModel success:^{
+                if (self.didCompleteSaveInfo) {
+                    self.didCompleteSaveInfo();
+                }
+                if (self.type==ACCOUNT_CHANGE) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }else{
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+            } fail:^{
+                
+            }];
+        }
+    }];
 }
 
 #pragma mark tableView
@@ -92,7 +123,29 @@
         }
         cell.textField.secureTextEntry = YES;
     }
+    cell.textField.delegate = self;
+    cell.textField.tag = indexPath.row;
     return cell;
+}
+
+#pragma mark UITextField delegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    switch (textField.tag) {
+        case ACCOUNT_ROW_NAME:
+            self.accountModel.name = textField.text;
+            break;
+        case ACCOUNT_ROW_EMAIL:
+            self.accountModel.email = textField.text;
+            break;
+        case ACCOUNT_ROW_PASSWORD:
+            self.accountModel.password = textField.text;
+            break;
+        case ACCOUNT_ROW_CONFIRM_PASSWORD:
+            self.accountModel.rePassword = textField.text;
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

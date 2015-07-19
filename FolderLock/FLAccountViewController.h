@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AccountModel.h"
 
 @interface FLAccountViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
+@property (nonatomic, readwrite) TYPE type;
+@property (nonatomic, copy, readwrite) void(^didCompleteSaveInfo)();
 
 @end

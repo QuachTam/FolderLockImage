@@ -10,5 +10,4 @@
 
 @interface FLSettingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
-
 @end

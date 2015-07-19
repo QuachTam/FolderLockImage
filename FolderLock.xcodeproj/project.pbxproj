@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6461DB831B5C04A20046D036 /* FLAccountSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461DB821B5C04A20046D036 /* FLAccountSetting.m */; };
+		6461DB931B5C05BC0046D036 /* Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461DB921B5C05BC0046D036 /* Base.m */; };
+		6461DB961B5C05BD0046D036 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461DB951B5C05BD0046D036 /* Photo.m */; };
+		6461DB991B5C05BD0046D036 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461DB981B5C05BD0046D036 /* User.m */; };
+		6461DB9C1B5C05BD0046D036 /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461DB9B1B5C05BD0046D036 /* Folder.m */; };
 		A64BAEC623FC1F0CF2EED009 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FB6E2432CC91780849EB3 /* libPods.a */; };
 		D92721571B5898DF001A741D /* STAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92721561B5898DF001A741D /* STAViewController.m */; };
 		D97458691B5369E2009E5175 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D97458681B5369E2009E5175 /* main.m */; };
@@ -82,6 +87,16 @@
 /* Begin PBXFileReference section */
 		4D85AD2188FF9DB4EB87B21E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		635FB6E2432CC91780849EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6461DB811B5C04A20046D036 /* FLAccountSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAccountSetting.h; sourceTree = "<group>"; };
+		6461DB821B5C04A20046D036 /* FLAccountSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAccountSetting.m; sourceTree = "<group>"; };
+		6461DB911B5C05BC0046D036 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base.h; path = FolderLock/Base.h; sourceTree = SOURCE_ROOT; };
+		6461DB921B5C05BC0046D036 /* Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base.m; path = FolderLock/Base.m; sourceTree = SOURCE_ROOT; };
+		6461DB941B5C05BD0046D036 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = FolderLock/Photo.h; sourceTree = SOURCE_ROOT; };
+		6461DB951B5C05BD0046D036 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = FolderLock/Photo.m; sourceTree = SOURCE_ROOT; };
+		6461DB971B5C05BD0046D036 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = FolderLock/User.h; sourceTree = SOURCE_ROOT; };
+		6461DB981B5C05BD0046D036 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = FolderLock/User.m; sourceTree = SOURCE_ROOT; };
+		6461DB9A1B5C05BD0046D036 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = FolderLock/Folder.h; sourceTree = SOURCE_ROOT; };
+		6461DB9B1B5C05BD0046D036 /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Folder.m; path = FolderLock/Folder.m; sourceTree = SOURCE_ROOT; };
 		D92721551B5898DF001A741D /* STAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAViewController.h; sourceTree = "<group>"; };
 		D92721561B5898DF001A741D /* STAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAViewController.m; sourceTree = "<group>"; };
 		D97458631B5369E2009E5175 /* FolderLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FolderLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +227,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6461DB7B1B5C04620046D036 /* FLAccountSetting */ = {
+			isa = PBXGroup;
+			children = (
+				6461DB811B5C04A20046D036 /* FLAccountSetting.h */,
+				6461DB821B5C04A20046D036 /* FLAccountSetting.m */,
+			);
+			name = FLAccountSetting;
+			sourceTree = "<group>";
+		};
+		6461DB841B5C05690046D036 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6461DB9A1B5C05BD0046D036 /* Folder.h */,
+				6461DB9B1B5C05BD0046D036 /* Folder.m */,
+				6461DB971B5C05BD0046D036 /* User.h */,
+				6461DB981B5C05BD0046D036 /* User.m */,
+				6461DB941B5C05BD0046D036 /* Photo.h */,
+				6461DB951B5C05BD0046D036 /* Photo.m */,
+				6461DB911B5C05BC0046D036 /* Base.h */,
+				6461DB921B5C05BC0046D036 /* Base.m */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		A268CEB29ED361CE2C67B80A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +297,7 @@
 				D97458AC1B53A6D6009E5175 /* FLUtinity */,
 				D97458AB1B53A6C7009E5175 /* FLModels */,
 				D97458AA1B53A6B3009E5175 /* FLViewControllers */,
+				6461DB841B5C05690046D036 /* CoreData */,
 				D97458761B5369E2009E5175 /* Images.xcassets */,
 				D97458781B5369E2009E5175 /* LaunchScreen.xib */,
 				D974586D1B5369E2009E5175 /* FolderLock.xcdatamodeld */,
@@ -471,6 +511,7 @@
 		D9FD23641B561169000F15B7 /* FLAccountViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6461DB7B1B5C04620046D036 /* FLAccountSetting */,
 				D9FD237B1B5673BB000F15B7 /* FLAccountCustomCell */,
 				D9FD23731B561530000F15B7 /* AccountModel */,
 				D9FD236C1B561262000F15B7 /* ViewController */,
@@ -701,10 +742,12 @@
 				D97458971B536E25009E5175 /* FLFolderListViewController.m in Sources */,
 				D97458A41B5376DF009E5175 /* VCLocalizeCenter.m in Sources */,
 				D98439C71B55259C00A1676E /* FLStringHelper.m in Sources */,
+				6461DB9C1B5C05BD0046D036 /* Folder.m in Sources */,
 				D984398C1B54A07E00A1676E /* FLImageHelper.m in Sources */,
 				D98439C01B551DE200A1676E /* FLTableViewCellSignText.m in Sources */,
 				D9FD237F1B5673DA000F15B7 /* FLAccountCustomCell.m in Sources */,
 				D9FD23681B561192000F15B7 /* FLAccountViewController.m in Sources */,
+				6461DB991B5C05BD0046D036 /* User.m in Sources */,
 				D98439AB1B54BABB00A1676E /* SettingModel.m in Sources */,
 				D974589B1B537398009E5175 /* LTHKeychainUtils.m in Sources */,
 				D98439C41B5521AE00A1676E /* AccountModel.m in Sources */,
@@ -713,7 +756,10 @@
 				D92721571B5898DF001A741D /* STAViewController.m in Sources */,
 				D98439B61B55186600A1676E /* FLTableViewCellAccount.m in Sources */,
 				D97458691B5369E2009E5175 /* main.m in Sources */,
+				6461DB831B5C04A20046D036 /* FLAccountSetting.m in Sources */,
 				D97458A51B5376DF009E5175 /* VCLocalizeKey.m in Sources */,
+				6461DB931B5C05BC0046D036 /* Base.m in Sources */,
+				6461DB961B5C05BD0046D036 /* Photo.m in Sources */,
 				D97458921B536B91009E5175 /* LTHPasscodeViewController.m in Sources */,
 				D97458B11B53A7B0009E5175 /* FLButtonHelper.m in Sources */,
 				D98439A71B54B9AD00A1676E /* FLSettingViewController.m in Sources */,

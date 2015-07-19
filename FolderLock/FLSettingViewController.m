@@ -14,6 +14,7 @@
 #import "FLButtonHelper.h"
 #import "AccountModel.h"
 #import "LTHPasscodeViewController.h"
+#import "FLAccountViewController.h"
 
 NSString *const identifyAbout = @"FLTableViewCellSignText";
 NSString *const idendifyLegal = @"FLTableViewCellSignText";
@@ -136,6 +137,18 @@ NSString *const idendifyLegal = @"FLTableViewCellSignText";
     FLTableViewCellSignText *cell = [tableView dequeueReusableCellWithIdentifier:identifyAbout forIndexPath:indexPath];
     cell.title.text = [self.settingModel.section_legal objectAtIndex:0];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section==SETTING_SECTION_ACCOUNT) {
+        FLAccountViewController *account = [[FLAccountViewController alloc] initWithNibName:NSStringFromClass([FLAccountViewController class]) bundle:nil];
+        account.type = ACCOUNT_CHANGE;
+        account.didCompleteSaveInfo = ^{
+             self.settingModel.accountModel = nil;
+            [self.tbView reloadData];
+        };
+        [self.navigationController pushViewController:account animated:YES];
+    }
 }
 
 #pragma action passcode

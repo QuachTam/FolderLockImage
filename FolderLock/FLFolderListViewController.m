@@ -11,9 +11,11 @@
 #import "FLSettingViewController.h"
 #import "FLAccountViewController.h"
 #import "STAViewController.h"
+#import "AccountModel.h"
+#import "FLAccountSetting.h"
 
 @interface FLFolderListViewController ()
-
+@property (nonatomic, strong) FLAccountSetting *accountSetting;
 @end
 
 @implementation FLFolderListViewController
@@ -30,10 +32,13 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cameraButton];
     [settingButton addTarget:self action:@selector(cameraTap:) forControlEvents:UIControlEventTouchUpInside];
     
-    FLAccountViewController *account = [[FLAccountViewController alloc] initWithNibName:NSStringFromClass([FLAccountViewController class]) bundle:nil];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:account];
-    [self presentViewController:nav animated:YES completion:nil];
-    
+    self.accountSetting = [[FLAccountSetting alloc] init];
+    if (![self.accountSetting checkUserInfo]) {
+        FLAccountViewController *account = [[FLAccountViewController alloc] initWithNibName:NSStringFromClass([FLAccountViewController class]) bundle:nil];
+        account.type = ACCOUNT_SETUP;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:account];
+        [self presentViewController:nav animated:YES completion:nil];
+    }
     // Initialize the ad
     /*
      Init of the startapp interstitials
