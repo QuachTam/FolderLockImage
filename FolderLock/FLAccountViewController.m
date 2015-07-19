@@ -55,7 +55,8 @@
     [self.view endEditing:YES];
     [self.accountSetting validWithModel:self.accountModel success:^(NSString *message) {
         if (message) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            NSString *stringOK = _LSFromTable (@"account.ok", @"FLAccountViewController", @"OK");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:stringOK, nil];
             [alert show];
         }else{
             [self.accountSetting saveAccountInfo:self.accountModel success:^{

@@ -8,3 +8,18 @@
 
 /*title*/
 "account.title" = "Tài khoản";
+
+/*OK*/
+"account.ok" = "Đồng ý";
+
+/*Email*/
+"account.email" = "Email";
+
+/*Full name*/
+"account.fullName" = "Tên đầy đủ";
+
+/*Password*/
+"account.password" = "Mật khẩu";
+
+/*Confirm Password*/
+"account.rePassword" = "Nhập lại mật khẩu";

@@ -8,3 +8,18 @@
 
 /*title*/
 "account.title" = "Account";
+
+/*Email*/
+"account.email" = "Email";
+
+/*Full name*/
+"account.fullName" = "Full Name";
+
+/*Password*/
+"account.password" = "Password";
+
+/*Confirm Password*/
+"account.rePassword" = "Re-Password";
+
+/*ok*/
+"account.ok" = "OK";
