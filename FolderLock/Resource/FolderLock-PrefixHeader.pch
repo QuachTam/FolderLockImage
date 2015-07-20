@@ -21,6 +21,7 @@
     #import <MZFormSheetController.h>
     #import <MBProgressHUD.h>
     #import "FLStringHelper.h"
+    #import "NSString+GEM.h"
     #define _LSFromTable NSLocalizedStringFromTable
     #define _LS NSLocalizedString
 #endif

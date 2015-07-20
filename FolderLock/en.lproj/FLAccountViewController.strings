@@ -10,16 +10,34 @@
 "account.title" = "Account";
 
 /*Email*/
-"account.email" = "Email";
+"account.email" = "Your email";
 
 /*Full name*/
-"account.fullName" = "Full Name";
+"account.fullName" = "Your full name";
 
 /*Password*/
-"account.password" = "Password";
+"account.password" = "Your password";
 
 /*Confirm Password*/
-"account.rePassword" = "Re-Password";
+"account.rePassword" = "Re-enter your password";
 
 /*ok*/
 "account.ok" = "OK";
+
+/*Password did not match*/
+"account.password.did.not.match" = "Password did not match, Try again.";
+
+/*Enter your email*/
+"account.enter.your.email" = "Enter your email";
+
+/*Enter your name*/
+"account.enter.your.name" = "Enter your name";
+
+/*Enter your password*/
+"account.enter.your.password" = "Enter your password";
+
+/*Re-enter your password*/
+"account.re.enter.your.password" = "Re-enter your password";
+
+/*Email did not match*/
+"account.enter.your.email.isValid" = "Email did not match";

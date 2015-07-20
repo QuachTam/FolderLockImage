@@ -96,7 +96,7 @@
                                                               withView:self.view withDelegate:nil];
         } else {
             startAppBanner_fixed = [[STABannerView alloc] initWithSize:STA_PortraitAdSize_320x50
-                                                                origin:CGPointMake(0,self.view.frame.size.height-50)
+                                                            autoOrigin:STAAdOrigin_Bottom
                                                               withView:self.view withDelegate:nil];
         }
         

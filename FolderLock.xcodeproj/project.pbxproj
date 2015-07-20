@@ -50,6 +50,7 @@
 		D98439C11B551DE200A1676E /* FLTableViewCellSignText.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98439BF1B551DE200A1676E /* FLTableViewCellSignText.xib */; };
 		D98439C41B5521AE00A1676E /* AccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439C31B5521AE00A1676E /* AccountModel.m */; };
 		D98439C71B55259C00A1676E /* FLStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D98439C61B55259C00A1676E /* FLStringHelper.m */; };
+		D98DEF5F1B5CB2F500DB9405 /* NSString+GEM.m in Sources */ = {isa = PBXBuildFile; fileRef = D98DEF5E1B5CB2F500DB9405 /* NSString+GEM.m */; };
 		D9ED84321B57977000A1D1DA /* StartApp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D9ED84301B57977000A1D1DA /* StartApp.bundle */; };
 		D9ED84361B5798EC00A1D1DA /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED84351B5798EC00A1D1DA /* CoreMedia.framework */; };
 		D9ED84381B5798FC00A1D1DA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9ED84371B5798FC00A1D1DA /* AVFoundation.framework */; };
@@ -161,6 +162,8 @@
 		D98439C31B5521AE00A1676E /* AccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountModel.m; sourceTree = "<group>"; };
 		D98439C51B55259C00A1676E /* FLStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringHelper.h; sourceTree = "<group>"; };
 		D98439C61B55259C00A1676E /* FLStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringHelper.m; sourceTree = "<group>"; };
+		D98DEF5D1B5CB2F500DB9405 /* NSString+GEM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GEM.h"; sourceTree = "<group>"; };
+		D98DEF5E1B5CB2F500DB9405 /* NSString+GEM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GEM.m"; sourceTree = "<group>"; };
 		D9ED84301B57977000A1D1DA /* StartApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StartApp.bundle; sourceTree = "<group>"; };
 		D9ED84351B5798EC00A1D1DA /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D9ED84371B5798FC00A1D1DA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -409,6 +412,8 @@
 		D97458AD1B53A75E009E5175 /* AppDeletate */ = {
 			isa = PBXGroup;
 			children = (
+				D98DEF5D1B5CB2F500DB9405 /* NSString+GEM.h */,
+				D98DEF5E1B5CB2F500DB9405 /* NSString+GEM.m */,
 				D974586A1B5369E2009E5175 /* AppDelegate.h */,
 				D974586B1B5369E2009E5175 /* AppDelegate.m */,
 			);
@@ -755,6 +760,7 @@
 				D98439BB1B551C6500A1676E /* FLTableViewCellPasscode.m in Sources */,
 				D92721571B5898DF001A741D /* STAViewController.m in Sources */,
 				D98439B61B55186600A1676E /* FLTableViewCellAccount.m in Sources */,
+				D98DEF5F1B5CB2F500DB9405 /* NSString+GEM.m in Sources */,
 				D97458691B5369E2009E5175 /* main.m in Sources */,
 				6461DB831B5C04A20046D036 /* FLAccountSetting.m in Sources */,
 				D97458A51B5376DF009E5175 /* VCLocalizeKey.m in Sources */,

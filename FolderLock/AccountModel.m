@@ -55,28 +55,28 @@
 
 - (NSString *)titleName {
     if (!_titleName) {
-        _titleName = _LSFromTable(@"account.fullName", @"FLAccountViewController", @"Full Name");
+        _titleName = _LSFromTable(@"account.fullName", @"FLAccountViewController", @"Your full name");
     }
     return _titleName;
 }
 
 - (NSString *)titlePassword {
     if (!_titlePassword) {
-        _titlePassword = _LSFromTable(@"account.password", @"FLAccountViewController", @"Password");
+        _titlePassword = _LSFromTable(@"account.enter.your.password", @"FLAccountViewController", @"Enter your Password");
     }
     return _titlePassword;
 }
 
 - (NSString *)titleRepassword {
     if (!_titleRepassword) {
-        _titleRepassword = _LSFromTable(@"account.rePassword", @"FLAccountViewController", @"Re-Password");
+        _titleRepassword = _LSFromTable(@"account.re.enter.your.password", @"FLAccountViewController", @"Re-enter your password");
     }
     return _titleRepassword;
 }
 
 - (NSString *)titleEmail {
     if (!_titleEmail) {
-        _titleEmail = _LSFromTable (@"account.email", @"FLAccountViewController", @"Email");
+        _titleEmail = _LSFromTable (@"account.email", @"FLAccountViewController", @"Your email");
     }
     return _titleEmail;
 }

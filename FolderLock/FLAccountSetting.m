@@ -43,28 +43,35 @@
     NSString *message = nil;
     if (accountModel.type==ACCOUNT_SETUP) {
         if (!accountModel.rePassword.length) {
-            message = @"Enter your confirm password";
+            message = _LSFromTable(@"account.re.enter.your.password", @"FLAccountViewController", @"Re-enter your password");
         }
         if (!accountModel.password.length) {
-            message = @"Enter your password";
+            message = _LSFromTable(@"account.enter.your.password", @"FLAccountViewController", @"Enter your password");
         }
         if (accountModel.password.length && accountModel.rePassword.length) {
             if (![accountModel.password isEqualToString:accountModel.rePassword]) {
-                message = @"Password not match";
+                message = _LSFromTable(@"account.password.did.not.match", @"FLAccountViewController", @"Password did not match, Try again.");
             }
         }
+        
+        if (accountModel.email.length && ![accountModel.email isValidEmail]) {
+            message = _LSFromTable(@"account.enter.your.email.isValid", @"FLAccountViewController", @"Email did not match");
+        }
         if (!accountModel.email.length) {
-            message = @"Enter your email";
+            message = _LSFromTable(@"account.enter.your.email", @"FLAccountViewController", @"Enter your email");
         }
         if (!accountModel.name.length) {
-            message = @"Enter your name";
+            message = _LSFromTable(@"account.enter.your.name", @"FLAccountViewController", @"Enter your name");
         }
     }else{
+        if (accountModel.email.length && ![accountModel.email isValidEmail]) {
+            message = _LSFromTable(@"account.enter.your.email.isValid", @"FLAccountViewController", @"Email did not match");
+        }
         if (!accountModel.email.length) {
-            message = @"Enter your email";
+            message = _LSFromTable(@"account.enter.your.email", @"FLAccountViewController", @"Enter your email");
         }
         if (!accountModel.name.length) {
-            message = @"Enter your name";
+            message = _LSFromTable(@"account.enter.your.name", @"FLAccountViewController", @"Enter your name");
         }
     }
     if (success) {

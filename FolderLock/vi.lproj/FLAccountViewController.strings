@@ -13,13 +13,25 @@
 "account.ok" = "Đồng ý";
 
 /*Email*/
-"account.email" = "Email";
+"account.email" = "Email của bạn";
 
 /*Full name*/
-"account.fullName" = "Tên đầy đủ";
+"account.fullName" = "Tên đầy đủ của bạn";
 
-/*Password*/
-"account.password" = "Mật khẩu";
+/*Password did not match*/
+"account.password.did.not.match" = "Mật khẩu không đúng, xin hãy nhập lại.";
 
-/*Confirm Password*/
-"account.rePassword" = "Nhập lại mật khẩu";
+/*Enter your email*/
+"account.enter.your.email" = "Nhập email của bạn";
+
+/*Enter your name*/
+"account.enter.your.name" = "Nhập vào tên của bạn";
+
+/*Enter your password*/
+"account.enter.your.password" = "Enter your password";
+
+/*Re-enter your password*/
+"account.re.enter.your.password" = "Re-enter your password";
+
+/*Email did not match*/
+"account.enter.your.email.isValid" = "Email không đúng";
