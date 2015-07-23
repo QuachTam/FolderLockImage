@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FLFolderModel.h"
 
 @interface FLListFolderService : NSObject
 @property (nonatomic, strong) NSArray *listModelFolder;
@@ -19,5 +20,5 @@
 
 @property (nonatomic, copy, readwrite) void(^didFinishFetchResults)();
 - (void)fetchDatabase;
-- (void)addFolder;
+- (void)deleteFolder:(FLFolderModel*)folderModel;
 @end

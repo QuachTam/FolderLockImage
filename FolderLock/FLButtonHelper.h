@@ -13,3 +13,5 @@ UIButton * fl_buttonCancel(void);
 UIButton * fl_buttonSave(void);
 UIButton * fl_buttonCamera(void);
 UIButton * fl_buttonAdd(void);
+UIButton * fl_buttonEdit(void);
+UIButton * fl_buttonDelete(void);

@@ -16,6 +16,7 @@
 #import "LTHPasscodeViewController.h"
 #import "FLAccountViewController.h"
 #import "FLPasswordViewController.h"
+#import <SWTableViewCell/SWTableViewCell.h>
 
 NSString *const identifyAbout = @"FLTableViewCellSignText";
 NSString *const idendifyLegal = @"FLTableViewCellSignText";
@@ -158,6 +159,37 @@ NSString *const idendifyLegal = @"FLTableViewCellSignText";
         }
     }
 }
+
+#pragma mark - swipe left to right
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
+    [cell hideUtilityButtonsAnimated:YES];
+    NSIndexPath * indexPath = [self.tbView indexPathForCell:cell];
+    switch (index) {
+        case 0:
+            [self editAtIndexPath:indexPath];
+            break;
+        case 1:
+            [self deleteAtIndexPath:indexPath];
+            break;
+        default:
+            break;
+    }
+}
+
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
+{
+    return YES;
+}
+
+- (void)editAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)deleteAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
 
 - (void)MZFromSheetViewController:(MZFormSheetController*)formSheet {
     formSheet.shouldCenterVertically = YES;

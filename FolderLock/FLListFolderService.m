@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import <MagicalRecord/MagicalRecord.h>
 #import "FLFolderModel.h"
+#import "Folder.h"
 
 @interface FLListFolderService ()<NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -72,16 +73,24 @@
         case NSFetchedResultsChangeInsert: {
             FLFolderModel *model = [[FLFolderModel alloc] initWithFolderEntity:anObject];
             [arrayTemp addObject:model];
-            self.listModelFolder = arrayTemp;
+            self.listModelFolder = [self sortArray:arrayTemp];
             
+            NSInteger currentIndex = [self profileWithIndexPath:model.uuid];
+            NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:currentIndex inSection:0];
             if (self.resultsChangeInsert) {
-                self.resultsChangeInsert([NSArray arrayWithObject:newIndexPath]);
+                self.resultsChangeInsert([NSArray arrayWithObject:currentIndexPath]);
             }
             break;
         }
         case NSFetchedResultsChangeDelete: {
-            if (self.resultsChangeDelete) {
-                self.resultsChangeDelete([NSArray arrayWithObject:indexPath]);
+             NSInteger index = [self profileWithIndexPath:[anObject valueForKey:@"uuid"]];
+            if (index>=0) {
+                NSIndexPath *indexPathCurrent = [NSIndexPath indexPathForRow:index inSection:0];
+                [arrayTemp removeObjectAtIndex:index];
+                self.listModelFolder = [self sortArray:arrayTemp];
+                if (self.resultsChangeDelete) {
+                    self.resultsChangeDelete([NSArray arrayWithObject:indexPathCurrent]);
+                }
             }
             break;
         }
@@ -103,25 +112,30 @@
     }
 }
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    if (self.willChangeContent) {
-        self.willChangeContent();
-    }
+- (NSArray *)sortArray:(NSArray *)array {
+    NSSortDescriptor *ruleSort = [[NSSortDescriptor alloc] initWithKey:@"createdDate" ascending:YES];
+    NSArray *arrSortDescriptor = [NSArray arrayWithObject:ruleSort];
+    NSArray *arrSorted = [array sortedArrayUsingDescriptors:arrSortDescriptor];
+    return arrSorted;
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    if (self.didChangeContent) {
-        self.didChangeContent();
+- (NSInteger)profileWithIndexPath:(NSString *)folderUUID {
+    NSInteger currentIndex = -1;
+    for (NSInteger index=0; index<self.listModelFolder.count; index++) {
+        FLFolderModel *folderModel = [self.listModelFolder objectAtIndex:index];
+        if ([folderModel.uuid isEqualToString:folderUUID]) {
+            currentIndex = index;
+            break;
+        }
     }
+    return currentIndex;
 }
 
-- (void)addFolder {
-    NSString *uuid = [[[NSUUID UUID] UUIDString] lowercaseString];
+- (void)deleteFolder:(FLFolderModel*)folderModel{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
-        Folder *folder = [Folder MR_createEntityInContext:localContext];
-        folder.uuid = uuid;
-        folder.name = uuid;
-        folder.createDate = [NSDate date];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid=%@", folderModel.uuid];
+        Folder *folder = [Folder MR_findFirstWithPredicate:predicate inContext:localContext];
+        [folder MR_deleteEntityInContext:localContext];
     }];
 }
 @end

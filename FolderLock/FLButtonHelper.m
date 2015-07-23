@@ -45,3 +45,17 @@ UIButton *fl_buttonAdd() {
     [button setBackgroundImage:[UIImage imageNamed:kImageAdd] forState:UIControlStateNormal];
     return button;
 }
+
+UIButton *fl_buttonEdit() {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.f, 0.f, 30.f, 30.f);
+    [button setBackgroundImage:[UIImage imageNamed:kImageEdit] forState:UIControlStateNormal];
+    return button;
+}
+
+UIButton *fl_buttonDelete() {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.f, 0.f, 30.f, 30.f);
+    [button setBackgroundImage:[UIImage imageNamed:kImageDelete] forState:UIControlStateNormal];
+    return button;
+}

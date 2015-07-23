@@ -16,4 +16,6 @@ NSString *const kImageCancel = @"Cancel.png";
 NSString *const kImageCamera = @"Camera.png";
 NSString *const kImageSave = @"Save.png";
 NSString *const kImageAdd = @"Add.png";
+NSString *const kImageDelete = @"Delete.png";
+NSString *const kImageEdit = @"Edit.png";
 @end

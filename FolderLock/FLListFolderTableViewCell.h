@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "FLFolderModel.h"
+#import <SWTableViewCell.h>
 
-@interface FLListFolderTableViewCell : UITableViewCell
+@interface FLListFolderTableViewCell : SWTableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *folderName;
 @property (weak, nonatomic) IBOutlet UILabel *createDate;
 @property (weak, nonatomic) IBOutlet UIImageView *imageLock;
