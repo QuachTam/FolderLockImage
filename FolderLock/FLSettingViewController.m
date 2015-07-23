@@ -15,6 +15,7 @@
 #import "AccountModel.h"
 #import "LTHPasscodeViewController.h"
 #import "FLAccountViewController.h"
+#import "FLPasswordViewController.h"
 
 NSString *const identifyAbout = @"FLTableViewCellSignText";
 NSString *const idendifyLegal = @"FLTableViewCellSignText";
@@ -141,14 +142,41 @@ NSString *const idendifyLegal = @"FLTableViewCellSignText";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section==SETTING_SECTION_ACCOUNT) {
-        FLAccountViewController *account = [[FLAccountViewController alloc] initWithNibName:NSStringFromClass([FLAccountViewController class]) bundle:nil];
-        account.type = ACCOUNT_CHANGE;
-        account.didCompleteSaveInfo = ^{
-             self.settingModel.accountModel = nil;
-            [self.tbView reloadData];
-        };
-        [self.navigationController pushViewController:account animated:YES];
+        NSString *stringPassword = [LTHPasscodeViewController sharedUser].password;
+        if (stringPassword.length) {
+            FLPasswordViewController *registerAccount = [[FLPasswordViewController alloc] initWithNibName:NSStringFromClass([FLPasswordViewController class]) bundle:nil];
+            registerAccount.stringPassword = stringPassword;
+            registerAccount.stringTitle = @"Passcode";
+            registerAccount.didCompleteSuccessPassword = ^{
+                [self gotoAccount];
+            };
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:registerAccount];
+            MZFormSheetController * formSheet = [[MZFormSheetController alloc] initWithSize:CGSizeMake(self.view.bounds.size.width-20, 125) viewController:nav];
+            [self MZFromSheetViewController:formSheet];
+        }else{
+            [self gotoAccount];
+        }
     }
+}
+
+- (void)MZFromSheetViewController:(MZFormSheetController*)formSheet {
+    formSheet.shouldCenterVertically = YES;
+    formSheet.movementWhenKeyboardAppears = MZFormSheetWhenKeyboardAppearsMoveToTop;
+    formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromRight;
+    
+    self.navigationController.formSheetController.transitionStyle = MZFormSheetTransitionStyleSlideFromLeft;
+    [self mz_presentFormSheetController:formSheet animated:YES completionHandler:nil];
+}
+
+
+- (void)gotoAccount {
+    FLAccountViewController *account = [[FLAccountViewController alloc] initWithNibName:NSStringFromClass([FLAccountViewController class]) bundle:nil];
+    account.type = ACCOUNT_CHANGE;
+    account.didCompleteSaveInfo = ^{
+        self.settingModel.accountModel = nil;
+        [self.tbView reloadData];
+    };
+    [self.navigationController pushViewController:account animated:YES];
 }
 
 #pragma action passcode

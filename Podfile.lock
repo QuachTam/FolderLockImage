@@ -34,6 +34,7 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
+  - skpsmtpmessage (0.0.1)
   - SpinKit (1.2.0)
   - SSKeychain (1.2.3)
   - SWTableViewCell (0.3.7)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - MZFormSheetController (~> 2.4)
   - PureLayout (~> 2.0)
   - SDWebImage (~> 3.7.2)
+  - skpsmtpmessage
   - SpinKit (~> 1.2)
   - SSKeychain (~> 1.2)
   - SWTableViewCell (~> 0.3)
@@ -63,6 +65,7 @@ SPEC CHECKSUMS:
   MZFormSheetController: d7264c84b1cbd1663fac29fdd8d4b3521a34bd5f
   PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  skpsmtpmessage: f6e913380c784dd8d4a9f83c8790a302445a5e05
   SpinKit: 65906a8b534a4e14cbfd3f8b0b6c329131faef4a
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579

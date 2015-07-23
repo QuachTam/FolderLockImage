@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Base" representedClassName="Base" isAbstract="YES" syncable="YES">
-        <attribute name="createDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Folder" representedClassName="Folder" parentEntity="Base" syncable="YES">
@@ -20,7 +20,7 @@
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Base" positionX="394" positionY="27" width="128" height="75"/>
+        <element name="Base" positionX="394" positionY="27" width="128" height="73"/>
         <element name="Folder" positionX="-189" positionY="-72" width="128" height="90"/>
         <element name="Photo" positionX="43" positionY="126" width="128" height="90"/>
         <element name="User" positionX="97" positionY="-243" width="128" height="88"/>

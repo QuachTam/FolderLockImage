@@ -25,10 +25,7 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [MagicalRecord setupCoreDataStackWithStoreNamed:kCoreDataFileName];
-    
-    [self settingPasscode];
-    [self settingStartAppSDK];
-    
+
     [[UINavigationBar appearanceWhenContainedIn:[UINavigationController class], nil] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:H3_COLOR, NSForegroundColorAttributeName,VCTitleFont(30), NSFontAttributeName, nil]];
     
     FLFolderListViewController *folderList = [[FLFolderListViewController alloc] initWithNibName:NSStringFromClass([FLFolderListViewController class]) bundle:nil];
@@ -36,6 +33,9 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:folderList];
     [self.window setRootViewController:nav];
     [self.window makeKeyAndVisible];
+    
+    [self settingStartAppSDK];
+    [self settingPasscode];
     return YES;
 }
 
@@ -58,11 +58,10 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
     [[LTHPasscodeViewController sharedUser] setKeychainPasscodeUsername:kKeychainPasscode];
     [[LTHPasscodeViewController sharedUser] setKeychainServiceName:kKeychainService];
     [LTHPasscodeViewController sharedUser].maxNumberOfAllowedFailedAttempts = 3;
-    
-    [[LTHPasscodeViewController sharedUser] setPasscodeTextColor:[UIColor whiteColor]];
-    [[LTHPasscodeViewController sharedUser] setLabelTextColor:[UIColor whiteColor]];
+    [[LTHPasscodeViewController sharedUser] setBackgroundColor:[UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1]];
+    [[LTHPasscodeViewController sharedUser] setPasscodeTextColor:[UIColor blackColor]];
+    [[LTHPasscodeViewController sharedUser] setLabelTextColor:[UIColor blackColor]];
     [[LTHPasscodeViewController sharedUser] setLabelFont:[UIFont systemFontOfSize:20]];
-    
     
     NSUserDefaults *userDetault = [NSUserDefaults standardUserDefaults];
     BOOL isDelete = [userDetault boolForKey:kInstallApplication];

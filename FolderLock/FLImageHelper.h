@@ -15,4 +15,5 @@ extern NSString *const kImageMore;
 extern NSString *const kImageCancel;
 extern NSString *const kImageCamera;
 extern NSString *const kImageSave;
+extern NSString *const kImageAdd;
 @end

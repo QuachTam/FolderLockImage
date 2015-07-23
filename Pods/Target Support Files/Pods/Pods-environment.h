@@ -132,3 +132,9 @@
 #define COCOAPODS_VERSION_MINOR_WYPopoverController 3
 #define COCOAPODS_VERSION_PATCH_WYPopoverController 8
 
+// skpsmtpmessage
+#define COCOAPODS_POD_AVAILABLE_skpsmtpmessage
+#define COCOAPODS_VERSION_MAJOR_skpsmtpmessage 0
+#define COCOAPODS_VERSION_MINOR_skpsmtpmessage 0
+#define COCOAPODS_VERSION_PATCH_skpsmtpmessage 1
+

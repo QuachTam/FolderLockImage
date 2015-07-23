@@ -38,3 +38,10 @@ UIButton *fl_buttonCamera() {
     [button setBackgroundImage:[UIImage imageNamed:kImageCamera] forState:UIControlStateNormal];
     return button;
 }
+
+UIButton *fl_buttonAdd() {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.f, 0.f, 30.f, 30.f);
+    [button setBackgroundImage:[UIImage imageNamed:kImageAdd] forState:UIControlStateNormal];
+    return button;
+}
