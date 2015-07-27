@@ -9,11 +9,16 @@
 #import "FLListFolderTableViewCell.h"
 #import "FLFolderModel.h"
 #import "FLImageHelper.h"
+#import "FLManageImage.h"
 
 @implementation FLListFolderTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
+    self.iconFolder.layer.cornerRadius = self.iconFolder.frame.size.width/2.0f;
+    self.iconFolder.clipsToBounds = YES;
+    self.iconFolder.layer.borderWidth = 2.5;
+    self.iconFolder.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -29,8 +34,14 @@
     }else{
         self.imageLock.hidden = YES;
     }
+    if (model.urlIcon && !model.password.length) {
+        [self.iconFolder setImage:[FLManageImage getImage:model.urlIcon folderID:model.uuid]];
+    }else{
+        [self.iconFolder setImage:[UIImage imageNamed:kImageDetault]];
+    }
+
     self.folderName.attributedText = [[self class] getDetailContentFromTitle:@"Name" andValue:model.name withColon:YES];
-    self.createDate.attributedText = [[self class] getDetailContentFromTitle:@"Date" andValue:model.createDate withColon:YES];
+    self.createDate.attributedText = [[self class] getDetailContentFromTitle:@"Date" andValue:model.stringCreateDate withColon:YES];
 }
 
 + (NSMutableAttributedString *)getDetailContentFromTitle:(NSString *) title andValue:(NSString *)value withColon:(BOOL)colon

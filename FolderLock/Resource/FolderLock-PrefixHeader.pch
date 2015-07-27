@@ -22,6 +22,7 @@
     #import <MBProgressHUD.h>
     #import "FLStringHelper.h"
     #import "NSString+GEM.h"
+    #import "NSManagedObject+VC.h"
     #define _LSFromTable NSLocalizedStringFromTable
     #define _LS NSLocalizedString
 #endif

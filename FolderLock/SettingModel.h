@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FLBaseModel.h"
+
 typedef NS_ENUM(NSInteger, SETTING_SECTION) {
     SETTING_SECTION_ACCOUNT = 0,
     SETTING_SECTION_PASSCODE = 1,
@@ -14,7 +16,7 @@ typedef NS_ENUM(NSInteger, SETTING_SECTION) {
     SETTING_SECTION_LEGAL
 };
 @class AccountModel;
-@interface SettingModel : NSObject
+@interface SettingModel : FLBaseModel
 
 @property (nonatomic, readwrite) NSInteger numberSection;
 @property (nonatomic, strong) NSString *title;

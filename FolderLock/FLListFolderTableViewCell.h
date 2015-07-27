@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *folderName;
 @property (weak, nonatomic) IBOutlet UILabel *createDate;
 @property (weak, nonatomic) IBOutlet UIImageView *imageLock;
+@property (weak, nonatomic) IBOutlet UIImageView *iconFolder;
 
 - (void)setValueForCell:(FLFolderModel *)model;
 @end

@@ -9,6 +9,7 @@
 #import "CreateFolderService.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "Folder.h"
+#import "FLFolderModel.h"
 
 @implementation CreateFolderService
 - (NSString *)checkValidNameFolder:(NSString*)folderName password:(NSString*)password rePassowrd:(NSString*)rePassowrd {
@@ -29,13 +30,12 @@
     return trimmedString;
 }
 
-- (void)saveFolder:(NSString *)name password:(NSString*)passowrd success:(void(^)(void))success {
+- (void)saveFolder:(FLFolderModel*)folderModel success:(void(^)(void))success {
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
-        Folder *entity = [Folder MR_createEntityInContext:localContext];
-        entity.uuid = [[[NSUUID UUID] UUIDString] lowercaseString];
-        entity.name = name;
-        entity.password = passowrd;
-        entity.createDate = [NSDate date];
+        Folder *entity = [Folder entityWithUuid:folderModel.uuid inContext:localContext];
+        entity.name = folderModel.name;
+        entity.password = folderModel.password;
+        entity.createDate = folderModel.createDate;
     }];
     if (success) {
         success();

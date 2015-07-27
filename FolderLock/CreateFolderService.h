@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FLFolderModel.h"
 
 @interface CreateFolderService : NSObject
 - (NSString *)checkValidNameFolder:(NSString*)folderName password:(NSString*)password rePassowrd:(NSString*)rePassowrd;
-- (void)saveFolder:(NSString *)name password:(NSString*)passowrd success:(void(^)(void))success;
+- (void)saveFolder:(FLFolderModel*)folderModel success:(void(^)(void))success;
 @end

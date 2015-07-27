@@ -95,8 +95,12 @@
             break;
         }
         case NSFetchedResultsChangeUpdate: {
-            if (self.resultsChangeUpdate) {
-                self.resultsChangeUpdate([NSArray arrayWithObject:indexPath]);
+            NSInteger index = [self profileWithIndexPath:[anObject valueForKey:@"uuid"]];
+            if (index>=0) {
+                NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+                if (self.resultsChangeUpdate) {
+                    self.resultsChangeUpdate([NSArray arrayWithObject:currentIndexPath]);
+                }
             }
             break;
         }
@@ -113,7 +117,7 @@
 }
 
 - (NSArray *)sortArray:(NSArray *)array {
-    NSSortDescriptor *ruleSort = [[NSSortDescriptor alloc] initWithKey:@"createdDate" ascending:YES];
+    NSSortDescriptor *ruleSort = [[NSSortDescriptor alloc] initWithKey:@"createDate" ascending:YES];
     NSArray *arrSortDescriptor = [NSArray arrayWithObject:ruleSort];
     NSArray *arrSorted = [array sortedArrayUsingDescriptors:arrSortDescriptor];
     return arrSorted;

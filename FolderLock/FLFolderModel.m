@@ -14,10 +14,14 @@
 @property (nonatomic, strong) Folder *folder;
 @end
 @implementation FLFolderModel
+@synthesize uuid = _uuid;
+@synthesize createDate = _createDate;
+
 - (instancetype)initWithFolderEntity:(Folder*)entity {
     self = [super init];
     if (self) {
         self.folder = entity;
+        self.uuid = entity.uuid;
     }
     return self;
 }
@@ -43,13 +47,13 @@
     return _password;
 }
 
-- (NSString *)createDate {
-    if (!_createDate) {
+- (NSString *)stringCreateDate {
+    if (!_stringCreateDate) {
         if (self.folder.createDate) {
-            _createDate = [self convertStringFromDate:self.folder.createDate];
+            _stringCreateDate = [self convertStringFromDate:self.folder.createDate];
         }
     }
-    return _createDate;
+    return _stringCreateDate;
 }
 
 - (BOOL)isPassword {
@@ -57,6 +61,17 @@
         return YES;
     }
     return NO;
+}
+
+- (NSString *)urlIcon {
+    if (!_urlIcon) {
+        NSArray *listPhoto = [self sortPhoto:[self.folder.photos allObjects]];
+        if (listPhoto.count) {
+            Photo *entity = [listPhoto lastObject];
+            _urlIcon = entity.url;
+        }
+    }
+    return _urlIcon;
 }
 
 - (NSArray *)listPhotoModel {

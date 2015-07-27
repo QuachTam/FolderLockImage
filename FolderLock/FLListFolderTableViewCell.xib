@@ -16,13 +16,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp6-55-CF4" userLabel="FolderName">
-                        <rect key="frame" x="14" y="-1" width="277" height="46"/>
+                        <rect key="frame" x="77" y="-1" width="214" height="46"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adX-PG-G15" userLabel="CreateDate">
-                        <rect key="frame" x="14" y="48" width="277" height="21"/>
+                        <rect key="frame" x="77" y="48" width="214" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -44,34 +44,49 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-po-sWM">
+                        <rect key="frame" x="15" y="8" width="55" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="m1P-l1-lee"/>
+                            <constraint firstAttribute="height" constant="55" id="sUD-m7-lEh"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="BO3-po-sWM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="1eF-Q9-inL"/>
                     <constraint firstItem="DYR-aj-rIn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="4NC-LK-nfP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="DYR-aj-rIn" secondAttribute="bottom" constant="-8" id="9dE-Bo-8Et"/>
                     <constraint firstAttribute="bottomMargin" secondItem="adX-PG-G15" secondAttribute="bottom" constant="-6" id="GBj-1a-VeB"/>
-                    <constraint firstItem="adX-PG-G15" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="Iym-85-YpQ"/>
+                    <constraint firstItem="adX-PG-G15" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="69" id="Iym-85-YpQ"/>
                     <constraint firstItem="gp6-55-CF4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-9" id="L2G-Lp-QP4"/>
                     <constraint firstItem="IGz-O1-g8Q" firstAttribute="leading" secondItem="adX-PG-G15" secondAttribute="trailing" constant="4" id="M2s-kY-QSE"/>
                     <constraint firstAttribute="centerY" secondItem="IGz-O1-g8Q" secondAttribute="centerY" constant="2.5" id="MKc-oU-Z2D"/>
                     <constraint firstItem="adX-PG-G15" firstAttribute="top" secondItem="gp6-55-CF4" secondAttribute="bottom" constant="3" id="Ntu-TZ-wPI"/>
                     <constraint firstAttribute="trailingMargin" secondItem="DYR-aj-rIn" secondAttribute="trailing" constant="-8" id="Vp2-Tp-CgA"/>
-                    <constraint firstItem="gp6-55-CF4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="aOx-Eg-8GC"/>
+                    <constraint firstItem="DYR-aj-rIn" firstAttribute="top" secondItem="BO3-po-sWM" secondAttribute="bottom" constant="10" id="Z2a-fb-uiH"/>
+                    <constraint firstItem="gp6-55-CF4" firstAttribute="leading" secondItem="BO3-po-sWM" secondAttribute="trailing" constant="7" id="ZlR-Dq-kre"/>
+                    <constraint firstItem="gp6-55-CF4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="69" id="aOx-Eg-8GC"/>
+                    <constraint firstItem="BO3-po-sWM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="eaH-fx-WUf"/>
+                    <constraint firstItem="adX-PG-G15" firstAttribute="leading" secondItem="BO3-po-sWM" secondAttribute="trailing" constant="7" id="kBM-fT-kni"/>
                     <constraint firstItem="IGz-O1-g8Q" firstAttribute="leading" secondItem="gp6-55-CF4" secondAttribute="trailing" constant="4" id="phf-IB-Vod"/>
                     <constraint firstItem="IGz-O1-g8Q" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="4" id="t2g-oS-5fk"/>
                     <constraint firstItem="DYR-aj-rIn" firstAttribute="top" secondItem="adX-PG-G15" secondAttribute="bottom" constant="4" id="zT7-wU-0ka"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="aOx-Eg-8GC"/>
                         <exclude reference="GBj-1a-VeB"/>
+                        <exclude reference="Iym-85-YpQ"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="createDate" destination="adX-PG-G15" id="SPK-ai-s8z"/>
                 <outlet property="folderName" destination="gp6-55-CF4" id="F5G-sY-Fh8"/>
+                <outlet property="iconFolder" destination="BO3-po-sWM" id="C7y-Bv-bVA"/>
                 <outlet property="imageLock" destination="IGz-O1-g8Q" id="Ex9-Dc-YN0"/>
             </connections>
-            <point key="canvasLocation" x="367" y="328.5"/>
+            <point key="canvasLocation" x="510" y="325.5"/>
         </tableViewCell>
     </objects>
 </document>

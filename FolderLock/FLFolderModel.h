@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "Folder.h"
+#import "FLBaseModel.h"
 
-@interface FLFolderModel : NSObject
+@interface FLFolderModel : FLBaseModel
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *createDate;
-@property (nonatomic, strong) NSString *uuid;
+@property (nonatomic, strong) NSString *stringCreateDate;
+@property (nonatomic, strong) NSString *urlIcon;
 @property (nonatomic, strong) NSArray *listPhotoModel;
 @property (nonatomic, readwrite) BOOL isPassword;
 @property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSString *rePassword;
 - (instancetype)initWithFolderEntity:(Folder*)entity;
 @end

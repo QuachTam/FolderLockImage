@@ -10,6 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import "FLBaseModel.h"
 
 typedef NS_ENUM(NSInteger, ACCOUNT_ROW) {
     ACCOUNT_ROW_NAME = 0,
@@ -23,7 +24,7 @@ typedef NS_ENUM(NSInteger, TYPE) {
     ACCOUNT_CHANGE = 1,
 };
 
-@interface AccountModel : NSObject
+@interface AccountModel : FLBaseModel
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;

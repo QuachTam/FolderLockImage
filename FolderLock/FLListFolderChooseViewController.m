@@ -53,6 +53,9 @@ static NSString *chooseIdentifier = @"FLListFolderTableViewCell";
     }
     if (lastIndexPath && self.image) {
         [self.service saveImageToFolder:[self.listFolder objectAtIndex:lastIndexPath.row] image:self.image success:^{
+            if (self.didCompleteSaveImage) {
+                self.didCompleteSaveImage();
+            }
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
     }
@@ -67,7 +70,7 @@ static NSString *chooseIdentifier = @"FLListFolderTableViewCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.f;
+    return 75.f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

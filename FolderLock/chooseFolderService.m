@@ -10,6 +10,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "Folder.h"
 #import "Photo.h"
+#import "FLManageImage.h"
 
 @implementation chooseFolderService
 - (void)saveImageToFolder:(FLFolderModel*)folderModel image:(UIImage *)image success:(void(^)(void))success {
@@ -19,7 +20,8 @@
         Photo *photo = [Photo MR_createEntityInContext:localContext];
         photo.uuid = [[[NSUUID UUID] UUIDString] lowercaseString];
         photo.createDate = [NSDate date];
-        [self saveImage:image withName:photo.uuid];
+        photo.url = photo.uuid;
+        [FLManageImage saveImage:image withName:photo.uuid folderUUID:folder.uuid];
         [folder addPhotosObject:photo];
     }];
     if (success) {
@@ -27,19 +29,6 @@
     }
 }
 
-- (UIImage*)getImage:(NSString*)nameImage{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *getImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", nameImage]];
-    UIImage *img = [UIImage imageWithContentsOfFile:getImagePath];
-    return img;
-}
 
-- (void)saveImage:(UIImage*)image withName:(NSString*)nameImage{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", nameImage]];
-    NSData *imageData = UIImagePNGRepresentation(image);
-    [imageData writeToFile:savedImagePath atomically:NO];
-}
+
 @end

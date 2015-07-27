@@ -53,12 +53,12 @@ static NSString *textFieldIdentifier = @"textFieldIdentifier";
     if (!self.service) {
         self.service = [[CreateFolderService alloc] init];
     }
-    NSString *message = [self.service checkValidNameFolder:self.stringFolderName password:self.stringPassowrd rePassowrd:self.stringRePassowrd];
+    NSString *message = [self.service checkValidNameFolder:self.folderModel.name password:self.folderModel.password rePassowrd:self.folderModel.rePassword];
     if (message.length) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alert show];
     }else{
-        [self.service saveFolder:self.stringFolderName password:self.stringPassowrd success:^{
+        [self.service saveFolder:self.folderModel success:^{
             [self dismissViewController];
         }];
     }
@@ -84,13 +84,25 @@ static NSString *textFieldIdentifier = @"textFieldIdentifier";
 
 - (void)textFieldCell:(NSIndexPath*)indexPath TextFieldTableViewCell:(TextFieldTableViewCell*)cell{
     if (indexPath.row==0) {
-        [cell setValueTextField:@"Folder Name"];
+        if (self.folderModel.name.length) {
+            cell.textField.text = self.folderModel.name;
+        }else{
+            [cell setValueTextField:@"Folder Name"];
+        }
         cell.textField.secureTextEntry = NO;
     }else if (indexPath.row==1){
-        [cell setValueTextField:@"Password"];
+        if (self.folderModel.password.length) {
+            cell.textField.text = self.folderModel.password;
+        }else{
+            [cell setValueTextField:@"Password"];
+        }
         cell.textField.secureTextEntry = YES;
     }else{
-        [cell setValueTextField:@"Re-Passoword"];
+        if (self.folderModel.rePassword) {
+            cell.textField.text = self.folderModel.rePassword;
+        }else{
+            [cell setValueTextField:@"Re-Passoword"];
+        }
         cell.textField.secureTextEntry = YES;
     }
     cell.textField.delegate = self;
@@ -98,12 +110,15 @@ static NSString *textFieldIdentifier = @"textFieldIdentifier";
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (!self.folderModel) {
+        self.folderModel = [[FLFolderModel alloc] init];
+    }
     if (textField.tag==0) {
-        self.stringFolderName = textField.text;
+        self.folderModel.name = textField.text;
     }else if(textField.tag==1){
-        self.stringPassowrd = textField.text;
+        self.folderModel.password = textField.text;
     }else{
-        self.stringRePassowrd = textField.text;
+        self.folderModel.rePassword = textField.text;
     }
 }
 

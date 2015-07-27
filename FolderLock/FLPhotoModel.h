@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Photo.h"
+#import "FLBaseModel.h"
 
-@interface FLPhotoModel : NSObject
+@interface FLPhotoModel :FLBaseModel
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * url;
 

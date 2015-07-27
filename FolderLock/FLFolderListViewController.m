@@ -99,7 +99,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     CameraObject *camera = [CameraObject shareInstance];
     camera.delegate = self;
     camera.supperView = self;
-    camera.sourceType = UIImagePickerControllerSourceTypeCamera;
+    camera.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     [camera showCamera];
 }
 
@@ -107,6 +107,9 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     FLListFolderChooseViewController *choose = [[FLListFolderChooseViewController alloc] initWithNibName:NSStringFromClass([FLListFolderChooseViewController class]) bundle:nil];
     choose.image = image;
     choose.listFolder = self.service.listModelFolder;
+    choose.didCompleteSaveImage = ^{
+        
+    };
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:choose];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -134,7 +137,13 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
         strong.folderModels = [NSMutableArray arrayWithArray:strong.service.listModelFolder];
         [strong.tbView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
     };
-    self.service.resultsChangeUpdate = ^(NSArray *indexPaths) {};
+    self.service.resultsChangeUpdate = ^(NSArray *indexPaths) {
+        __strong __typeof(week)strong = week;
+        NSIndexPath *indexPath = [indexPaths lastObject];
+        FLFolderModel *folderModel = [strong.folderModels objectAtIndex:indexPath.row];
+        folderModel.urlIcon = nil;
+        [strong.tbView reloadData];
+    };
     self.service.resultsChangeMove = ^(NSArray *indexPaths) {};
     
     self.service.resultsChangeDelete = ^(NSArray *indexPaths) {
@@ -152,7 +161,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.f;
+    return 75.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -214,9 +223,16 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
     switch (index) {
-        case 0:
-            NSLog(@"More button was pressed");
+        case 0:{
+            NSIndexPath *cellIndexPath = [self.tbView indexPathForCell:cell];
+            FLFolderModel *folderModel = [self.folderModels objectAtIndex:cellIndexPath.row];
+            
+            FLCreateFolderViewController *editFolder = [[FLCreateFolderViewController alloc] initWithNibName:NSStringFromClass([FLCreateFolderViewController class]) bundle:nil];
+            editFolder.folderModel = folderModel;
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:editFolder];
+            [self presentViewController:nav animated:YES completion:nil];
             break;
+        }
         case 1:
         {
             // Delete button was pressed
@@ -232,6 +248,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
         default:
             break;
     }
+    [cell hideUtilityButtonsAnimated:YES];
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {

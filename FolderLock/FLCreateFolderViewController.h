@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FLFolderModel.h"
 
 @interface FLCreateFolderViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
+@property (nonatomic, strong) FLFolderModel *folderModel;
 
 @end
