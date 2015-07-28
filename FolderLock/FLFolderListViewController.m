@@ -27,13 +27,16 @@
 #import "AccountModel.h"
 #import "FLImageHelper.h"
 #import "UIAlertView+VC.h"
+#import "FLListPhotoViewController.h"
+#import <skpsmtpmessage/SKPSMTPMessage.h>
+#import "AccountModel.h"
 
 static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 
-@interface FLFolderListViewController ()<CameraObject, MFMailComposeViewControllerDelegate, SWTableViewCellDelegate>
+@interface FLFolderListViewController ()<CameraObject, MFMailComposeViewControllerDelegate, SWTableViewCellDelegate, SKPSMTPMessageDelegate>
 @property (nonatomic, strong) FLAccountSetting *accountSetting;
 @property (nonatomic, strong) NSMutableArray *folderModels;
-
+@property (nonatomic, strong) SKPSMTPMessage *forgotPassword;
 @property (nonatomic, strong) FLListFolderService *service;
 @end
 
@@ -192,6 +195,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     FLFolderModel *model = [self.service.listModelFolder objectAtIndex:indexPath.row];
     if (model.isPassword) {
         [self presentRegisterAnAccountViewController:model];
@@ -201,9 +205,9 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 }
 
 - (void)gotoFolderDetailViewController:(FLFolderModel *)folderModel {
-//    FolderDetailViewController *photoVC = [[FolderDetailViewController alloc] initWithNibName:NSStringFromClass([FolderDetailViewController class]) bundle:nil];
-//    photoVC.folderModel = folderModel;
-//    [self.navigationController pushViewController:photoVC animated:YES];
+    FLListPhotoViewController *photoVC = [[FLListPhotoViewController alloc] initWithNibName:NSStringFromClass([FLListPhotoViewController class]) bundle:nil];
+    photoVC.folderModel = folderModel;
+    [self.navigationController pushViewController:photoVC animated:YES];
 }
 
 - (NSArray *)leftButtons
@@ -211,10 +215,10 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:@"Edit"];
+                                                title:_LSFromTable(@"title.strings.edit", @"FLFolderListViewController", @"Edit")];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
-                                                title:@"Delete"];
+                                                title:_LSFromTable(@"title.strings.delete", @"FLFolderListViewController", @"Delete")];
     
     return rightUtilityButtons;
 }
@@ -236,7 +240,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
         case 1:
         {
             // Delete button was pressed
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Do you want delete this folder" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:_LSFromTable(@"title.strings.confirm.delete", @"FLFolderListViewController", @"Do you want delete this folder") delegate:nil cancelButtonTitle:_LSFromTable(@"title.strings.cancel", @"FLFolderListViewController", @"Cancel") otherButtonTitles:_LSFromTable(@"title.strings.ok", @"FLFolderListViewController", @"OK"), nil];
             [alert showAlerViewWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 if (buttonIndex) {
                     NSIndexPath *cellIndexPath = [self.tbView indexPathForCell:cell];
@@ -288,7 +292,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
         [self openSendMail:folderModel];
     };
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:registerAccount];
-    MZFormSheetController * formSheet = [[MZFormSheetController alloc] initWithSize:CGSizeMake(self.view.bounds.size.width-20, 125) viewController:nav];
+    MZFormSheetController * formSheet = [[MZFormSheetController alloc] initWithSize:CGSizeMake(self.view.bounds.size.width-20, 145) viewController:nav];
     [self MZFromSheetViewController:formSheet];
 }
 
@@ -302,12 +306,37 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 }
 
 - (void)openSendMail:(FLFolderModel*)folderModel{
-    NSString *emailTitle = [NSString stringWithFormat:@"Forgot password"];
+    AccountModel *accountModel = [[AccountModel alloc] initWithUser:[FLAccountSetting findUser]];
+    
+    NSString *emailTitle = [NSString stringWithFormat:_LSFromTable(@"title.strings.forgotpassword", @"FLFolderListViewController", @"Forgot password")];
     // Email Content
-    NSString *messageBody = [NSString stringWithFormat:@"Password of folder %@ is %@", folderModel.name, folderModel.password];
+    NSString *messageBody = [NSString stringWithFormat:@"%@ %@: %@",_LSFromTable(@"title.strings.password.of.folder", @"FLFolderListViewController", @"Password of folder"), folderModel.name, folderModel.password];
     // To address
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:emailTitle message:messageBody delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    
+    self.forgotPassword = [[SKPSMTPMessage alloc] init];
+    [self.forgotPassword setFromEmail:@"mr.tamqn.app.folderlock@gmail.com"];  // Change to your email address
+    [self.forgotPassword setToEmail:accountModel.email]; // Load this, or have user enter this
+    [self.forgotPassword setRelayHost:@"smtp.gmail.com"];
+    [self.forgotPassword setRequiresAuth:YES]; // GMail requires this
+    [self.forgotPassword setLogin:@"mr.tamqn.app.folderlock@gmail.com"]; // Same as the "setFromEmail:" email
+    [self.forgotPassword setPass:@"Quachtam87@gmail.comm"]; // Password for the Gmail account that you are sending from
+    [self.forgotPassword setSubject:emailTitle]; // Change this to change the subject of the email
+    [self.forgotPassword setWantsSecure:YES]; // Gmail Requires this
+    [self.forgotPassword setDelegate:self]; // Required
+    
+    NSDictionary *plainPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/plain", kSKPSMTPPartContentTypeKey, messageBody, kSKPSMTPPartMessageKey, @"8bit" , kSKPSMTPPartContentTransferEncodingKey, nil];
+    
+    [self.forgotPassword setParts:[NSArray arrayWithObjects:plainPart, nil]];
+    [self.forgotPassword send];
+}
+
+-(void)messageSent:(SKPSMTPMessage *)message {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:_LSFromTable(@"title.strings.send.email.success", @"FLFolderListViewController", @"Send email success") delegate:nil cancelButtonTitle:nil otherButtonTitles:_LSFromTable(@"title.strings.ok", @"FLFolderListViewController", @"OK"), nil];
     [alert show];
+    self.forgotPassword = nil;
+}
+-(void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error {
+    self.forgotPassword = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -344,6 +373,10 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     if (startAppAd_loadShow == ad) {
         [startAppAd_loadShow showAd];
     }
+}
+
+- (void)didCloseAd:(STAAbstractAd *)ad {
+    
 }
 
 /*

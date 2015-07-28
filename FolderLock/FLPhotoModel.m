@@ -7,13 +7,17 @@
 //
 
 #import "FLPhotoModel.h"
+#import "FLUtinity.h"
+#import "Folder.h"
 
 @implementation FLPhotoModel
+@synthesize createDate = _createDate;
 
 - (instancetype)initWithPhotoEntity:(Photo*)entity {
     self = [super init];
     if (self) {
         self.entity = entity;
+        self.uuid = self.entity.uuid;
     }
     return self;
 }
@@ -32,5 +36,25 @@
     return _url;
 }
 
+- (NSString *)stringCreateDate {
+    if (!_stringCreateDate) {
+        _stringCreateDate = [FLUtinity convertStringFromDate:self.entity.createDate];
+    }
+    return _stringCreateDate;
+}
+
+- (NSString *)folderUUID {
+    if (!_folderUUID) {
+        _folderUUID = self.entity.folder.uuid;
+    }
+    return _folderUUID;
+}
+
+- (NSDate *)createDate {
+    if (!_createDate) {
+        _createDate = self.entity.createDate;
+    }
+    return _createDate;
+}
 @end
 

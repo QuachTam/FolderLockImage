@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic, strong) NSString *stringPassword;
 @property (nonatomic, strong) NSString *stringTitle;
+@property (weak, nonatomic) IBOutlet UIButton *btnForgotPassword;
 
+- (IBAction)forgotPasswordAccount:(id)sender;
 @property (nonatomic, readwrite, copy) void(^didCompleteSuccessPassword)();
 @end

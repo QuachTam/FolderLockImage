@@ -6,6 +6,32 @@
   Copyright (c) 2015 QSOFT. All rights reserved.
 */
 
-/*Title*/
-
+/*title*/
 "title.strings" = "List Folder";
+
+/*edit*/
+"title.strings.edit" = "Edit";
+
+/*delete*/
+"title.strings.delete" = "Delete";
+
+/*Do you want delete this folder*/
+"title.strings.confirm.delete" = "Do you want delete this folder";
+
+/*cancel*/
+"title.strings.cancel" = "Cancel";
+
+/*ok*/
+"title.strings.ok" = "OK";
+
+/*forgot password*/
+"title.strings.forgotpassword" = "Forgot password";
+
+/*Password of folder*/
+"title.strings.password.of.folder" = "Password of folder";
+
+/*password of account*/
+"title.strings.password.account" = "Password Account";
+
+/*send email success*/
+"title.strings.send.email.success" = "Send email success";

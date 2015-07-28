@@ -25,6 +25,13 @@
 		6497DCEB1B5FF56400CCAA82 /* chooseFolderService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6497DCE71B5FF56400CCAA82 /* chooseFolderService.m */; };
 		6497DCEC1B5FF56400CCAA82 /* FLListFolderChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6497DCE91B5FF56400CCAA82 /* FLListFolderChooseViewController.m */; };
 		6497DCED1B5FF56400CCAA82 /* FLListFolderChooseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6497DCEA1B5FF56400CCAA82 /* FLListFolderChooseViewController.xib */; };
+		64C2102E1B67441000CBABDE /* FLListPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C2102C1B67441000CBABDE /* FLListPhotoViewController.m */; };
+		64C2102F1B67441000CBABDE /* FLListPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C2102D1B67441000CBABDE /* FLListPhotoViewController.xib */; };
+		64C210371B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C210351B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.m */; };
+		64C210381B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C210361B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.xib */; };
+		64C2103B1B67478E00CBABDE /* FLUtinity.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C2103A1B67478E00CBABDE /* FLUtinity.m */; };
+		64C2103E1B674D9C00CBABDE /* FLPhotoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C2103D1B674D9C00CBABDE /* FLPhotoService.m */; };
+		64C210401B678C3E00CBABDE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C2103F1B678C3E00CBABDE /* CFNetwork.framework */; };
 		64D539021B65DB9D002DA916 /* Icon_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D539001B65DB9D002DA916 /* Icon_default@2x.png */; };
 		64D539031B65DB9D002DA916 /* Icon_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D539011B65DB9D002DA916 /* Icon_default@3x.png */; };
 		64D539061B65E11A002DA916 /* FLManageImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D539051B65E11A002DA916 /* FLManageImage.m */; };
@@ -150,6 +157,17 @@
 		6497DCE81B5FF56400CCAA82 /* FLListFolderChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLListFolderChooseViewController.h; sourceTree = "<group>"; };
 		6497DCE91B5FF56400CCAA82 /* FLListFolderChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLListFolderChooseViewController.m; sourceTree = "<group>"; };
 		6497DCEA1B5FF56400CCAA82 /* FLListFolderChooseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLListFolderChooseViewController.xib; sourceTree = "<group>"; };
+		64C2102B1B67441000CBABDE /* FLListPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLListPhotoViewController.h; sourceTree = "<group>"; };
+		64C2102C1B67441000CBABDE /* FLListPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLListPhotoViewController.m; sourceTree = "<group>"; };
+		64C2102D1B67441000CBABDE /* FLListPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLListPhotoViewController.xib; sourceTree = "<group>"; };
+		64C210341B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLListPhotoCustomViewCellTableViewCell.h; sourceTree = "<group>"; };
+		64C210351B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLListPhotoCustomViewCellTableViewCell.m; sourceTree = "<group>"; };
+		64C210361B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLListPhotoCustomViewCellTableViewCell.xib; sourceTree = "<group>"; };
+		64C210391B67478E00CBABDE /* FLUtinity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLUtinity.h; sourceTree = "<group>"; };
+		64C2103A1B67478E00CBABDE /* FLUtinity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLUtinity.m; sourceTree = "<group>"; };
+		64C2103C1B674D9C00CBABDE /* FLPhotoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhotoService.h; sourceTree = "<group>"; };
+		64C2103D1B674D9C00CBABDE /* FLPhotoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhotoService.m; sourceTree = "<group>"; };
+		64C2103F1B678C3E00CBABDE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		64D539001B65DB9D002DA916 /* Icon_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_default@2x.png"; sourceTree = "<group>"; };
 		64D539011B65DB9D002DA916 /* Icon_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_default@3x.png"; sourceTree = "<group>"; };
 		64D539041B65E11A002DA916 /* FLManageImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLManageImage.h; sourceTree = "<group>"; };
@@ -273,6 +291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64C210401B678C3E00CBABDE /* CFNetwork.framework in Frameworks */,
 				D9ED84481B579B8500A1D1DA /* libz.dylib in Frameworks */,
 				D9ED84461B579B6100A1D1DA /* StartApp.framework in Frameworks */,
 				D9ED84441B5799EE00A1D1DA /* Foundation.framework in Frameworks */,
@@ -342,6 +361,55 @@
 			name = FLListFolderChooseViewController;
 			sourceTree = "<group>";
 		};
+		64C2102A1B67393700CBABDE /* FLListPhotoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				64C210331B67444D00CBABDE /* FLPhotoService */,
+				64C210321B67443C00CBABDE /* FLPhotoModel */,
+				64C210311B67442500CBABDE /* FLListPhotoCustomViewCell */,
+				64C210301B67441900CBABDE /* ViewController */,
+			);
+			name = FLListPhotoViewController;
+			sourceTree = "<group>";
+		};
+		64C210301B67441900CBABDE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				64C2102B1B67441000CBABDE /* FLListPhotoViewController.h */,
+				64C2102C1B67441000CBABDE /* FLListPhotoViewController.m */,
+				64C2102D1B67441000CBABDE /* FLListPhotoViewController.xib */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		64C210311B67442500CBABDE /* FLListPhotoCustomViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				64C210341B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.h */,
+				64C210351B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.m */,
+				64C210361B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.xib */,
+			);
+			name = FLListPhotoCustomViewCell;
+			sourceTree = "<group>";
+		};
+		64C210321B67443C00CBABDE /* FLPhotoModel */ = {
+			isa = PBXGroup;
+			children = (
+				6497DCDB1B5FE67800CCAA82 /* FLPhotoModel.h */,
+				6497DCDC1B5FE67800CCAA82 /* FLPhotoModel.m */,
+			);
+			name = FLPhotoModel;
+			sourceTree = "<group>";
+		};
+		64C210331B67444D00CBABDE /* FLPhotoService */ = {
+			isa = PBXGroup;
+			children = (
+				64C2103C1B674D9C00CBABDE /* FLPhotoService.h */,
+				64C2103D1B674D9C00CBABDE /* FLPhotoService.m */,
+			);
+			name = FLPhotoService;
+			sourceTree = "<group>";
+		};
 		64E701BB1B607E4D006D8102 /* FLCreateFolderViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +448,7 @@
 		A268CEB29ED361CE2C67B80A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				64C2103F1B678C3E00CBABDE /* CFNetwork.framework */,
 				D9ED84471B579B8500A1D1DA /* libz.dylib */,
 				D9ED84451B579B6100A1D1DA /* StartApp.framework */,
 				D9ED84431B5799EE00A1D1DA /* Foundation.framework */,
@@ -506,6 +575,7 @@
 		D97458AA1B53A6B3009E5175 /* FLViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				64C2102A1B67393700CBABDE /* FLListPhotoViewController */,
 				6497DCEE1B5FF56B00CCAA82 /* FLListFolderChooseViewController */,
 				D9FD23641B561169000F15B7 /* FLAccountViewController */,
 				D98439A31B54B99300A1676E /* FLSettingViewController */,
@@ -536,6 +606,8 @@
 				6402C3881B662E41001008FA /* NSManagedObject+VC.m */,
 				6402C38A1B662FC4001008FA /* FLBaseModel.h */,
 				6402C38B1B662FC4001008FA /* FLBaseModel.m */,
+				64C210391B67478E00CBABDE /* FLUtinity.h */,
+				64C2103A1B67478E00CBABDE /* FLUtinity.m */,
 				D984398D1B54A3D600A1676E /* FLStringHelper */,
 				D98439891B54A06A00A1676E /* FLImageHelper */,
 				D97458AE1B53A78B009E5175 /* FLButtonHelper */,
@@ -709,8 +781,6 @@
 				6497DCCF1B5FE18300CCAA82 /* FLListFolderTableViewCell.xib */,
 				6497DCD21B5FE1BA00CCAA82 /* FLFolderModel.h */,
 				6497DCD31B5FE1BA00CCAA82 /* FLFolderModel.m */,
-				6497DCDB1B5FE67800CCAA82 /* FLPhotoModel.h */,
-				6497DCDC1B5FE67800CCAA82 /* FLPhotoModel.m */,
 				6497DCD41B5FE1BA00CCAA82 /* FLListFolderService.h */,
 				6497DCD51B5FE1BA00CCAA82 /* FLListFolderService.m */,
 			);
@@ -831,6 +901,7 @@
 				D9FD23701B56148D000F15B7 /* Save@2x.png in Resources */,
 				D98439851B549F2700A1676E /* Settings@2x.png in Resources */,
 				64D539031B65DB9D002DA916 /* Icon_default@3x.png in Resources */,
+				64C2102F1B67441000CBABDE /* FLListPhotoViewController.xib in Resources */,
 				D98439861B549F2700A1676E /* Settings@3x.png in Resources */,
 				D98439881B549F2700A1676E /* More@3x.png in Resources */,
 				6497DCD11B5FE18300CCAA82 /* FLListFolderTableViewCell.xib in Resources */,
@@ -851,6 +922,7 @@
 				6497DCED1B5FF56400CCAA82 /* FLListFolderChooseViewController.xib in Resources */,
 				D9ED844C1B57BD8E00A1D1DA /* startApp@3x.png in Resources */,
 				64E91EAA1B60E8A50050DF56 /* Delete@3x.png in Resources */,
+				64C210381B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.xib in Resources */,
 				D97458981B536E25009E5175 /* FLFolderListViewController.xib in Resources */,
 				D984399B1B54A90300A1676E /* LTHPasscodeViewController.strings in Resources */,
 				64E91EAE1B60E8F20050DF56 /* Edit@3x.png in Resources */,
@@ -912,9 +984,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64C2103B1B67478E00CBABDE /* FLUtinity.m in Sources */,
 				D974586F1B5369E2009E5175 /* FolderLock.xcdatamodeld in Sources */,
 				6497DCD61B5FE1BA00CCAA82 /* FLFolderModel.m in Sources */,
 				D97458971B536E25009E5175 /* FLFolderListViewController.m in Sources */,
+				64C2103E1B674D9C00CBABDE /* FLPhotoService.m in Sources */,
 				64E701B71B607E2A006D8102 /* FLCreateFolderViewController.m in Sources */,
 				D97458A41B5376DF009E5175 /* VCLocalizeCenter.m in Sources */,
 				6497DCD01B5FE18300CCAA82 /* FLListFolderTableViewCell.m in Sources */,
@@ -940,6 +1014,7 @@
 				D92721571B5898DF001A741D /* STAViewController.m in Sources */,
 				D98439B61B55186600A1676E /* FLTableViewCellAccount.m in Sources */,
 				6497DCCC1B5FDD1200CCAA82 /* CameraObject.m in Sources */,
+				64C210371B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.m in Sources */,
 				D98DEF5F1B5CB2F500DB9405 /* NSString+GEM.m in Sources */,
 				D97458691B5369E2009E5175 /* main.m in Sources */,
 				6402C38C1B662FC4001008FA /* FLBaseModel.m in Sources */,
@@ -948,6 +1023,7 @@
 				6461DB961B5C05BD0046D036 /* Photo.m in Sources */,
 				D97458921B536B91009E5175 /* LTHPasscodeViewController.m in Sources */,
 				6497DCD71B5FE1BA00CCAA82 /* FLListFolderService.m in Sources */,
+				64C2102E1B67441000CBABDE /* FLListPhotoViewController.m in Sources */,
 				D97458B11B53A7B0009E5175 /* FLButtonHelper.m in Sources */,
 				64E91EB11B60F7A30050DF56 /* UIAlertView+VC.m in Sources */,
 				6402C3891B662E41001008FA /* NSManagedObject+VC.m in Sources */,

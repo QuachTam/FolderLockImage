@@ -13,7 +13,8 @@
 @interface FLPhotoModel :FLBaseModel
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * url;
-
+@property (nonatomic, strong) NSString * stringCreateDate;
+@property (nonatomic, strong) NSString * folderUUID;
 @property (nonatomic, retain) Photo *entity;
 
 - (instancetype)initWithPhotoEntity:(Photo*)entity;

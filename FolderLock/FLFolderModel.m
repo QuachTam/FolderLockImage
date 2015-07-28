@@ -9,6 +9,7 @@
 #import "FLFolderModel.h"
 #import "Folder.h"
 #import "FLPhotoModel.h"
+#import "FLUtinity.h"
 
 @interface FLFolderModel()
 @property (nonatomic, strong) Folder *folder;
@@ -50,7 +51,7 @@
 - (NSString *)stringCreateDate {
     if (!_stringCreateDate) {
         if (self.folder.createDate) {
-            _stringCreateDate = [self convertStringFromDate:self.folder.createDate];
+            _stringCreateDate = [FLUtinity convertStringFromDate:self.folder.createDate];
         }
     }
     return _stringCreateDate;
@@ -65,7 +66,7 @@
 
 - (NSString *)urlIcon {
     if (!_urlIcon) {
-        NSArray *listPhoto = [self sortPhoto:[self.folder.photos allObjects]];
+        NSArray *listPhoto = [FLUtinity sortPhotoWithCreateDate:[self.folder.photos allObjects]];
         if (listPhoto.count) {
             Photo *entity = [listPhoto lastObject];
             _urlIcon = entity.url;
@@ -82,25 +83,11 @@
             FLPhotoModel *model = [[FLPhotoModel alloc] initWithPhotoEntity:[listPhoto objectAtIndex:index]];
             [listModel addObject:model];
         }
-        _listPhotoModel = [self sortPhoto:listModel];
+        _listPhotoModel = [FLUtinity sortPhotoWithCreateDate:listModel];
     }
     return _listPhotoModel;
 }
 
-- (NSArray *)sortPhoto:(NSArray *)listPhotoModel {
-    NSSortDescriptor *sortDescriptor;
-    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createDate"
-                                                 ascending:YES];
-    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    NSArray *sortedArray;
-    sortedArray = [listPhotoModel sortedArrayUsingDescriptors:sortDescriptors];
-    return sortedArray;
-}
 
-- (NSString *)convertStringFromDate:(NSDate *)date {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy/MM/dd"];
-    NSString *stringFromDate = [formatter stringFromDate:date];
-    return stringFromDate;
-}
+
 @end

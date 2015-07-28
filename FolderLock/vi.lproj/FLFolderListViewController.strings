@@ -8,3 +8,30 @@
 /*Title*/
 
 "title.strings" = "Danh sách thư mục";
+
+/*edit*/
+"title.strings.edit" = "Thay đổi";
+
+/*delete*/
+"title.strings.delete" = "Xoá";
+
+/*Do you want delete this folder*/
+"title.strings.confirm.delete" = "Bạn có muốn xoá thư mục này?";
+
+/*cancel*/
+"title.strings.cancel" = "Huỷ";
+
+/*ok*/
+"title.strings.ok" = "Đồng ý";
+
+/*forgot password*/
+"title.strings.forgotpassword" = "Quên mật khẩu";
+
+/*Password of folder*/
+"title.strings.password.of.folder" = "Mật khẩu của thư mục";
+
+/*password of account*/
+"title.strings.password.account" = "Mật khẩu tài khoản";
+
+/*send email success*/
+"title.strings.send.email.success" = "Gửi email thành công";

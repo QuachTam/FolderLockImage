@@ -17,6 +17,8 @@
 #import "FLAccountViewController.h"
 #import "FLPasswordViewController.h"
 #import <SWTableViewCell/SWTableViewCell.h>
+#import "FLAccountSetting.h"
+#import "AccountModel.h"
 
 NSString *const identifyAbout = @"FLTableViewCellSignText";
 NSString *const idendifyLegal = @"FLTableViewCellSignText";
@@ -143,20 +145,16 @@ NSString *const idendifyLegal = @"FLTableViewCellSignText";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section==SETTING_SECTION_ACCOUNT) {
-        NSString *stringPassword = [LTHPasscodeViewController sharedUser].password;
-        if (stringPassword.length) {
-            FLPasswordViewController *registerAccount = [[FLPasswordViewController alloc] initWithNibName:NSStringFromClass([FLPasswordViewController class]) bundle:nil];
-            registerAccount.stringPassword = stringPassword;
-            registerAccount.stringTitle = @"Passcode";
-            registerAccount.didCompleteSuccessPassword = ^{
-                [self gotoAccount];
-            };
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:registerAccount];
-            MZFormSheetController * formSheet = [[MZFormSheetController alloc] initWithSize:CGSizeMake(self.view.bounds.size.width-20, 125) viewController:nav];
-            [self MZFromSheetViewController:formSheet];
-        }else{
+        AccountModel *accountModel = [[AccountModel alloc] initWithUser:[FLAccountSetting findUser]];
+        FLPasswordViewController *registerAccount = [[FLPasswordViewController alloc] initWithNibName:NSStringFromClass([FLPasswordViewController class]) bundle:nil];
+        registerAccount.stringPassword = accountModel.password;
+        registerAccount.stringTitle = @"Passcode";
+        registerAccount.didCompleteSuccessPassword = ^{
             [self gotoAccount];
-        }
+        };
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:registerAccount];
+        MZFormSheetController * formSheet = [[MZFormSheetController alloc] initWithSize:CGSizeMake(self.view.bounds.size.width-20, 145) viewController:nav];
+        [self MZFromSheetViewController:formSheet];
     }
 }
 
