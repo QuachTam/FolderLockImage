@@ -1,0 +1,6 @@
+[submodule "FolderLockImage"]
+	path = FolderLockImage
+	url = https://github.com/QuachTam/FolderLockImage.git
+[submodule "PureLayout"]
+	path = PureLayout
+	url = https://github.com/smileyborg/PureLayout
