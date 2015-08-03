@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <SWTableViewCell.h>
+#import "FLPhotoModel.h"
+#import "RWLabel.h"
 
 @interface FLListPhotoCustomViewCellTableViewCell : SWTableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
-@property (weak, nonatomic) IBOutlet UILabel *lbName;
-@property (weak, nonatomic) IBOutlet UILabel *lbDateCreate;
+@property (weak, nonatomic) IBOutlet RWLabel *lbName;
+@property (weak, nonatomic) IBOutlet RWLabel *lbDateCreate;
 
+- (void)valueForCell:(FLPhotoModel*)photoModel;
 @end

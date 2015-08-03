@@ -1,0 +1,32 @@
+/* 
+  FLListPhotoViewController.strings
+  FolderLock
+
+  Created by ATam on 7/30/15.
+  Copyright (c) 2015 QSOFT. All rights reserved.
+*/
+
+"title.strings" = "Danh sách thư mục";
+
+/*edit*/
+"title.strings.move" = "Di chuyển";
+
+/*delete*/
+"title.strings.delete" = "Xoá";
+
+/*Do you want delete this folder*/
+"title.strings.confirm.delete" = "Bạn có muốn xoá ảnh này?";
+
+/*cancel*/
+"title.strings.cancel" = "Huỷ";
+
+/*ok*/
+"title.strings.ok" = "Đồng ý";
+
+"title.strings.delete.success" = "Xoá thành công";
+
+"title.strings.photoNumber" = "Ảnh";
+
+"title.strings.videoNumber" = "Videos";
+
+"title.strings.indexOfPhoto" = "của";

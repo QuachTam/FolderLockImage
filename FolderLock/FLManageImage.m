@@ -34,4 +34,19 @@
     return folderPath;
 }
 
++(void)deleteImageWithName:(NSString*)nameImage folderUUID:(NSString*)folderUUID {
+    NSString *folderPath = [self getPathWithFolder:folderUUID];
+    NSString *imagePath = [folderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", nameImage]];
+    NSFileManager *fileManage = [NSFileManager defaultManager];
+    NSError *error;
+    [fileManage removeItemAtPath:imagePath error:&error];
+}
+
++(void)deleteFolder:(NSString*)folderUUID {
+    NSString *folderPath = [self getPathWithFolder:folderUUID];
+    NSError *error = nil;
+    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:folderPath error:&error]) {
+        [[NSFileManager defaultManager] removeItemAtPath:[folderPath stringByAppendingPathComponent:file] error:&error];
+    }
+}
 @end

@@ -7,16 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FLFolderModel.h"
+#import "FLPhotoModel.h"
 
 @interface FLPhotoService : NSObject
-@property (nonatomic, strong) NSArray *listPhotoModel;
-@property (nonatomic, copy, readwrite) void(^resultsChangeInsert)(NSArray *arrayIndexPath);
-@property (nonatomic, copy, readwrite) void(^resultsChangeDelete)(NSArray *arrayIndexPath);
-@property (nonatomic, copy, readwrite) void(^resultsChangeUpdate)(NSArray *arrayIndexPath);
-@property (nonatomic, copy, readwrite) void(^resultsChangeMove)(NSArray *arrayIndexPath);
-@property (nonatomic, copy, readwrite) void(^willChangeContent)();
-@property (nonatomic, copy, readwrite) void(^didChangeContent)();
-
-@property (nonatomic, copy, readwrite) void(^didFinishFetchResults)();
-- (void)fetchDatabase;
+- (void)saveImageToFolder:(FLFolderModel*)folderModel image:(UIImage *)image success:(void(^)(void))success;
+- (void)deleteImageInFolder:(FLFolderModel*)folderModel photoMode:(FLPhotoModel*)photoModel success:(void(^)(void))success;
 @end

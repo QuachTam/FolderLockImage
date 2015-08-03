@@ -42,6 +42,7 @@
 - (void)actionSave {
     [self.view endEditing:YES];
     if ([self.textField.text isEqualToString:self.folderModel.password]) {
+        [self mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
         if (self.didCompleteSuccessPassword) {
             self.didCompleteSuccessPassword();
         }

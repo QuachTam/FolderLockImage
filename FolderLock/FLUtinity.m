@@ -10,6 +10,13 @@
 
 @implementation FLUtinity
 
++ (NSString *)convertStringDateDetailFromDate:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    NSString *stringFromDate = [formatter stringFromDate:date];
+    return stringFromDate;
+}
+
 + (NSString *)convertStringFromDate:(NSDate *)date {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/MM/dd"];
@@ -17,13 +24,11 @@
     return stringFromDate;
 }
 
-+ (NSArray *)sortPhotoWithCreateDate:(NSArray *)array {
-    NSSortDescriptor *sortDescriptor;
-    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createDate"
-                                                 ascending:YES];
++ (NSArray *)sortPhotoWithCreateDate:(NSArray *)array asceding:(BOOL)ascending{
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createDate"
+                                                 ascending:ascending];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    NSArray *sortedArray;
-    sortedArray = [array sortedArrayUsingDescriptors:sortDescriptors];
+    NSArray *sortedArray = [array sortedArrayUsingDescriptors:sortDescriptors];
     return sortedArray;
 }
 @end

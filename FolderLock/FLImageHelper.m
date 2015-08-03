@@ -19,4 +19,5 @@ NSString *const kImageAdd = @"Add.png";
 NSString *const kImageDelete = @"Delete.png";
 NSString *const kImageEdit = @"Edit.png";
 NSString *const kImageDetault = @"Icon_default.png";
+NSString *const kImageBack = @"Back.png";
 @end

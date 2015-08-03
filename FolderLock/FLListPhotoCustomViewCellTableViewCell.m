@@ -27,7 +27,7 @@
 }
 
 - (void)valueForCell:(FLPhotoModel*)photoModel{
-    [self.imageView setImage:[FLManageImage getImage:photoModel.uuid folderID:photoModel.folderUUID]];
+    [self.imgView setImage:[FLManageImage getImage:photoModel.uuid folderID:photoModel.folderUUID]];
     self.lbName.text = photoModel.name;
     self.lbDateCreate.text = photoModel.stringCreateDate;
 }

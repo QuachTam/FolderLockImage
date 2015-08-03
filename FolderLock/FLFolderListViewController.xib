@@ -18,14 +18,14 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IPz-Gv-eIP">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="435"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="cfm-bD-hbg"/>
                         <outlet property="delegate" destination="-1" id="wY5-Bl-b5S"/>
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="IPz-Gv-eIP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="K4p-hO-8DB"/>
                 <constraint firstAttribute="bottom" secondItem="IPz-Gv-eIP" secondAttribute="bottom" constant="69" id="NUX-I1-zvd"/>
@@ -34,7 +34,7 @@
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="342" y="357"/>
+            <point key="canvasLocation" x="-50" y="39"/>
         </view>
     </objects>
 </document>

@@ -11,6 +11,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "FLFolderModel.h"
 #import "Folder.h"
+#import "FLManageImage.h"
 
 @interface FLListFolderService ()<NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -139,6 +140,7 @@
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid=%@", folderModel.uuid];
         Folder *folder = [Folder MR_findFirstWithPredicate:predicate inContext:localContext];
+        [FLManageImage deleteFolder:folder.uuid];
         [folder MR_deleteEntityInContext:localContext];
     }];
 }

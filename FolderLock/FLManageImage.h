@@ -11,4 +11,6 @@
 @interface FLManageImage : NSObject
 + (UIImage*)getImage:(NSString*)nameImage folderID:(NSString*)folderID;
 + (void)saveImage:(UIImage*)image withName:(NSString*)nameImage folderUUID:(NSString *)folderUUID;
++(void)deleteImageWithName:(NSString*)nameImage folderUUID:(NSString*)folderUUID;
++(void)deleteFolder:(NSString*)folderUUID;
 @end

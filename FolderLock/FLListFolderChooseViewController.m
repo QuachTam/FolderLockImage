@@ -18,6 +18,7 @@ static NSString *chooseIdentifier = @"FLListFolderTableViewCell";
     NSIndexPath *lastIndexPath;
 }
 @property (nonatomic, strong) chooseFolderService *service;
+@property (nonatomic, strong) NSArray *listFolderModel;
 @end
 
 @implementation FLListFolderChooseViewController
@@ -35,6 +36,18 @@ static NSString *chooseIdentifier = @"FLListFolderTableViewCell";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
     
     [self registerTableViewCell];
+    
+    if (!self.service) {
+        self.service = [[chooseFolderService alloc] init];
+    }
+    self.listFolderModel = [[NSArray alloc] init];
+    __weak __typeof(self)week = self;
+    self.service.didFinishFetchResults = ^{
+        week.listFolderModel = week.service.listModelFolder;
+        [week.tbView reloadData];
+    };
+    
+    [self.service fetchDatabase];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,11 +61,17 @@ static NSString *chooseIdentifier = @"FLListFolderTableViewCell";
 }
 
 - (void)saveImageToFolder:(id)sender {
-    if (!self.service) {
-        self.service = [[chooseFolderService alloc] init];
-    }
-    if (lastIndexPath && self.image) {
-        [self.service saveImageToFolder:[self.listFolder objectAtIndex:lastIndexPath.row] image:self.image success:^{
+    if (self.typeSavePhoto==CREATE_PHOTO) {
+        if (lastIndexPath && self.image) {
+            [self.service saveImageToFolder:[self.listFolderModel objectAtIndex:lastIndexPath.row] image:self.image success:^{
+                if (self.didCompleteSaveImage) {
+                    self.didCompleteSaveImage();
+                }
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+        }
+    }else{
+        [self.service saveMoveImageToFolder:[self.listFolderModel objectAtIndex:lastIndexPath.row] photoModel:self.photoModel success:^{
             if (self.didCompleteSaveImage) {
                 self.didCompleteSaveImage();
             }
@@ -74,12 +93,13 @@ static NSString *chooseIdentifier = @"FLListFolderTableViewCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.listFolder.count;
+    return self.listFolderModel.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FLListFolderTableViewCell *cell = [self.tbView dequeueReusableCellWithIdentifier:chooseIdentifier forIndexPath:indexPath];
-    [cell setValueForCell:[self.listFolder objectAtIndex:indexPath.row]];
+    [cell setValueForCell:[self.listFolderModel objectAtIndex:indexPath.row]];
+    
     return cell;
 }
 

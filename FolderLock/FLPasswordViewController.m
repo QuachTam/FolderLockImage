@@ -41,10 +41,10 @@
 - (void)actionSave {
     [self.view endEditing:YES];
     if ([self.textField.text isEqualToString:self.stringPassword]) {
-        [self mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
         if (self.didCompleteSuccessPassword) {
             self.didCompleteSuccessPassword();
         }
+        [self mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
     }else{
         NSString *message = @"Password do not match";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];

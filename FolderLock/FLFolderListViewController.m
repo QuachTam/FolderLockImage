@@ -33,7 +33,7 @@
 
 static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 
-@interface FLFolderListViewController ()<CameraObject, MFMailComposeViewControllerDelegate, SWTableViewCellDelegate, SKPSMTPMessageDelegate>
+@interface FLFolderListViewController ()<CameraObjectDelegate, MFMailComposeViewControllerDelegate, SWTableViewCellDelegate, SKPSMTPMessageDelegate>
 @property (nonatomic, strong) FLAccountSetting *accountSetting;
 @property (nonatomic, strong) NSMutableArray *folderModels;
 @property (nonatomic, strong) SKPSMTPMessage *forgotPassword;
@@ -65,7 +65,6 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     if (![LTHPasscodeViewController doesPasscodeExist]) {
         startAppAd_loadShow = [[STAStartAppAd alloc] init];
     }
-    [self btnLoadShowClick:nil];
     [self registerTableViewCell];
     [self fetchResults];
 }
@@ -84,6 +83,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
         }
         [self.view addSubview:startAppBanner_fixed];
     }
+    [self btnLoadShowClick:nil];
 }
 
 - (void)setupFolderModels {
@@ -102,6 +102,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     CameraObject *camera = [CameraObject shareInstance];
     camera.delegate = self;
     camera.supperView = self;
+    camera.typeSaveImage = ONCE_IMAGE;
     camera.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     [camera showCamera];
 }
@@ -109,10 +110,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 - (void)didFinishPickingMediaWithInfo:(UIImage *)image {
     FLListFolderChooseViewController *choose = [[FLListFolderChooseViewController alloc] initWithNibName:NSStringFromClass([FLListFolderChooseViewController class]) bundle:nil];
     choose.image = image;
-    choose.listFolder = self.service.listModelFolder;
-    choose.didCompleteSaveImage = ^{
-        
-    };
+    choose.typeSavePhoto = CREATE_PHOTO;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:choose];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -173,16 +171,16 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 40.f)];
-    [view setBackgroundColor:[UIColor colorWithRed:239/255.f green:239/255.f blue:244/255.f alpha:1]];
+    [view setBackgroundColor:[UIColor colorWithRed:139/255.f green:195/255.f blue:74/255.f alpha:1]];
     UIButton *button = fl_buttonAdd();
     [view addSubview:button];
     [button addTarget:self action:@selector(addFolder:) forControlEvents:UIControlEventTouchUpInside];
     
     [button autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:15];
-    [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5];
-    [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
-    [button autoSetDimension:ALDimensionHeight toSize:30];
-    [button autoSetDimension:ALDimensionWidth toSize:30];
+    [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:7];
+    [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:7];
+    [button autoSetDimension:ALDimensionHeight toSize:25];
+    [button autoSetDimension:ALDimensionWidth toSize:25];
     return view;
 }
 
@@ -197,6 +195,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     FLFolderModel *model = [self.service.listModelFolder objectAtIndex:indexPath.row];
+    model.listPhotoModel = nil;
     if (model.isPassword) {
         [self presentRegisterAnAccountViewController:model];
     }else{
@@ -230,6 +229,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
         case 0:{
             NSIndexPath *cellIndexPath = [self.tbView indexPathForCell:cell];
             FLFolderModel *folderModel = [self.folderModels objectAtIndex:cellIndexPath.row];
+            folderModel.rePassword = folderModel.password;
             
             FLCreateFolderViewController *editFolder = [[FLCreateFolderViewController alloc] initWithNibName:NSStringFromClass([FLCreateFolderViewController class]) bundle:nil];
             editFolder.folderModel = folderModel;
@@ -278,7 +278,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
             }];
         };
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:registerAccount];
-        MZFormSheetController * formSheet = [[MZFormSheetController alloc] initWithSize:CGSizeMake(self.view.bounds.size.width-20, 164) viewController:nav];
+        MZFormSheetController * formSheet = [[MZFormSheetController alloc] initWithSize:CGSizeMake(self.view.bounds.size.width-20, 154) viewController:nav];
         [self MZFromSheetViewController:formSheet];
     }
 }

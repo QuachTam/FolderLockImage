@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+typedef NS_ENUM(NSInteger, TYPE_SAVE_IMAGE) {
+    MUTILPE_IMAGE = 0,
+    ONCE_IMAGE
+};
 
-@protocol CameraObject <NSObject>
+@protocol CameraObjectDelegate <NSObject>
 @required
 - (void)didFinishPickingMediaWithInfo:(UIImage *)image;
 - (void)imagePickerControllerDidCancel;
@@ -17,7 +21,8 @@
 
 @interface CameraObject : NSObject
 @property (nonatomic, strong) id supperView;
-@property (nonatomic, strong) id<CameraObject>delegate;
+@property (nonatomic, strong) id<CameraObjectDelegate>delegate;
+@property (nonatomic, readwrite) TYPE_SAVE_IMAGE typeSaveImage;
 @property (nonatomic, readwrite) UIImagePickerControllerSourceType sourceType;
 + (instancetype)shareInstance;
 - (void)showCamera;

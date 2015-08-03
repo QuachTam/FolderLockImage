@@ -38,7 +38,7 @@
 
 - (NSString *)stringCreateDate {
     if (!_stringCreateDate) {
-        _stringCreateDate = [FLUtinity convertStringFromDate:self.entity.createDate];
+        _stringCreateDate = [FLUtinity convertStringDateDetailFromDate:self.entity.createDate];
     }
     return _stringCreateDate;
 }

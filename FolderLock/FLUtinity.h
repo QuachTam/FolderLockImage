@@ -10,5 +10,6 @@
 
 @interface FLUtinity : NSObject
 + (NSString *)convertStringFromDate:(NSDate *)date;
-+ (NSArray *)sortPhotoWithCreateDate:(NSArray *)array;
++ (NSString *)convertStringDateDetailFromDate:(NSDate *)date;
++ (NSArray *)sortPhotoWithCreateDate:(NSArray *)array asceding:(BOOL)ascending;
 @end

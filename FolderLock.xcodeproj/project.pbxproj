@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6402C3891B662E41001008FA /* NSManagedObject+VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6402C3881B662E41001008FA /* NSManagedObject+VC.m */; };
 		6402C38C1B662FC4001008FA /* FLBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6402C38B1B662FC4001008FA /* FLBaseModel.m */; };
+		64111F7D1B6F203C0048AF2B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64111F7C1B6F203C0048AF2B /* Photos.framework */; };
 		6461DB831B5C04A20046D036 /* FLAccountSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461DB821B5C04A20046D036 /* FLAccountSetting.m */; };
 		6461DB961B5C05BD0046D036 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461DB951B5C05BD0046D036 /* Photo.m */; };
 		6461DB991B5C05BD0046D036 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461DB981B5C05BD0046D036 /* User.m */; };
@@ -18,7 +19,6 @@
 		6497DCD11B5FE18300CCAA82 /* FLListFolderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6497DCCF1B5FE18300CCAA82 /* FLListFolderTableViewCell.xib */; };
 		6497DCD61B5FE1BA00CCAA82 /* FLFolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6497DCD31B5FE1BA00CCAA82 /* FLFolderModel.m */; };
 		6497DCD71B5FE1BA00CCAA82 /* FLListFolderService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6497DCD51B5FE1BA00CCAA82 /* FLListFolderService.m */; };
-		6497DCDA1B5FE52A00CCAA82 /* Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 6497DCD91B5FE52A00CCAA82 /* Base.m */; };
 		6497DCDD1B5FE67800CCAA82 /* FLPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6497DCDC1B5FE67800CCAA82 /* FLPhotoModel.m */; };
 		6497DCE41B5FF35C00CCAA82 /* Add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6497DCE21B5FF35C00CCAA82 /* Add@2x.png */; };
 		6497DCE51B5FF35C00CCAA82 /* Add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6497DCE31B5FF35C00CCAA82 /* Add@3x.png */; };
@@ -32,6 +32,19 @@
 		64C2103B1B67478E00CBABDE /* FLUtinity.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C2103A1B67478E00CBABDE /* FLUtinity.m */; };
 		64C2103E1B674D9C00CBABDE /* FLPhotoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C2103D1B674D9C00CBABDE /* FLPhotoService.m */; };
 		64C210401B678C3E00CBABDE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C2103F1B678C3E00CBABDE /* CFNetwork.framework */; };
+		64CEFB3C1B6A302600FB2E01 /* RWLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CEFB3B1B6A302600FB2E01 /* RWLabel.m */; };
+		64CEFB3F1B6A3D6100FB2E01 /* add204@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CEFB3D1B6A3D6100FB2E01 /* add204@2x.png */; };
+		64CEFB401B6A3D6100FB2E01 /* add204@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CEFB3E1B6A3D6100FB2E01 /* add204@3x.png */; };
+		64CEFB431B6A3E6700FB2E01 /* add30@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CEFB411B6A3E6700FB2E01 /* add30@2x.png */; };
+		64CEFB441B6A3E6700FB2E01 /* add30@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CEFB421B6A3E6700FB2E01 /* add30@3x.png */; };
+		64CEFB4B1B6A446C00FB2E01 /* VCPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CEFB461B6A446C00FB2E01 /* VCPhotoDetailViewController.m */; };
+		64CEFB4C1B6A446C00FB2E01 /* VCPhotoPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CEFB481B6A446C00FB2E01 /* VCPhotoPageController.m */; };
+		64CEFB4D1B6A446C00FB2E01 /* VCPhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CEFB4A1B6A446C00FB2E01 /* VCPhotoScrollView.m */; };
+		64CEFB531B6A4C5A00FB2E01 /* Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CEFB521B6A4C5A00FB2E01 /* Base.m */; };
+		64CEFB551B6A4C7D00FB2E01 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CEFB541B6A4C7D00FB2E01 /* FacebookSDK.framework */; };
+		64D25B871B69E2F000C0F165 /* FLListPhotoViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64D25B891B69E2F000C0F165 /* FLListPhotoViewController.strings */; };
+		64D25B911B69E51500C0F165 /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D25B8F1B69E51500C0F165 /* Back@2x.png */; };
+		64D25B921B69E51500C0F165 /* Back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D25B901B69E51500C0F165 /* Back@3x.png */; };
 		64D539021B65DB9D002DA916 /* Icon_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D539001B65DB9D002DA916 /* Icon_default@2x.png */; };
 		64D539031B65DB9D002DA916 /* Icon_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D539011B65DB9D002DA916 /* Icon_default@3x.png */; };
 		64D539061B65E11A002DA916 /* FLManageImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D539051B65E11A002DA916 /* FLManageImage.m */; };
@@ -49,6 +62,7 @@
 		64E91EAD1B60E8F20050DF56 /* Edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E91EAB1B60E8F20050DF56 /* Edit@2x.png */; };
 		64E91EAE1B60E8F20050DF56 /* Edit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E91EAC1B60E8F20050DF56 /* Edit@3x.png */; };
 		64E91EB11B60F7A30050DF56 /* UIAlertView+VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E91EB01B60F7A30050DF56 /* UIAlertView+VC.m */; };
+		64F444651B6B878C004781F3 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F444641B6B878C004781F3 /* AssetsLibrary.framework */; };
 		A64BAEC623FC1F0CF2EED009 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635FB6E2432CC91780849EB3 /* libPods.a */; };
 		D92721571B5898DF001A741D /* STAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92721561B5898DF001A741D /* STAViewController.m */; };
 		D97458691B5369E2009E5175 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D97458681B5369E2009E5175 /* main.m */; };
@@ -129,6 +143,7 @@
 		6402C3881B662E41001008FA /* NSManagedObject+VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+VC.m"; sourceTree = "<group>"; };
 		6402C38A1B662FC4001008FA /* FLBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBaseModel.h; sourceTree = "<group>"; };
 		6402C38B1B662FC4001008FA /* FLBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBaseModel.m; sourceTree = "<group>"; };
+		64111F7C1B6F203C0048AF2B /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		6461DB811B5C04A20046D036 /* FLAccountSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAccountSetting.h; sourceTree = "<group>"; };
 		6461DB821B5C04A20046D036 /* FLAccountSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAccountSetting.m; sourceTree = "<group>"; };
 		6461DB941B5C05BD0046D036 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = FolderLock/Photo.h; sourceTree = SOURCE_ROOT; };
@@ -146,8 +161,6 @@
 		6497DCD31B5FE1BA00CCAA82 /* FLFolderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFolderModel.m; sourceTree = "<group>"; };
 		6497DCD41B5FE1BA00CCAA82 /* FLListFolderService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLListFolderService.h; sourceTree = "<group>"; };
 		6497DCD51B5FE1BA00CCAA82 /* FLListFolderService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLListFolderService.m; sourceTree = "<group>"; };
-		6497DCD81B5FE52A00CCAA82 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = SOURCE_ROOT; };
-		6497DCD91B5FE52A00CCAA82 /* Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base.m; sourceTree = SOURCE_ROOT; };
 		6497DCDB1B5FE67800CCAA82 /* FLPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhotoModel.h; sourceTree = "<group>"; };
 		6497DCDC1B5FE67800CCAA82 /* FLPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhotoModel.m; sourceTree = "<group>"; };
 		6497DCE21B5FF35C00CCAA82 /* Add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add@2x.png"; sourceTree = "<group>"; };
@@ -168,6 +181,26 @@
 		64C2103C1B674D9C00CBABDE /* FLPhotoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhotoService.h; sourceTree = "<group>"; };
 		64C2103D1B674D9C00CBABDE /* FLPhotoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhotoService.m; sourceTree = "<group>"; };
 		64C2103F1B678C3E00CBABDE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		64CEFB3A1B6A302600FB2E01 /* RWLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWLabel.h; sourceTree = "<group>"; };
+		64CEFB3B1B6A302600FB2E01 /* RWLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWLabel.m; sourceTree = "<group>"; };
+		64CEFB3D1B6A3D6100FB2E01 /* add204@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add204@2x.png"; sourceTree = "<group>"; };
+		64CEFB3E1B6A3D6100FB2E01 /* add204@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add204@3x.png"; sourceTree = "<group>"; };
+		64CEFB411B6A3E6700FB2E01 /* add30@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add30@2x.png"; sourceTree = "<group>"; };
+		64CEFB421B6A3E6700FB2E01 /* add30@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add30@3x.png"; sourceTree = "<group>"; };
+		64CEFB451B6A446C00FB2E01 /* VCPhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPhotoDetailViewController.h; sourceTree = "<group>"; };
+		64CEFB461B6A446C00FB2E01 /* VCPhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPhotoDetailViewController.m; sourceTree = "<group>"; };
+		64CEFB471B6A446C00FB2E01 /* VCPhotoPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPhotoPageController.h; sourceTree = "<group>"; };
+		64CEFB481B6A446C00FB2E01 /* VCPhotoPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPhotoPageController.m; sourceTree = "<group>"; };
+		64CEFB491B6A446C00FB2E01 /* VCPhotoScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPhotoScrollView.h; sourceTree = "<group>"; };
+		64CEFB4A1B6A446C00FB2E01 /* VCPhotoScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPhotoScrollView.m; sourceTree = "<group>"; };
+		64CEFB4F1B6A49F400FB2E01 /* FacebookSDKs-iOS-20150708.pkg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FacebookSDKs-iOS-20150708.pkg"; path = "../../../../Users/atam/Desktop/FacebookSDKs-iOS-20150708.pkg"; sourceTree = "<group>"; };
+		64CEFB511B6A4C5A00FB2E01 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = SOURCE_ROOT; };
+		64CEFB521B6A4C5A00FB2E01 /* Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base.m; sourceTree = SOURCE_ROOT; };
+		64CEFB541B6A4C7D00FB2E01 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		64D25B881B69E2F000C0F165 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FLListPhotoViewController.strings; sourceTree = "<group>"; };
+		64D25B8A1B69E2F200C0F165 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FLListPhotoViewController.strings; sourceTree = "<group>"; };
+		64D25B8F1B69E51500C0F165 /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back@2x.png"; sourceTree = "<group>"; };
+		64D25B901B69E51500C0F165 /* Back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back@3x.png"; sourceTree = "<group>"; };
 		64D539001B65DB9D002DA916 /* Icon_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_default@2x.png"; sourceTree = "<group>"; };
 		64D539011B65DB9D002DA916 /* Icon_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_default@3x.png"; sourceTree = "<group>"; };
 		64D539041B65E11A002DA916 /* FLManageImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLManageImage.h; sourceTree = "<group>"; };
@@ -192,6 +225,7 @@
 		64E91EAC1B60E8F20050DF56 /* Edit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit@3x.png"; sourceTree = "<group>"; };
 		64E91EAF1B60F7A30050DF56 /* UIAlertView+VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+VC.h"; sourceTree = "<group>"; };
 		64E91EB01B60F7A30050DF56 /* UIAlertView+VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+VC.m"; sourceTree = "<group>"; };
+		64F444641B6B878C004781F3 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		D92721551B5898DF001A741D /* STAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAViewController.h; sourceTree = "<group>"; };
 		D92721561B5898DF001A741D /* STAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAViewController.m; sourceTree = "<group>"; };
 		D97458631B5369E2009E5175 /* FolderLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FolderLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,6 +325,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64111F7D1B6F203C0048AF2B /* Photos.framework in Frameworks */,
+				64F444651B6B878C004781F3 /* AssetsLibrary.framework in Frameworks */,
+				64CEFB551B6A4C7D00FB2E01 /* FacebookSDK.framework in Frameworks */,
 				64C210401B678C3E00CBABDE /* CFNetwork.framework in Frameworks */,
 				D9ED84481B579B8500A1D1DA /* libz.dylib in Frameworks */,
 				D9ED84461B579B6100A1D1DA /* StartApp.framework in Frameworks */,
@@ -337,8 +374,8 @@
 		6461DB841B5C05690046D036 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				6497DCD81B5FE52A00CCAA82 /* Base.h */,
-				6497DCD91B5FE52A00CCAA82 /* Base.m */,
+				64CEFB511B6A4C5A00FB2E01 /* Base.h */,
+				64CEFB521B6A4C5A00FB2E01 /* Base.m */,
 				6461DB9A1B5C05BD0046D036 /* Folder.h */,
 				6461DB9B1B5C05BD0046D036 /* Folder.m */,
 				6461DB971B5C05BD0046D036 /* User.h */,
@@ -410,6 +447,19 @@
 			name = FLPhotoService;
 			sourceTree = "<group>";
 		};
+		64CEFB4E1B6A447500FB2E01 /* VCPhotoDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				64CEFB451B6A446C00FB2E01 /* VCPhotoDetailViewController.h */,
+				64CEFB461B6A446C00FB2E01 /* VCPhotoDetailViewController.m */,
+				64CEFB471B6A446C00FB2E01 /* VCPhotoPageController.h */,
+				64CEFB481B6A446C00FB2E01 /* VCPhotoPageController.m */,
+				64CEFB491B6A446C00FB2E01 /* VCPhotoScrollView.h */,
+				64CEFB4A1B6A446C00FB2E01 /* VCPhotoScrollView.m */,
+			);
+			name = VCPhotoDetailViewController;
+			sourceTree = "<group>";
+		};
 		64E701BB1B607E4D006D8102 /* FLCreateFolderViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +498,10 @@
 		A268CEB29ED361CE2C67B80A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				64111F7C1B6F203C0048AF2B /* Photos.framework */,
+				64F444641B6B878C004781F3 /* AssetsLibrary.framework */,
+				64CEFB541B6A4C7D00FB2E01 /* FacebookSDK.framework */,
+				64CEFB4F1B6A49F400FB2E01 /* FacebookSDKs-iOS-20150708.pkg */,
 				64C2103F1B678C3E00CBABDE /* CFNetwork.framework */,
 				D9ED84471B579B8500A1D1DA /* libz.dylib */,
 				D9ED84451B579B6100A1D1DA /* StartApp.framework */,
@@ -491,7 +545,6 @@
 				D97458AD1B53A75E009E5175 /* AppDeletate */,
 				D97458AC1B53A6D6009E5175 /* FLUtinity */,
 				D97458AB1B53A6C7009E5175 /* FLModels */,
-				64E701BB1B607E4D006D8102 /* FLCreateFolderViewController */,
 				D97458AA1B53A6B3009E5175 /* FLViewControllers */,
 				6461DB841B5C05690046D036 /* CoreData */,
 				D97458761B5369E2009E5175 /* Images.xcassets */,
@@ -575,6 +628,8 @@
 		D97458AA1B53A6B3009E5175 /* FLViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				64CEFB4E1B6A447500FB2E01 /* VCPhotoDetailViewController */,
+				64E701BB1B607E4D006D8102 /* FLCreateFolderViewController */,
 				64C2102A1B67393700CBABDE /* FLListPhotoViewController */,
 				6497DCEE1B5FF56B00CCAA82 /* FLListFolderChooseViewController */,
 				D9FD23641B561169000F15B7 /* FLAccountViewController */,
@@ -594,6 +649,8 @@
 		D97458AC1B53A6D6009E5175 /* FLUtinity */ = {
 			isa = PBXGroup;
 			children = (
+				64CEFB3A1B6A302600FB2E01 /* RWLabel.h */,
+				64CEFB3B1B6A302600FB2E01 /* RWLabel.m */,
 				6497DCCA1B5FDD1200CCAA82 /* CameraObject.h */,
 				6497DCCB1B5FDD1200CCAA82 /* CameraObject.m */,
 				D92721551B5898DF001A741D /* STAViewController.h */,
@@ -640,6 +697,12 @@
 		D984397C1B549EF900A1676E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				64CEFB411B6A3E6700FB2E01 /* add30@2x.png */,
+				64CEFB421B6A3E6700FB2E01 /* add30@3x.png */,
+				64CEFB3D1B6A3D6100FB2E01 /* add204@2x.png */,
+				64CEFB3E1B6A3D6100FB2E01 /* add204@3x.png */,
+				64D25B8F1B69E51500C0F165 /* Back@2x.png */,
+				64D25B901B69E51500C0F165 /* Back@3x.png */,
 				64D539001B65DB9D002DA916 /* Icon_default@2x.png */,
 				64D539011B65DB9D002DA916 /* Icon_default@3x.png */,
 				64E91EAB1B60E8F20050DF56 /* Edit@2x.png */,
@@ -691,6 +754,7 @@
 				D984399D1B54A90300A1676E /* LTHPasscodeViewController.strings */,
 				D98439B01B54BBA400A1676E /* FLSettingViewController.strings */,
 				D9FD23781B5615A1000F15B7 /* FLAccountViewController.strings */,
+				64D25B891B69E2F000C0F165 /* FLListPhotoViewController.strings */,
 			);
 			name = Localize;
 			sourceTree = "<group>";
@@ -873,6 +937,24 @@
 				en,
 				Base,
 				vi,
+				ar,
+				da,
+				de,
+				"es-MX",
+				es,
+				fi,
+				fr,
+				he,
+				"hi-IN",
+				id,
+				it,
+				ja,
+				ko,
+				"pt-PT",
+				pt,
+				ru,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = D974585A1B5369E2009E5175;
 			productRefGroup = D97458641B5369E2009E5175 /* Products */;
@@ -899,17 +981,23 @@
 				D98439C11B551DE200A1676E /* FLTableViewCellSignText.xib in Resources */,
 				D9FD23711B56148D000F15B7 /* Save@3x.png in Resources */,
 				D9FD23701B56148D000F15B7 /* Save@2x.png in Resources */,
+				64CEFB3F1B6A3D6100FB2E01 /* add204@2x.png in Resources */,
+				64D25B871B69E2F000C0F165 /* FLListPhotoViewController.strings in Resources */,
+				64CEFB431B6A3E6700FB2E01 /* add30@2x.png in Resources */,
 				D98439851B549F2700A1676E /* Settings@2x.png in Resources */,
 				64D539031B65DB9D002DA916 /* Icon_default@3x.png in Resources */,
 				64C2102F1B67441000CBABDE /* FLListPhotoViewController.xib in Resources */,
 				D98439861B549F2700A1676E /* Settings@3x.png in Resources */,
 				D98439881B549F2700A1676E /* More@3x.png in Resources */,
+				64D25B921B69E51500C0F165 /* Back@3x.png in Resources */,
 				6497DCD11B5FE18300CCAA82 /* FLListFolderTableViewCell.xib in Resources */,
 				D98439871B549F2700A1676E /* More@2x.png in Resources */,
 				64E701C01B608544006D8102 /* FLInputPasswordViewController.xib in Resources */,
 				64E91EA91B60E8A50050DF56 /* Delete@2x.png in Resources */,
 				6497DCE41B5FF35C00CCAA82 /* Add@2x.png in Resources */,
 				D98439A21B54AAD200A1676E /* Cancel@3x.png in Resources */,
+				64D25B911B69E51500C0F165 /* Back@2x.png in Resources */,
+				64CEFB401B6A3D6100FB2E01 /* add204@3x.png in Resources */,
 				D9FD23691B561192000F15B7 /* FLAccountViewController.xib in Resources */,
 				D9FD23761B5615A1000F15B7 /* FLAccountViewController.strings in Resources */,
 				D9FD23621B560CDC000F15B7 /* Camera@2x.png in Resources */,
@@ -924,6 +1012,7 @@
 				64E91EAA1B60E8A50050DF56 /* Delete@3x.png in Resources */,
 				64C210381B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.xib in Resources */,
 				D97458981B536E25009E5175 /* FLFolderListViewController.xib in Resources */,
+				64CEFB441B6A3E6700FB2E01 /* add30@3x.png in Resources */,
 				D984399B1B54A90300A1676E /* LTHPasscodeViewController.strings in Resources */,
 				64E91EAE1B60E8F20050DF56 /* Edit@3x.png in Resources */,
 				64E701C61B60A225006D8102 /* FLPasswordViewController.xib in Resources */,
@@ -994,11 +1083,12 @@
 				6497DCD01B5FE18300CCAA82 /* FLListFolderTableViewCell.m in Sources */,
 				D98439C71B55259C00A1676E /* FLStringHelper.m in Sources */,
 				6461DB9C1B5C05BD0046D036 /* Folder.m in Sources */,
+				64CEFB531B6A4C5A00FB2E01 /* Base.m in Sources */,
 				D984398C1B54A07E00A1676E /* FLImageHelper.m in Sources */,
 				D98439C01B551DE200A1676E /* FLTableViewCellSignText.m in Sources */,
 				64E701B61B607E2A006D8102 /* CreateFolderService.m in Sources */,
+				64CEFB4B1B6A446C00FB2E01 /* VCPhotoDetailViewController.m in Sources */,
 				D9FD237F1B5673DA000F15B7 /* FLAccountCustomCell.m in Sources */,
-				6497DCDA1B5FE52A00CCAA82 /* Base.m in Sources */,
 				D9FD23681B561192000F15B7 /* FLAccountViewController.m in Sources */,
 				6461DB991B5C05BD0046D036 /* User.m in Sources */,
 				64E701BF1B608544006D8102 /* FLInputPasswordViewController.m in Sources */,
@@ -1006,6 +1096,7 @@
 				64E701C51B60A225006D8102 /* FLPasswordViewController.m in Sources */,
 				D974589B1B537398009E5175 /* LTHKeychainUtils.m in Sources */,
 				6497DCEC1B5FF56400CCAA82 /* FLListFolderChooseViewController.m in Sources */,
+				64CEFB4D1B6A446C00FB2E01 /* VCPhotoScrollView.m in Sources */,
 				D98439C41B5521AE00A1676E /* AccountModel.m in Sources */,
 				D974586C1B5369E2009E5175 /* AppDelegate.m in Sources */,
 				6497DCDD1B5FE67800CCAA82 /* FLPhotoModel.m in Sources */,
@@ -1025,8 +1116,10 @@
 				6497DCD71B5FE1BA00CCAA82 /* FLListFolderService.m in Sources */,
 				64C2102E1B67441000CBABDE /* FLListPhotoViewController.m in Sources */,
 				D97458B11B53A7B0009E5175 /* FLButtonHelper.m in Sources */,
+				64CEFB3C1B6A302600FB2E01 /* RWLabel.m in Sources */,
 				64E91EB11B60F7A30050DF56 /* UIAlertView+VC.m in Sources */,
 				6402C3891B662E41001008FA /* NSManagedObject+VC.m in Sources */,
+				64CEFB4C1B6A446C00FB2E01 /* VCPhotoPageController.m in Sources */,
 				6497DCEB1B5FF56400CCAA82 /* chooseFolderService.m in Sources */,
 				D98439A71B54B9AD00A1676E /* FLSettingViewController.m in Sources */,
 				64E701B91B607E2A006D8102 /* TextFieldTableViewCell.m in Sources */,
@@ -1052,6 +1145,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		64D25B891B69E2F000C0F165 /* FLListPhotoViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64D25B881B69E2F000C0F165 /* en */,
+				64D25B8A1B69E2F200C0F165 /* vi */,
+			);
+			name = FLListPhotoViewController.strings;
+			sourceTree = "<group>";
+		};
 		D97458781B5369E2009E5175 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1198,8 +1300,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FolderLock/Resource/FolderLock-PrefixHeader.pch";
 				INFOPLIST_FILE = FolderLock/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "15240b6e-59ab-42cb-be38-4449fb3b4505";
 			};
@@ -1219,8 +1322,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FolderLock/Resource/FolderLock-PrefixHeader.pch";
 				INFOPLIST_FILE = FolderLock/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "15240b6e-59ab-42cb-be38-4449fb3b4505";
 			};

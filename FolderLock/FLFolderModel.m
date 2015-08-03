@@ -66,9 +66,9 @@
 
 - (NSString *)urlIcon {
     if (!_urlIcon) {
-        NSArray *listPhoto = [FLUtinity sortPhotoWithCreateDate:[self.folder.photos allObjects]];
+        NSArray *listPhoto = [FLUtinity sortPhotoWithCreateDate:[self.folder.photos allObjects] asceding:NO];
         if (listPhoto.count) {
-            Photo *entity = [listPhoto lastObject];
+            Photo *entity = [listPhoto firstObject];
             _urlIcon = entity.url;
         }
     }
@@ -78,12 +78,12 @@
 - (NSArray *)listPhotoModel {
     if (!_listPhotoModel) {
         NSMutableArray *listModel = [[NSMutableArray alloc] init];
-        NSArray *listPhoto = [self.folder.photos allObjects];
+        NSArray *listPhoto = [FLUtinity sortPhotoWithCreateDate:[self.folder.photos allObjects] asceding:NO];
         for (NSInteger index=0; index<listPhoto.count; index++) {
             FLPhotoModel *model = [[FLPhotoModel alloc] initWithPhotoEntity:[listPhoto objectAtIndex:index]];
             [listModel addObject:model];
         }
-        _listPhotoModel = [FLUtinity sortPhotoWithCreateDate:listModel];
+        _listPhotoModel = listModel;
     }
     return _listPhotoModel;
 }
