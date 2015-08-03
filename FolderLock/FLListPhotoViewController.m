@@ -79,48 +79,30 @@ static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell"
 
 #pragma mark - Assets Picker Delegate
 
-//- (BOOL)assetsPickerController:(CTAssetsPickerController *)picker isDefaultAssetsGroup:(ALAssetsGroup *)group
-//{
-//    return ([[group valueForProperty:ALAssetsGroupPropertyType] integerValue] == ALAssetsGroupSavedPhotos);
-//}
+- (BOOL)assetsPickerController:(CTAssetsPickerController *)picker isDefaultAssetsGroup:(ALAssetsGroup *)group
+{
+    return ([[group valueForProperty:ALAssetsGroupPropertyType] integerValue] == ALAssetsGroupSavedPhotos);
+}
 
 - (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
 {
-//    if (picker.selectedAssets.count > 0) {
-//        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        [picker dismissViewControllerAnimated:YES completion:^{
-//            for (ALAsset * asset in picker.selectedAssets) {
-////                [self addFileNamePhotoList:asset];
-//            }
-//            
-//            [MBProgressHUD hideHUDForView:self.view animated:YES];
-////            [self reloadPhotoCell];
-//        }];
-//    }
-//    else {
-//        [picker dismissViewControllerAnimated:YES completion:^{
-//            
-//        }];
-//    }
+    if (picker.selectedAssets.count > 0) {
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [picker dismissViewControllerAnimated:YES completion:^{
+            for (ALAsset * asset in picker.selectedAssets) {
+//                [self addFileNamePhotoList:asset];
+            }
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+//            [self reloadPhotoCell];
+        }];
+    }
+    else {
+        [picker dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }
 }
-
-//- (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldEnableAsset:(ALAsset *)asset
-//{
-//    if ([[asset valueForProperty:ALAssetPropertyType] isEqual:ALAssetTypeVideo])
-//    {
-//        return NO;
-//    }
-//    else
-//    {
-//        return YES;
-//    }
-//}
-//
-//- (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldSelectAsset:(ALAsset *)asset
-//{
-//    return (asset.defaultRepresentation != nil);
-//}
-
 
 - (void)showCameraPicker:(UIImagePickerControllerSourceType)sourceType
 {
