@@ -31,6 +31,7 @@
 #import <skpsmtpmessage/SKPSMTPMessage.h>
 #import "AccountModel.h"
 
+
 static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 
 @interface FLFolderListViewController ()<CameraObjectDelegate, MFMailComposeViewControllerDelegate, SWTableViewCellDelegate, SKPSMTPMessageDelegate>
@@ -67,6 +68,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     }
     [self registerTableViewCell];
     [self fetchResults];
+
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -102,8 +104,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     CameraObject *camera = [CameraObject shareInstance];
     camera.delegate = self;
     camera.supperView = self;
-    camera.typeSaveImage = ONCE_IMAGE;
-    camera.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    camera.sourceType = UIImagePickerControllerSourceTypeCamera;
     [camera showCamera];
 }
 
@@ -252,7 +253,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
         default:
             break;
     }
-    [cell hideUtilityButtonsAnimated:YES];
+    [cell hideUtilityButtonsAnimated:NO];
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {

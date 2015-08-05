@@ -18,11 +18,29 @@
 #import "CTAssetsPickerController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <Photos/Photos.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
+#import "FLManageImage.h"
+#import <Accounts/Accounts.h>
+#import <STTwitter/STTwitter.h>
+#import <Twitter/Twitter.h>
 
 static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell";
+static NSString *consumerKey = @"u3C1JoMbkYYXk36uqNJ3CoPCz";
+static NSString *consumerSecret = @"eZXChsh84InSUWXA2TRhWDE7dUYrbhXbbcM46KQcQ8dTluSU9a";
+NSInteger TAG_SELECT_ACCOUNT_TWITTER = 100001;
 
-@interface FLListPhotoViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, CameraObjectDelegate, UIActionSheetDelegate,CTAssetsPickerControllerDelegate>
+typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage); // don't bother with NSError for that
+
+@interface FLListPhotoViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, CameraObjectDelegate, UIActionSheetDelegate,CTAssetsPickerControllerDelegate, FBSDKSharingDelegate>
 @property (nonatomic, strong) FLPhotoService *service;
+@property (nonatomic, strong) STTwitterAPI *twitter;
+@property (nonatomic, strong) ACAccountStore *accountStore;
+@property (nonatomic, strong) NSArray *iOSAccounts;
+@property (nonatomic, strong) accountChooserBlock_t accountChooserBlock;
+@property (nonatomic, strong) FBSDKSharePhoto *photoShare;
+@property (nonatomic, strong) FBSDKSharePhotoContent *content;
 @end
 
 @implementation FLListPhotoViewController
@@ -41,6 +59,32 @@ static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell"
     [self registerTableViewCell];
     self.service = [[FLPhotoService alloc] init];
 }
+#pragma mark login twitter
+
+- (void)tweetTapped:(UIImage *)image{
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        SLComposeViewController *sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        if (image) {
+            [sheet addImage:image];
+        }
+        SLComposeViewControllerCompletionHandler completionBlock = ^(SLComposeViewControllerResult result){
+            if (result == SLComposeViewControllerResultCancelled) {
+                NSLog(@"Cancelled");
+            } else {
+                NSLog(@"Done");
+            }
+            
+            [sheet dismissViewControllerAnimated:YES completion:Nil];
+        };
+        sheet.completionHandler = completionBlock;
+        
+        //Adding the Text to the post value from iOS
+        [sheet setInitialText:@"hello twitter"];
+        [self presentViewController:sheet animated:YES completion:Nil]; 
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kShowAlertView object:@{@"title":@"Please Enter your account on setting"}];
+    }
+}
 
 - (void)reloadData {
     self.folderModel.listPhotoModel = nil;
@@ -52,30 +96,51 @@ static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell"
 }
 
 - (void)showMore {
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Photo", nil];
-    [action showInView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Take photo", @"Choose Existing", nil];
+    //[actionSheet showInView:self.view];
+    [actionSheet showInView:self.navigationController.view];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex==1) {
-        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                // init picker
-                CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
-                
-                // set delegate
-                picker.delegate = self;
-                
-                // present picker
-                [self presentViewController:picker animated:YES completion:nil];
-            });
-        }];
-//        [self showCameraPicker:UIImagePickerControllerSourceTypePhotoLibrary];
-    }else if (buttonIndex==2){
-        [self showCameraPicker:UIImagePickerControllerSourceTypeCamera];
+#pragma mark UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (actionSheet.tag==TAG_SELECT_ACCOUNT_TWITTER) {
+        if(buttonIndex == [actionSheet cancelButtonIndex]) {
+            _accountChooserBlock(nil, @"Account selection was cancelled.");
+            return;
+        }
+        NSUInteger accountIndex = buttonIndex - 1;
+        ACAccount *account = [_iOSAccounts objectAtIndex:accountIndex];
+        _accountChooserBlock(account, nil);
+    }else{
+        NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if ([title isEqualToString:@"Take photo"]) {
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                [self showCameraPicker:UIImagePickerControllerSourceTypeCamera];
+            }else{
+                [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
+                        picker.delegate = self;
+                        [self presentViewController:picker animated:YES completion:nil];
+                    });
+                }];
+            }
+        }else if ([title isEqualToString:@"Choose Existing"]){
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
+                    picker.delegate = self;
+                    [self presentViewController:picker animated:YES completion:nil];
+                });
+            }];
+        }
     }
 }
+
 
 #pragma mark - Assets Picker Delegate
 
@@ -87,14 +152,20 @@ static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell"
 - (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
 {
     if (picker.selectedAssets.count > 0) {
-        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [picker dismissViewControllerAnimated:YES completion:^{
-            for (ALAsset * asset in picker.selectedAssets) {
-//                [self addFileNamePhotoList:asset];
+            NSMutableArray *listImage = [NSMutableArray new];
+            for (PHAsset * asset in picker.selectedAssets) {
+                PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+                options.synchronous = YES;
+                [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(asset.pixelWidth, asset.pixelHeight) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage *result, NSDictionary *info) {
+                    [listImage addObject:result];
+                }];
             }
-            
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-//            [self reloadPhotoCell];
+            [self.service saveImageToFolder:self.folderModel image:listImage success:^{
+                [self reloadData];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            }];
         }];
     }
     else {
@@ -109,7 +180,6 @@ static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell"
     CameraObject *camera = [CameraObject shareInstance];
     camera.delegate = self;
     camera.supperView = self;
-    camera.typeSaveImage = MUTILPE_IMAGE;
     camera.sourceType = sourceType;
     [camera showCamera];
 }
@@ -119,7 +189,7 @@ static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell"
     if (!self.service) {
         self.service = [[FLPhotoService alloc] init];
     }
-    [self.service saveImageToFolder:self.folderModel image:image success:^{
+    [self.service saveImageToFolder:self.folderModel image:@[image] success:^{
         [self reloadData];
     }];
 }
@@ -147,6 +217,7 @@ static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell"
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FLListPhotoCustomViewCellTableViewCell *cell = [self.tbView dequeueReusableCellWithIdentifier:customListPhotoCell forIndexPath:indexPath];
     cell.leftUtilityButtons = [self leftButtons];
+    cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;
     [self configureBasicCell:cell atIndexPath:indexPath];
     return cell;
@@ -159,6 +230,7 @@ static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell"
 #pragma mark - SWTableViewDelegate
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
+    [cell hideUtilityButtonsAnimated:NO];
     switch (index) {
         case 0:{
             NSIndexPath *cellIndexPath = [self.tbView indexPathForCell:cell];
@@ -192,23 +264,141 @@ static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell"
         default:
             break;
     }
-    [cell hideUtilityButtonsAnimated:YES];
+    
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    [cell hideUtilityButtonsAnimated:NO];
+    switch (index) {
+        case 0:{
+            FLPhotoModel *photoModel = [self.folderModel.listPhotoModel firstObject];
+            UIImage *image = [FLManageImage getImage:photoModel.uuid folderID:self.folderModel.uuid];
+            [self tweetTapped:image];
+            break;
+        }
+        case 1:{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"What is on your mind?" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+            alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+            [alert showAlerViewWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                if (buttonIndex) {
+                    UITextField *textInput = [alertView textFieldAtIndex:0];
+                    if ([FBSDKAccessToken currentAccessToken]) {
+                        NSIndexPath *cellIndexPath = [self.tbView indexPathForCell:cell];
+                        FLPhotoModel *photoModel = [self.folderModel.listPhotoModel objectAtIndex:cellIndexPath.row];
+                        UIImage *image = [FLManageImage getImage:photoModel.uuid folderID:self.folderModel.uuid];
+                        [self postToWallImage:image message:textInput.text];
+                    }else{
+                        [self loginButtonClicked:nil];
+                    }
+                }
+            }];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)postToWallImage:(UIImage*)image message:(NSString*)message{
+    if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+        if (image) {
+            [self sharePhoto:image message:message];
+        }
+    } else {
+        FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+        [loginManager logInWithPublishPermissions:@[@"publish_actions"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            if (!error && image) {
+                [self sharePhoto:image message:message];
+            }
+        }];
+    }
+}
+
+- (void)sharePhoto:(UIImage*)image message:(NSString*)message{
+    self.photoShare = [[FBSDKSharePhoto alloc] init];
+    if (message.length) {
+        self.photoShare.caption = message;
+    }
+    self.photoShare.image = image;
+    self.photoShare.userGenerated = YES;
+    self.content = [[FBSDKSharePhotoContent alloc] init];
+    self.content.photos = @[self.photoShare];
+    [FBSDKShareAPI shareWithContent:self.content delegate:self];
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results{
     
 }
+
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
+    
+}
+
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
+    
+}
+
+- (IBAction)loginButtonClicked:(id)sender {
+    
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login logInWithReadPermissions:@[@"email"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+        if (error) {
+            // Process error
+            NSLog(@"error %@",error);
+        } else if (result.isCancelled) {
+            // Handle cancellations
+            NSLog(@"Cancelled");
+        } else {
+            if ([result.grantedPermissions containsObject:@"email"]) {
+                // Do work
+                [self fetchUserInfo];
+            }
+        }
+    }];
+}
+
+-(void)fetchUserInfo {
+    if ([FBSDKAccessToken currentAccessToken]) {
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
+         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+             if (!error) {
+                 NSLog(@"Fetched User Information:%@", result);
+             }
+             else {
+                 NSLog(@"Error %@",error);
+             }
+         }];
+        
+    } else {
+        
+        NSLog(@"User is not Logged in");
+    }
+}
+
 
 
 - (NSArray *)leftButtons
 {
+    NSMutableArray *lefttUtilityButtons = [NSMutableArray new];
+    [lefttUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:_LSFromTable(@"title.strings.move", @"FLListPhotoViewController", @"Move")];
+    [lefttUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:_LSFromTable(@"title.strings.delete", @"FLListPhotoViewController", @"Delete")];
+    
+    return lefttUtilityButtons;
+}
+
+- (NSArray *)rightButtons
+{
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:_LSFromTable(@"title.strings.move", @"FLListPhotoViewController", @"Move")];
+                                                title:_LSFromTable(@"title.strings.twitter", @"FLListPhotoViewController", @"Twitter")];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
-                                                title:_LSFromTable(@"title.strings.delete", @"FLListPhotoViewController", @"Delete")];
+                                                title:_LSFromTable(@"title.strings.facebook", @"FLListPhotoViewController", @"FaceBook")];
     
     return rightUtilityButtons;
 }
@@ -255,13 +445,13 @@ static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell"
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

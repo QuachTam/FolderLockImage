@@ -14,6 +14,10 @@
 /*delete*/
 "title.strings.delete" = "Xoá";
 
+"title.strings.facebook" = "FaceBook";
+
+"title.strings.twitter" = "Twitter";
+
 /*Do you want delete this folder*/
 "title.strings.confirm.delete" = "Bạn có muốn xoá ảnh này?";
 

@@ -12,4 +12,5 @@
 NSString * const kKeychainPasscode = @"passcode.folderlock.user.";
 NSString * const kKeychainService = @"passcode.folderlock.service.";
 NSString * const kInstallApplication = @"install.application.";
+NSString * const kShowAlertView = @"showAlertViewInApp";
 @end

@@ -19,13 +19,16 @@
 
 @implementation FLPhotoService
 
-- (void)saveImageToFolder:(FLFolderModel*)folderModel image:(UIImage *)image success:(void(^)(void))success {
+- (void)saveImageToFolder:(FLFolderModel*)folderModel image:(NSArray *)ListImage success:(void(^)(void))success {
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
         Folder *folder = [Folder entityWithUuid:folderModel.uuid inContext:localContext];
-        Photo *photo = [Photo entityWithUuid:[[[NSUUID UUID] UUIDString] lowercaseString] inContext:localContext];
-        photo.url = photo.uuid;
-        [FLManageImage saveImage:image withName:photo.uuid folderUUID:folder.uuid];
-        [folder addPhotosObject:photo];
+        for (NSInteger index=0; index<ListImage.count; index++) {
+            Photo *photo = [Photo entityWithUuid:[[[NSUUID UUID] UUIDString] lowercaseString] inContext:localContext];
+            photo.url = photo.uuid;
+            UIImage *image = [ListImage objectAtIndex:index];
+            [FLManageImage saveImage:image withName:photo.uuid folderUUID:folder.uuid];
+            [folder addPhotosObject:photo];
+        }
     }];
     if (success) {
         success();

@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, ‘8.0’
+platform :ios, '7.0'
 
 inhibit_all_warnings!
 
@@ -16,4 +16,4 @@ pod 'SSKeychain', '~> 1.2'
 pod 'SDWebImage', '~>3.7.2'
 pod 'AHKActionSheet'
 pod 'skpsmtpmessage'
-pod 'CTAssetsPickerController',  '~> 3.0.0-beta.1'
+pod 'STTwitter'

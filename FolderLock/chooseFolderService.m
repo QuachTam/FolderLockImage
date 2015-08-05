@@ -47,15 +47,16 @@
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
         Folder *folder = [Folder entityWithUuid:folderModel.uuid inContext:localContext];
         Photo *photo = [Photo entityWithUuid:photoModel.uuid inContext:localContext];
-        
         Folder *folderOld = photo.folder;
-        UIImage *imagePhoto = [FLManageImage getImage:photo.uuid folderID:folderOld.uuid];
-        [folderOld removePhotosObject:photo];
-        
-        [FLManageImage saveImage:imagePhoto withName:photo.uuid folderUUID:folder.uuid];
-        [FLManageImage deleteImageWithName:photo.uuid folderUUID:folderOld.uuid];
-        
-        [folder addPhotosObject:photo];
+        if (![folderOld.uuid isEqualToString:folder.uuid]) {
+            UIImage *imagePhoto = [FLManageImage getImage:photo.uuid folderID:folderOld.uuid];
+            [folderOld removePhotosObject:photo];
+            
+            [FLManageImage saveImage:imagePhoto withName:photo.uuid folderUUID:folder.uuid];
+            [FLManageImage deleteImageWithName:photo.uuid folderUUID:folderOld.uuid];
+            
+            [folder addPhotosObject:photo];
+        }
     }];
     if (success) {
         success();

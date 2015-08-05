@@ -12,7 +12,8 @@
 #import <MagicalRecord/MagicalRecord.h>
 /* Import StartApp SDK framework */
 #import <StartApp/StartApp.h>
-#import <FacebookSDK/FacebookSDK.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "FLStringHelper.h"
 
 NSString * const kCoreDataFileName = @"FolderLock.sqlite";
 @interface AppDelegate ()
@@ -37,15 +38,26 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
     
     [self settingStartAppSDK];
     [self settingPasscode];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlertView:) name:kShowAlertView object:nil];
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
+    
     return YES;
+}
+
+- (void)showAlertView:(NSNotification*)notification {
+    NSDictionary *dict = notification.object;
+    NSString *title = [dict objectForKey:@"title"];
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:title message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [alertview show];
 }
 
 - (void)settingStartAppSDK {
     // initialize the SDK with your appID and devID
     STAStartAppSDK* sdk = [STAStartAppSDK sharedInstance];
-    sdk.appID = @"206725671";
-    sdk.devID = @"106165566";
-    sdk.preferences = [STASDKPreferences prefrencesWithAge:22 andGender:STAGender_Male];
+    sdk.appID = @"207271338";
+    sdk.devID = @"107800535";
+    sdk.preferences = [STASDKPreferences prefrencesWithAge:28 andGender:STAGender_Male];
     
     STASplashPreferences *splashPreferences = [[STASplashPreferences alloc] init];
     splashPreferences.splashMode = STASplashModeTemplate;
@@ -83,43 +95,11 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    
-    BOOL urlWasHandled =
-    [FBAppCall handleOpenURL:url
-           sourceApplication:sourceApplication
-             fallbackHandler:
-     ^(FBAppCall *call) {
-         // Parse the incoming URL to look for a target_url parameter
-         NSString *query = [url query];
-         NSDictionary *params = [self parseURLParams:query];
-         // Check if target URL exists
-         NSString *appLinkDataString = [params valueForKey:@"al_applink_data"];
-         if (appLinkDataString) {
-             NSError *error = nil;
-             NSDictionary *applinkData =
-             [NSJSONSerialization JSONObjectWithData:[appLinkDataString dataUsingEncoding:NSUTF8StringEncoding]
-                                             options:0
-                                               error:&error];
-             if (!error &&
-                 [applinkData isKindOfClass:[NSDictionary class]] &&
-                 applinkData[@"target_url"]) {
-                 self.refererAppLink = applinkData[@"referer_app_link"];
-                 NSString *targetURLString = applinkData[@"target_url"];
-                 // Show the incoming link in an alert
-                 // Your code to direct the user to the
-                 // appropriate flow within your app goes here
-                 [[[UIAlertView alloc] initWithTitle:@"Received link:"
-                                             message:targetURLString
-                                            delegate:nil
-                                   cancelButtonTitle:@"OK"
-                                   otherButtonTitles:nil] show];
-             }
-         }
-     }];
-    
-    return urlWasHandled;
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
-
 // A function for parsing URL parameters
 - (NSDictionary*)parseURLParams:(NSString *)query {
     NSArray *pairs = [query componentsSeparatedByString:@"&"];
@@ -149,6 +129,7 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

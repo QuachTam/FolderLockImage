@@ -11,6 +11,6 @@
 #import "FLPhotoModel.h"
 
 @interface FLPhotoService : NSObject
-- (void)saveImageToFolder:(FLFolderModel*)folderModel image:(UIImage *)image success:(void(^)(void))success;
+- (void)saveImageToFolder:(FLFolderModel*)folderModel image:(NSArray *)ListImage success:(void(^)(void))success;
 - (void)deleteImageInFolder:(FLFolderModel*)folderModel photoMode:(FLPhotoModel*)photoModel success:(void(^)(void))success;
 @end

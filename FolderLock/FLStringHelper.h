@@ -12,4 +12,5 @@
 extern NSString * const kKeychainPasscode;
 extern NSString * const kKeychainService;
 extern NSString * const kInstallApplication;
+extern NSString * const kShowAlertView;
 @end

@@ -10,6 +10,12 @@
 
 @implementation FLManageImage
 
++ (NSString*)getContentOfFilemage:(NSString*)nameImage folderID:(NSString*)folderID {
+    NSString *folderPath = [self getPathWithFolder:folderID];
+    NSString *getImagePath = [folderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", nameImage]];
+    return getImagePath;
+}
+
 + (UIImage*)getImage:(NSString*)nameImage folderID:(NSString*)folderID{
     NSString *folderPath = [self getPathWithFolder:folderID];
     NSString *getImagePath = [folderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", nameImage]];

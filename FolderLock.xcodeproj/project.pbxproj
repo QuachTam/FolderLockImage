@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6402C3891B662E41001008FA /* NSManagedObject+VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6402C3881B662E41001008FA /* NSManagedObject+VC.m */; };
 		6402C38C1B662FC4001008FA /* FLBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6402C38B1B662FC4001008FA /* FLBaseModel.m */; };
+		640C61AB1B71E52A003AD692 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 640C61A81B71E52A003AD692 /* FBSDKCoreKit.framework */; };
+		640C61AC1B71E52A003AD692 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 640C61A91B71E52A003AD692 /* FBSDKLoginKit.framework */; };
+		640C61AD1B71E52A003AD692 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 640C61AA1B71E52A003AD692 /* FBSDKShareKit.framework */; };
 		64111F7D1B6F203C0048AF2B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64111F7C1B6F203C0048AF2B /* Photos.framework */; };
 		6411210D1B6F2CCB0048AF2B /* NSBundle+CTAssetsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 641120C21B6F2CCB0048AF2B /* NSBundle+CTAssetsPickerController.m */; };
 		6411210E1B6F2CCB0048AF2B /* NSDateFormatter+CTAssetsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 641120C41B6F2CCB0048AF2B /* NSDateFormatter+CTAssetsPickerController.m */; };
@@ -54,6 +57,7 @@
 		6497DCEB1B5FF56400CCAA82 /* chooseFolderService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6497DCE71B5FF56400CCAA82 /* chooseFolderService.m */; };
 		6497DCEC1B5FF56400CCAA82 /* FLListFolderChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6497DCE91B5FF56400CCAA82 /* FLListFolderChooseViewController.m */; };
 		6497DCED1B5FF56400CCAA82 /* FLListFolderChooseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6497DCEA1B5FF56400CCAA82 /* FLListFolderChooseViewController.xib */; };
+		64B476CA1B72C97E00097C0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B476C91B72C97E00097C0F /* CoreGraphics.framework */; };
 		64C2102E1B67441000CBABDE /* FLListPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C2102C1B67441000CBABDE /* FLListPhotoViewController.m */; };
 		64C2102F1B67441000CBABDE /* FLListPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C2102D1B67441000CBABDE /* FLListPhotoViewController.xib */; };
 		64C210371B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C210351B6744B400CBABDE /* FLListPhotoCustomViewCellTableViewCell.m */; };
@@ -61,6 +65,7 @@
 		64C2103B1B67478E00CBABDE /* FLUtinity.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C2103A1B67478E00CBABDE /* FLUtinity.m */; };
 		64C2103E1B674D9C00CBABDE /* FLPhotoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C2103D1B674D9C00CBABDE /* FLPhotoService.m */; };
 		64C210401B678C3E00CBABDE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C2103F1B678C3E00CBABDE /* CFNetwork.framework */; };
+		64CB7DCD1B72800E0025EE20 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CB7DCC1B72800E0025EE20 /* Social.framework */; };
 		64CEFB3C1B6A302600FB2E01 /* RWLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CEFB3B1B6A302600FB2E01 /* RWLabel.m */; };
 		64CEFB3F1B6A3D6100FB2E01 /* add204@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CEFB3D1B6A3D6100FB2E01 /* add204@2x.png */; };
 		64CEFB401B6A3D6100FB2E01 /* add204@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CEFB3E1B6A3D6100FB2E01 /* add204@3x.png */; };
@@ -172,6 +177,9 @@
 		6402C3881B662E41001008FA /* NSManagedObject+VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+VC.m"; sourceTree = "<group>"; };
 		6402C38A1B662FC4001008FA /* FLBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBaseModel.h; sourceTree = "<group>"; };
 		6402C38B1B662FC4001008FA /* FLBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBaseModel.m; sourceTree = "<group>"; };
+		640C61A81B71E52A003AD692 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Users/atam/Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		640C61A91B71E52A003AD692 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../Users/atam/Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		640C61AA1B71E52A003AD692 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../Users/atam/Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		64111F7C1B6F203C0048AF2B /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		641120C01B6F2CCB0048AF2B /* CTAssetsPickerController+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTAssetsPickerController+Internal.h"; sourceTree = "<group>"; };
 		641120C11B6F2CCB0048AF2B /* NSBundle+CTAssetsPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+CTAssetsPickerController.h"; sourceTree = "<group>"; };
@@ -274,6 +282,7 @@
 		6497DCE81B5FF56400CCAA82 /* FLListFolderChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLListFolderChooseViewController.h; sourceTree = "<group>"; };
 		6497DCE91B5FF56400CCAA82 /* FLListFolderChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLListFolderChooseViewController.m; sourceTree = "<group>"; };
 		6497DCEA1B5FF56400CCAA82 /* FLListFolderChooseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLListFolderChooseViewController.xib; sourceTree = "<group>"; };
+		64B476C91B72C97E00097C0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		64C2102B1B67441000CBABDE /* FLListPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLListPhotoViewController.h; sourceTree = "<group>"; };
 		64C2102C1B67441000CBABDE /* FLListPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLListPhotoViewController.m; sourceTree = "<group>"; };
 		64C2102D1B67441000CBABDE /* FLListPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLListPhotoViewController.xib; sourceTree = "<group>"; };
@@ -285,6 +294,7 @@
 		64C2103C1B674D9C00CBABDE /* FLPhotoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPhotoService.h; sourceTree = "<group>"; };
 		64C2103D1B674D9C00CBABDE /* FLPhotoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPhotoService.m; sourceTree = "<group>"; };
 		64C2103F1B678C3E00CBABDE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		64CB7DCC1B72800E0025EE20 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		64CEFB3A1B6A302600FB2E01 /* RWLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWLabel.h; sourceTree = "<group>"; };
 		64CEFB3B1B6A302600FB2E01 /* RWLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWLabel.m; sourceTree = "<group>"; };
 		64CEFB3D1B6A3D6100FB2E01 /* add204@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add204@2x.png"; sourceTree = "<group>"; };
@@ -429,6 +439,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B476CA1B72C97E00097C0F /* CoreGraphics.framework in Frameworks */,
+				64CB7DCD1B72800E0025EE20 /* Social.framework in Frameworks */,
+				640C61AB1B71E52A003AD692 /* FBSDKCoreKit.framework in Frameworks */,
+				640C61AC1B71E52A003AD692 /* FBSDKLoginKit.framework in Frameworks */,
+				640C61AD1B71E52A003AD692 /* FBSDKShareKit.framework in Frameworks */,
 				64111F7D1B6F203C0048AF2B /* Photos.framework in Frameworks */,
 				64F444651B6B878C004781F3 /* AssetsLibrary.framework in Frameworks */,
 				64CEFB551B6A4C7D00FB2E01 /* FacebookSDK.framework in Frameworks */,
@@ -682,6 +697,11 @@
 		A268CEB29ED361CE2C67B80A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				64B476C91B72C97E00097C0F /* CoreGraphics.framework */,
+				64CB7DCC1B72800E0025EE20 /* Social.framework */,
+				640C61A81B71E52A003AD692 /* FBSDKCoreKit.framework */,
+				640C61A91B71E52A003AD692 /* FBSDKLoginKit.framework */,
+				640C61AA1B71E52A003AD692 /* FBSDKShareKit.framework */,
 				64111F7C1B6F203C0048AF2B /* Photos.framework */,
 				64F444641B6B878C004781F3 /* AssetsLibrary.framework */,
 				64CEFB541B6A4C7D00FB2E01 /* FacebookSDK.framework */,
@@ -1459,7 +1479,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Quy Le (QUQ5ZZ8TDH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Quy Le (QUQ5ZZ8TDH)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1481,7 +1502,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "15240b6e-59ab-42cb-be38-4449fb3b4505";
+				PROVISIONING_PROFILE = "0f57ea27-6a19-425b-bb96-1ea93ab7f3f3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1504,7 +1525,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Quy Le (QUQ5ZZ8TDH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Quy Le (QUQ5ZZ8TDH)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1519,7 +1541,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "15240b6e-59ab-42cb-be38-4449fb3b4505";
+				PROVISIONING_PROFILE = "0f57ea27-6a19-425b-bb96-1ea93ab7f3f3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1531,11 +1553,12 @@
 			baseConfigurationReference = F4980FF9AD38BC5CC211DA12 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Quy Le (QUQ5ZZ8TDH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Quy Le (QUQ5ZZ8TDH)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/atam/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FolderLock/Resource/FolderLock-PrefixHeader.pch";
@@ -1544,7 +1567,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/CTAssetsPickerController/*";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "15240b6e-59ab-42cb-be38-4449fb3b4505";
+				PROVISIONING_PROFILE = "0f57ea27-6a19-425b-bb96-1ea93ab7f3f3";
 			};
 			name = Debug;
 		};
@@ -1553,11 +1576,12 @@
 			baseConfigurationReference = 4D85AD2188FF9DB4EB87B21E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Quy Le (QUQ5ZZ8TDH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Quy Le (QUQ5ZZ8TDH)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/atam/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FolderLock/Resource/FolderLock-PrefixHeader.pch";
@@ -1566,7 +1590,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/CTAssetsPickerController/*";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "15240b6e-59ab-42cb-be38-4449fb3b4505";
+				PROVISIONING_PROFILE = "0f57ea27-6a19-425b-bb96-1ea93ab7f3f3";
 			};
 			name = Release;
 		};
