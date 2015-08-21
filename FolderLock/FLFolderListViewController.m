@@ -30,11 +30,13 @@
 #import "FLListPhotoViewController.h"
 #import <skpsmtpmessage/SKPSMTPMessage.h>
 #import "AccountModel.h"
-
+#import "FLUtinity.h"
+#import "DBCameraViewController.h"
+#import "DBCameraContainerViewController.h"
 
 static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 
-@interface FLFolderListViewController ()<CameraObjectDelegate, MFMailComposeViewControllerDelegate, SWTableViewCellDelegate, SKPSMTPMessageDelegate>
+@interface FLFolderListViewController ()<DBCameraViewControllerDelegate,CameraObjectDelegate, MFMailComposeViewControllerDelegate, SWTableViewCellDelegate, SKPSMTPMessageDelegate>
 @property (nonatomic, strong) FLAccountSetting *accountSetting;
 @property (nonatomic, strong) NSMutableArray *folderModels;
 @property (nonatomic, strong) SKPSMTPMessage *forgotPassword;
@@ -46,6 +48,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self configureTableView];
     self.navigationItem.title = _LSFromTable(@"title.strings", @"FLFolderListViewController", @"List Folder");
     UIButton *settingButton = fl_buttonSetting();
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingButton];
@@ -53,7 +56,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     
     UIButton *cameraButton = fl_buttonCamera();
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cameraButton];
-    [cameraButton addTarget:self action:@selector(cameraTap:) forControlEvents:UIControlEventTouchUpInside];
+    [cameraButton addTarget:self action:@selector(openCamera) forControlEvents:UIControlEventTouchUpInside];
     
     self.accountSetting = [[FLAccountSetting alloc] init];
     if (![self.accountSetting checkUserInfo]) {
@@ -68,7 +71,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     }
     [self registerTableViewCell];
     [self fetchResults];
-
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -85,13 +88,41 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
         }
         [self.view addSubview:startAppBanner_fixed];
     }
-    [self btnLoadShowClick:nil];
+    if ([FLUtinity countShowAds]) {
+        [self btnLoadShowClick:nil];
+    }
 }
 
-- (void)setupFolderModels {
+- (void)configureTableView {
+    self.edgesForExtendedLayout=UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars=NO;
+    self.automaticallyAdjustsScrollViewInsets=NO;
     
+    self.tbView = [[UITableView alloc] initForAutoLayout];
+    self.tbView.dataSource = self;
+    self.tbView.delegate = self;
+    [self.tbView setBackgroundColor:[UIColor clearColor]];
+    [self.tbView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.view addSubview:self.tbView];
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        [self.tbView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:90];
+    [self.tbView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
+    [self.tbView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
+    [self.tbView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+    [self.tbView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+    
+    UIView *viewHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tbView.frame.size.width, 40.f)];
+    [viewHeader setBackgroundColor:[UIColor colorWithRed:139/255.f green:195/255.f blue:74/255.f alpha:1]];
+    UIButton *button = fl_buttonAdd();
+    [viewHeader addSubview:button];
+    [button addTarget:self action:@selector(addFolder:) forControlEvents:UIControlEventTouchUpInside];
+    [button autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:15];
+    [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:7];
+    [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:7];
+    [button autoSetDimension:ALDimensionHeight toSize:25];
+    [button autoSetDimension:ALDimensionWidth toSize:25];
+    self.tbView.tableHeaderView = viewHeader;
 }
-
 #pragma mark Action
 
 - (void)settingTap:(id)sender {
@@ -100,12 +131,32 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     [self presentViewController:nav animated:YES completion:nil];
 }
 
-- (void)cameraTap:(id)sencer {
-    CameraObject *camera = [CameraObject shareInstance];
-    camera.delegate = self;
-    camera.supperView = self;
-    camera.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [camera showCamera];
+
+- (void) openCamera
+{
+    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+    [cameraContainer setFullScreenMode];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraContainer];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+//Use your captured image
+#pragma mark - DBCameraViewControllerDelegate
+
+- (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
+{
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    FLListFolderChooseViewController *choose = [[FLListFolderChooseViewController alloc] initWithNibName:NSStringFromClass([FLListFolderChooseViewController class]) bundle:nil];
+    choose.image = image;
+    choose.typeSavePhoto = CREATE_PHOTO;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:choose];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void) dismissCamera:(id)cameraViewController{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [cameraViewController restoreFullScreenMode];
 }
 
 - (void)didFinishPickingMediaWithInfo:(UIImage *)image {
@@ -170,21 +221,6 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
     return 40.f;
 }
 
-- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 40.f)];
-    [view setBackgroundColor:[UIColor colorWithRed:139/255.f green:195/255.f blue:74/255.f alpha:1]];
-    UIButton *button = fl_buttonAdd();
-    [view addSubview:button];
-    [button addTarget:self action:@selector(addFolder:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [button autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:15];
-    [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:7];
-    [button autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:7];
-    [button autoSetDimension:ALDimensionHeight toSize:25];
-    [button autoSetDimension:ALDimensionWidth toSize:25];
-    return view;
-}
-
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FLListFolderTableViewCell *cell = [self.tbView dequeueReusableCellWithIdentifier:listFolderTableViewCell forIndexPath:indexPath];
     [cell setValueForCell:[self.service.listModelFolder objectAtIndex:indexPath.row]];
@@ -234,6 +270,7 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
             
             FLCreateFolderViewController *editFolder = [[FLCreateFolderViewController alloc] initWithNibName:NSStringFromClass([FLCreateFolderViewController class]) bundle:nil];
             editFolder.folderModel = folderModel;
+            editFolder.type = TYPE_EDIT;
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:editFolder];
             [self presentViewController:nav animated:YES completion:nil];
             break;
@@ -245,6 +282,8 @@ static NSString *listFolderTableViewCell = @"FLListFolderTableViewCell";
             [alert showAlerViewWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 if (buttonIndex) {
                     NSIndexPath *cellIndexPath = [self.tbView indexPathForCell:cell];
+                    [self presentRegisterAnAccountViewController:[self.folderModels objectAtIndex:cellIndexPath.row]];
+                    
                     [self.service deleteFolder:[self.folderModels objectAtIndex:cellIndexPath.row]];
                 }
             }];

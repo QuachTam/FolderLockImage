@@ -18,6 +18,8 @@
 
 "title.strings.twitter" = "Twitter";
 
+"title.strings.process.image" = "Xử lý";
+
 /*Do you want delete this folder*/
 "title.strings.confirm.delete" = "Bạn có muốn xoá ảnh này?";
 

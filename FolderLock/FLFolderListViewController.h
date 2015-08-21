@@ -13,6 +13,6 @@
     STAStartAppAd *startAppAd_loadShow;
     STABannerView *startAppBanner_fixed;
 }
-@property (weak, nonatomic) IBOutlet UITableView *tbView;
+@property (strong, nonatomic) IBOutlet UITableView *tbView;
 
 @end

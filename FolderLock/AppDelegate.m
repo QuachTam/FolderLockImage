@@ -14,6 +14,7 @@
 #import <StartApp/StartApp.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "FLStringHelper.h"
+#import "MHGalleryImageViewerViewController.h"
 
 NSString * const kCoreDataFileName = @"FolderLock.sqlite";
 @interface AppDelegate ()
@@ -36,6 +37,14 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
     [self.window setRootViewController:nav];
     [self.window makeKeyAndVisible];
     
+    MHGalleryCustomLocalizationBlock(^NSString *(NSString *stringToLocalize) {
+        return nil;
+    });
+    
+    MHGalleryCustomImageBlock(^UIImage *(NSString *imageToChangeName) {
+        return nil;
+    });
+    
     [self settingStartAppSDK];
     [self settingPasscode];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlertView:) name:kShowAlertView object:nil];
@@ -55,8 +64,8 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
 - (void)settingStartAppSDK {
     // initialize the SDK with your appID and devID
     STAStartAppSDK* sdk = [STAStartAppSDK sharedInstance];
-    sdk.appID = @"207271338";
-    sdk.devID = @"107800535";
+    sdk.appID = @"207556413";
+    sdk.devID = @"107367486";
     sdk.preferences = [STASDKPreferences prefrencesWithAge:28 andGender:STAGender_Male];
     
     STASplashPreferences *splashPreferences = [[STASplashPreferences alloc] init];
@@ -65,6 +74,7 @@ NSString * const kCoreDataFileName = @"FolderLock.sqlite";
     splashPreferences.splashLoadingIndicatorType = STASplashLoadingIndicatorTypeDots;
     splashPreferences.splashTemplateIconImageName = @"startApp";
     splashPreferences.splashTemplateAppName = @"Folder Lock Start";
+    
 }
 
 - (void)settingPasscode {

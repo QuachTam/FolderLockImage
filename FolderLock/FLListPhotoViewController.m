@@ -25,6 +25,12 @@
 #import <Accounts/Accounts.h>
 #import <STTwitter/STTwitter.h>
 #import <Twitter/Twitter.h>
+#import "DBCameraViewController.h"
+#import "DBCameraContainerViewController.h"
+#import "MHOverviewController.h"
+#import "UIImageView+WebCache.h"
+#import "FLManageImage.h"
+#import "FLImageHelper.h"
 
 static NSString *customListPhotoCell = @"FLListPhotoCustomViewCellTableViewCell";
 static NSString *consumerKey = @"u3C1JoMbkYYXk36uqNJ3CoPCz";
@@ -33,7 +39,7 @@ NSInteger TAG_SELECT_ACCOUNT_TWITTER = 100001;
 
 typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage); // don't bother with NSError for that
 
-@interface FLListPhotoViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, CameraObjectDelegate, UIActionSheetDelegate,CTAssetsPickerControllerDelegate, FBSDKSharingDelegate>
+@interface FLListPhotoViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, CameraObjectDelegate, UIActionSheetDelegate,CTAssetsPickerControllerDelegate, FBSDKSharingDelegate, DBCameraViewControllerDelegate>
 @property (nonatomic, strong) FLPhotoService *service;
 @property (nonatomic, strong) STTwitterAPI *twitter;
 @property (nonatomic, strong) ACAccountStore *accountStore;
@@ -41,6 +47,9 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
 @property (nonatomic, strong) accountChooserBlock_t accountChooserBlock;
 @property (nonatomic, strong) FBSDKSharePhoto *photoShare;
 @property (nonatomic, strong) FBSDKSharePhotoContent *content;
+@property (nonatomic,strong) NSArray *galleryDataSource;
+@property (nonatomic, strong) NSArray *listPhotoModel;
+@property (nonatomic, strong) DBCameraContainerViewController *cameraContainer;
 @end
 
 @implementation FLListPhotoViewController
@@ -48,6 +57,23 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.edgesForExtendedLayout=UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars=NO;
+    self.automaticallyAdjustsScrollViewInsets=NO;
+    self.tbView = [[UITableView alloc] initForAutoLayout];
+    self.tbView.dataSource = self;
+    self.tbView.delegate = self;
+    [self.tbView setBackgroundColor:[UIColor clearColor]];
+    [self.tbView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.view addSubview:self.tbView];
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        [self.tbView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:90];
+    [self.tbView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
+    [self.tbView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
+    [self.tbView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+    [self.tbView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+    
     self.title = _LSFromTable(@"title.strings", @"FLListPhotoViewController", @"List Photo");
     UIButton *backBtn = fl_buttonBack();
     [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
@@ -58,7 +84,26 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
     [cameraButton addTarget:self action:@selector(showMore) forControlEvents:UIControlEventTouchUpInside];
     [self registerTableViewCell];
     self.service = [[FLPhotoService alloc] init];
+    self.listPhotoModel = [NSArray new];
+    [self performSelectorInBackground:@selector(setUpData) withObject:nil];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (startAppBanner_fixed == nil) {
+        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ){
+            startAppBanner_fixed = [[STABannerView alloc] initWithSize:STA_PortraitAdSize_768x90
+                                                            autoOrigin:STAAdOrigin_Bottom
+                                                              withView:self.view withDelegate:nil];
+        } else {
+            startAppBanner_fixed = [[STABannerView alloc] initWithSize:STA_PortraitAdSize_320x50
+                                                            autoOrigin:STAAdOrigin_Bottom
+                                                              withView:self.view withDelegate:nil];
+        }
+        [self.view addSubview:startAppBanner_fixed];
+    }
+}
+
+
 #pragma mark login twitter
 
 - (void)tweetTapped:(UIImage *)image{
@@ -88,7 +133,7 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
 
 - (void)reloadData {
     self.folderModel.listPhotoModel = nil;
-    [self.tbView reloadData];
+    [self setUpData];
 }
 
 - (void)backAction {
@@ -118,23 +163,24 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
     }else{
         NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
         if ([title isEqualToString:@"Take photo"]) {
-            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-                [self showCameraPicker:UIImagePickerControllerSourceTypeCamera];
-            }else{
-                [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
-                        picker.delegate = self;
-                        [self presentViewController:picker animated:YES completion:nil];
-                    });
-                }];
-            }
+            [self openCamera];
         }else if ([title isEqualToString:@"Choose Existing"]){
             [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
-                    picker.delegate = self;
-                    [self presentViewController:picker animated:YES completion:nil];
+                    // request authorization status
+                    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            // init picker
+                            CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
+                            // set delegate
+                            picker.delegate = self;
+                            // to present picker as a form sheet on iPad
+                            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+                                picker.modalPresentationStyle = UIModalPresentationFormSheet;
+                            // present picker
+                            [self presentViewController:picker animated:YES completion:nil];
+                        });
+                    }];
                 });
             }];
         }
@@ -154,18 +200,17 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
     if (picker.selectedAssets.count > 0) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [picker dismissViewControllerAnimated:YES completion:^{
-            NSMutableArray *listImage = [NSMutableArray new];
             for (PHAsset * asset in picker.selectedAssets) {
                 PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
                 options.synchronous = YES;
                 [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(asset.pixelWidth, asset.pixelHeight) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage *result, NSDictionary *info) {
-                    [listImage addObject:result];
+                    [self.service saveImageToFolder:self.folderModel image:@[result] success:^{
+                        
+                    }];
                 }];
             }
-            [self.service saveImageToFolder:self.folderModel image:listImage success:^{
-                [self reloadData];
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-            }];
+            [self reloadData];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }];
     }
     else {
@@ -175,13 +220,34 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
     }
 }
 
-- (void)showCameraPicker:(UIImagePickerControllerSourceType)sourceType
+- (void) openCamera
 {
-    CameraObject *camera = [CameraObject shareInstance];
-    camera.delegate = self;
-    camera.supperView = self;
-    camera.sourceType = sourceType;
-    [camera showCamera];
+    if (!self.cameraContainer) {
+        self.cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+    }
+    [self.cameraContainer setFullScreenMode];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.cameraContainer];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+//Use your captured image
+#pragma mark - DBCameraViewControllerDelegate
+
+- (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
+{
+    if (!self.service) {
+        self.service = [[FLPhotoService alloc] init];
+    }
+    [self.service saveImageToFolder:self.folderModel image:@[image] success:^{
+        [self reloadData];
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
+
+- (void) dismissCamera:(id)cameraViewController{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [cameraViewController restoreFullScreenMode];
 }
 
 #pragma mark cameraDelegate
@@ -206,15 +272,23 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
     [self.tbView registerNib:[UINib nibWithNibName:NSStringFromClass([FLListPhotoCustomViewCellTableViewCell class]) bundle:nil] forCellReuseIdentifier:customListPhotoCell];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.folderModel.listPhotoModel.count;
+- (void)setUpData{
+    NSMutableArray *lists = [NSMutableArray new];
+    self.listPhotoModel = self.folderModel.listPhotoModel;
+    for (NSInteger index = 0; index < self.listPhotoModel.count; index++) {
+        NSString *stringUrl = [FLManageImage getURLPathImage:[[self.listPhotoModel objectAtIndex:index] uuid] folderID:self.folderModel.uuid];
+        NSString *stringUrlThumbnail = [FLManageImage getURLPathThumbnailImage:[[self.listPhotoModel objectAtIndex:index] uuid] folderID:self.folderModel.uuid];
+        MHGalleryItem *landscha = [[MHGalleryItem alloc]initWithURL:stringUrl
+                                                           galleryType:MHGalleryTypeImage];
+        landscha.thumbnailURL = stringUrlThumbnail;
+        [lists addObject:landscha];
+    }
+    self.galleryDataSource = [lists copy];
+    [self.tbView reloadData];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self heightForBasicCellAtIndexPath:indexPath];
-}
 
-- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FLListPhotoCustomViewCellTableViewCell *cell = [self.tbView dequeueReusableCellWithIdentifier:customListPhotoCell forIndexPath:indexPath];
     cell.leftUtilityButtons = [self leftButtons];
     cell.rightUtilityButtons = [self rightButtons];
@@ -222,10 +296,79 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
     [self configureBasicCell:cell atIndexPath:indexPath];
     return cell;
 }
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self showPhotoPageControllerAtIndex:indexPath.row];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UIImageView *imageView = [(FLListPhotoCustomViewCellTableViewCell*)[tableView cellForRowAtIndexPath:indexPath] imgView];
+    
+    NSArray *galleryData = self.galleryDataSource;
+    
+    
+    MHGalleryController *gallery = [[MHGalleryController alloc]initWithPresentationStyle:MHGalleryViewModeImageViewerNavigationBarShown];
+    gallery.galleryItems = galleryData;
+    gallery.presentingFromImageView = imageView;
+    gallery.presentationIndex = indexPath.row;
+    
+    __weak MHGalleryController *blockGallery = gallery;
+    
+    gallery.finishedCallback = ^(NSInteger currentIndex,UIImage *image,MHTransitionDismissMHGallery *interactiveTransition,MHGalleryViewMode viewMode){
+        
+        NSIndexPath *newIndex = [NSIndexPath indexPathForRow:currentIndex inSection:0];
+        
+        [self.tbView scrollToRowAtIndexPath:newIndex atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIImageView *imageView = [(FLListPhotoCustomViewCellTableViewCell*)[self.tbView cellForRowAtIndexPath:newIndex] imgView];
+            [blockGallery dismissViewControllerAnimated:YES dismissImageView:imageView completion:nil];
+        });
+        
+    };
+    
+    [self presentMHGalleryController:gallery animated:YES completion:nil];
 }
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+    
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.galleryDataSource.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self heightForBasicCellAtIndexPath:indexPath];
+}
+
+- (void)configureBasicCell:(FLListPhotoCustomViewCellTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    MHGalleryItem *item = self.galleryDataSource[indexPath.row];
+    FLPhotoModel *photoModel = [self.listPhotoModel objectAtIndex:indexPath.row];
+    [cell valueForCell:photoModel galleryItem:item];
+}
+
+
+- (CGFloat)heightForBasicCellAtIndexPath:(NSIndexPath *)indexPath {
+    static FLListPhotoCustomViewCellTableViewCell *sizingCell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sizingCell = [self.tbView dequeueReusableCellWithIdentifier:customListPhotoCell];
+    });
+    
+    [self configureBasicCell:sizingCell atIndexPath:indexPath];
+    return [self calculateHeightForConfiguredSizingCell:sizingCell];
+}
+
+- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
+    
+    sizingCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tbView.frame), CGRectGetHeight(sizingCell.bounds));
+    
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    if(size.height<60)
+        return 60;
+    return size.height + 1.0f; // Add 1.0f for the cell separator height
+}
+
 
 #pragma mark - SWTableViewDelegate
 
@@ -236,10 +379,10 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
             NSIndexPath *cellIndexPath = [self.tbView indexPathForCell:cell];
             FLListFolderChooseViewController *chooseFolder = [[FLListFolderChooseViewController alloc] initWithNibName:NSStringFromClass([FLListFolderChooseViewController class]) bundle:nil];
             chooseFolder.typeSavePhoto = MOVE_PHOTO;
-            chooseFolder.photoModel = [self.folderModel.listPhotoModel objectAtIndex:cellIndexPath.row];
+            chooseFolder.photoModel = [self.listPhotoModel objectAtIndex:cellIndexPath.row];
             chooseFolder.didCompleteSaveImage = ^{
                 self.folderModel.listPhotoModel = nil;
-                [self.tbView reloadData];
+                [self setUpData];
             };
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:chooseFolder];
             [self presentViewController:nav animated:YES completion:nil];
@@ -252,7 +395,7 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
             [alert showAlerViewWithHandler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 if (buttonIndex) {
                     NSIndexPath *cellIndexPath = [self.tbView indexPathForCell:cell];
-                    [self.service deleteImageInFolder:self.folderModel photoMode:[self.folderModel.listPhotoModel objectAtIndex:cellIndexPath.row] success:^{
+                    [self.service deleteImageInFolder:self.folderModel photoMode:[self.listPhotoModel objectAtIndex:cellIndexPath.row] success:^{
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:_LSFromTable(@"title.strings.delete.success", @"FLListPhotoViewController", @"Delete success") delegate:nil cancelButtonTitle:nil otherButtonTitles:_LSFromTable(@"title.strings.ok", @"FLFolderListViewController", @"OK"), nil];
                         [alert show];
                         [self reloadData];
@@ -271,7 +414,7 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
     [cell hideUtilityButtonsAnimated:NO];
     switch (index) {
         case 0:{
-            FLPhotoModel *photoModel = [self.folderModel.listPhotoModel firstObject];
+            FLPhotoModel *photoModel = [self.listPhotoModel firstObject];
             UIImage *image = [FLManageImage getImage:photoModel.uuid folderID:self.folderModel.uuid];
             [self tweetTapped:image];
             break;
@@ -284,7 +427,7 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
                     UITextField *textInput = [alertView textFieldAtIndex:0];
                     if ([FBSDKAccessToken currentAccessToken]) {
                         NSIndexPath *cellIndexPath = [self.tbView indexPathForCell:cell];
-                        FLPhotoModel *photoModel = [self.folderModel.listPhotoModel objectAtIndex:cellIndexPath.row];
+                        FLPhotoModel *photoModel = [self.listPhotoModel objectAtIndex:cellIndexPath.row];
                         UIImage *image = [FLManageImage getImage:photoModel.uuid folderID:self.folderModel.uuid];
                         [self postToWallImage:image message:textInput.text];
                     }else{
@@ -394,50 +537,18 @@ typedef void (^accountChooserBlock_t)(ACAccount *account, NSString *errorMessage
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:_LSFromTable(@"title.strings.twitter", @"FLListPhotoViewController", @"Twitter")];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
-                                                title:_LSFromTable(@"title.strings.facebook", @"FLListPhotoViewController", @"FaceBook")];
-    
+                                                title:_LSFromTable(@"title.strings.process.image", @"FLListPhotoViewController", @"Processing")];    
     return rightUtilityButtons;
 }
 
-- (void)configureBasicCell:(FLListPhotoCustomViewCellTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    FLPhotoModel *photoModel = [self.folderModel.listPhotoModel objectAtIndex:indexPath.row];
-    [cell valueForCell:photoModel];
-}
-
-
-- (CGFloat)heightForBasicCellAtIndexPath:(NSIndexPath *)indexPath {
-    static FLListPhotoCustomViewCellTableViewCell *sizingCell = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sizingCell = [self.tbView dequeueReusableCellWithIdentifier:customListPhotoCell];
-    });
-    
-    [self configureBasicCell:sizingCell atIndexPath:indexPath];
-    return [self calculateHeightForConfiguredSizingCell:sizingCell];
-}
-
-- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
-    [sizingCell setNeedsLayout];
-    [sizingCell layoutIfNeeded];
-    
-    sizingCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tbView.frame), CGRectGetHeight(sizingCell.bounds));
-    
-    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    if(size.height<60)
-        return 60;
-    return size.height + 1.0f; // Add 1.0f for the cell separator height
-}
 
 
 #pragma mark - photo detail
 
 - (void)showPhotoPageControllerAtIndex:(NSInteger)index
 {
-    VCPhotoPageController * photoPageController = [[VCPhotoPageController alloc] initWithPhotos:self.folderModel.listPhotoModel];
+    VCPhotoPageController * photoPageController = [[VCPhotoPageController alloc] initWithPhotos:self.listPhotoModel];
     [photoPageController setPageIndex:index];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:photoPageController];
     [navController setViewControllers:@[photoPageController]];

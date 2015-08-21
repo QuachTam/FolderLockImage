@@ -34,7 +34,11 @@
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
         Folder *entity = [Folder entityWithUuid:folderModel.uuid inContext:localContext];
         entity.name = folderModel.name;
-        entity.password = folderModel.password;
+        if (folderModel.password.length) {
+            entity.password = folderModel.password;
+        }else{
+            entity.password = nil;
+        }
         entity.createDate = folderModel.createDate;
     }];
     if (success) {

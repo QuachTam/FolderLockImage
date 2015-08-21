@@ -10,6 +10,7 @@
 #import "FLFolderModel.h"
 #import "FLImageHelper.h"
 #import "FLManageImage.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation FLListFolderTableViewCell
 
@@ -35,7 +36,7 @@
         self.imageLock.hidden = YES;
     }
     if (model.urlIcon && !model.password.length) {
-        [self.iconFolder setImage:[FLManageImage getImage:model.urlIcon folderID:model.uuid]];
+        [self.iconFolder sd_setImageWithURL:[[NSURL alloc] initFileURLWithPath:[FLManageImage getContentOfFilemage:model.urlIcon folderID:model.uuid]] placeholderImage:[UIImage imageNamed:kImageDetault] options:SDWebImageCacheMemoryOnly];
     }else{
         [self.iconFolder setImage:[UIImage imageNamed:kImageDetault]];
     }

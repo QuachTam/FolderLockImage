@@ -10,11 +10,13 @@
 #import <SWTableViewCell.h>
 #import "FLPhotoModel.h"
 #import "RWLabel.h"
+#import "MHGalleryItem.h"
 
 @interface FLListPhotoCustomViewCellTableViewCell : SWTableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet RWLabel *lbName;
 @property (weak, nonatomic) IBOutlet RWLabel *lbDateCreate;
 
-- (void)valueForCell:(FLPhotoModel*)photoModel;
+- (void)valueForCell:(FLPhotoModel*)photoModel galleryItem:(MHGalleryItem*)item;
+
 @end

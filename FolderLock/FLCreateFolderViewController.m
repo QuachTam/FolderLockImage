@@ -17,7 +17,7 @@ static NSString *textFieldIdentifier = @"textFieldIdentifier";
 @property (nonatomic, strong) NSString *stringFolderName;
 @property (nonatomic, strong) NSString *stringPassowrd;
 @property (nonatomic, strong) NSString *stringRePassowrd;
-
+@property (nonatomic, readwrite) UISwitch *swith;
 @property (nonatomic, strong) CreateFolderService *service;
 @end
 
@@ -26,7 +26,28 @@ static NSString *textFieldIdentifier = @"textFieldIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"Create Folder";
+    if (self.type) {
+        self.title = @"Edit Folder";
+    }else{
+        self.title = @"Create Folder";
+    }
+    
+    if (!self.folderModel) {
+        self.folderModel = [[FLFolderModel alloc] init];
+    }
+    
+    self.stringFolderName = self.folderModel.name;
+    self.stringPassowrd = self.folderModel.password;
+    self.stringRePassowrd = self.folderModel.password;
+    
+    if (!self.swith) {
+        self.swith = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    }
+    if (self.stringPassowrd.length) {
+        [self.swith setOn:YES];
+    }else{
+        [self.swith setOn:NO];
+    }
     
     UIButton *cancelBtn = fl_buttonCancel();
     [cancelBtn addTarget:self action:@selector(dismissViewController) forControlEvents:UIControlEventTouchUpInside];
@@ -53,6 +74,10 @@ static NSString *textFieldIdentifier = @"textFieldIdentifier";
     if (!self.service) {
         self.service = [[CreateFolderService alloc] init];
     }
+    self.folderModel.name = self.stringFolderName;
+    self.folderModel.password = self.stringPassowrd;
+    self.folderModel.rePassword = self.stringRePassowrd;
+    
     NSString *message = [self.service checkValidNameFolder:self.folderModel.name password:self.folderModel.password rePassowrd:self.folderModel.rePassword];
     if (message.length) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
@@ -64,16 +89,52 @@ static NSString *textFieldIdentifier = @"textFieldIdentifier";
     }
 }
 
+- (void)changeValue:(id)sender {
+    [self.view endEditing:YES];
+    if (![sender isOn]) {
+        self.stringPassowrd = @"";
+        self.stringRePassowrd = @"";
+    }
+    [self.tbView reloadData];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44.f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    if (self.swith.isOn) {
+        return 3;
+    }
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 20;
+    return 40.f;
+}
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 40.f)];
+    [view setBackgroundColor:[UIColor colorWithRed:139/255.f green:195/255.f blue:74/255.f alpha:1]];
+    [view addSubview:self.swith];
+    [self.swith addTarget:self action:@selector(changeValue:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.swith autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:40];
+    [self.swith autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5];
+    [self.swith autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:7];
+    [self.swith autoSetDimension:ALDimensionHeight toSize:25];
+    [self.swith autoSetDimension:ALDimensionWidth toSize:25];
+    
+    UILabel *lb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    lb.text = @"Enable Password";
+    lb.textColor = [UIColor whiteColor];
+    [view addSubview:lb];
+    
+    [lb autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:15];
+    [lb autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:5];
+    [lb autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:7];
+    
+    return view;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -84,23 +145,25 @@ static NSString *textFieldIdentifier = @"textFieldIdentifier";
 
 - (void)textFieldCell:(NSIndexPath*)indexPath TextFieldTableViewCell:(TextFieldTableViewCell*)cell{
     if (indexPath.row==0) {
-        if (self.folderModel.name.length) {
-            cell.textField.text = self.folderModel.name;
+        if (self.stringFolderName.length) {
+            cell.textField.text = self.stringFolderName;
         }else{
             [cell setValueTextField:@"Folder Name"];
         }
         cell.textField.secureTextEntry = NO;
     }else if (indexPath.row==1){
-        if (self.folderModel.password.length) {
-            cell.textField.text = self.folderModel.password;
+        if (self.stringPassowrd.length) {
+            cell.textField.text = self.stringPassowrd;
         }else{
+            cell.textField.text = nil;
             [cell setValueTextField:@"Password"];
         }
         cell.textField.secureTextEntry = YES;
     }else{
-        if (self.folderModel.rePassword) {
-            cell.textField.text = self.folderModel.rePassword;
+        if (self.stringRePassowrd.length) {
+            cell.textField.text = self.stringRePassowrd;
         }else{
+            cell.textField.text = nil;
             [cell setValueTextField:@"Re-Passoword"];
         }
         cell.textField.secureTextEntry = YES;
@@ -110,15 +173,12 @@ static NSString *textFieldIdentifier = @"textFieldIdentifier";
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (!self.folderModel) {
-        self.folderModel = [[FLFolderModel alloc] init];
-    }
     if (textField.tag==0) {
-        self.folderModel.name = textField.text;
+        self.stringFolderName = textField.text;
     }else if(textField.tag==1){
-        self.folderModel.password = textField.text;
+        self.stringPassowrd = textField.text;
     }else{
-        self.folderModel.rePassword = textField.text;
+        self.stringRePassowrd = textField.text;
     }
 }
 

@@ -46,7 +46,7 @@ extern NSString *kBaseURLStringSiteStream_1_1;
 
 + (NSString *)versionString;
 
-+ (instancetype)twitterAPIOSWithAccount:(ACAccount *) account;
++ (instancetype)twitterAPIOSWithAccount:(ACAccount *)account;
 + (instancetype)twitterAPIOSWithFirstAccount;
 
 + (instancetype)twitterAPIWithOAuthConsumerName:(NSString *)consumerName // purely informational, can be anything
@@ -624,6 +624,7 @@ authenticateInsteadOfAuthorize:(BOOL)authenticateInsteadOfAuthorize // use NO if
 - (NSObject<STTwitterRequestProtocol> *)getDirectMessagesSinceID:(NSString *)sinceID
                                                            maxID:(NSString *)maxID
                                                            count:(NSString *)count
+                                                        fullText:(NSNumber *)fullText
                                                  includeEntities:(NSNumber *)includeEntities
                                                       skipStatus:(NSNumber *)skipStatus
                                                     successBlock:(void(^)(NSArray *messages))successBlock
@@ -643,6 +644,7 @@ authenticateInsteadOfAuthorize:(BOOL)authenticateInsteadOfAuthorize // use NO if
 - (NSObject<STTwitterRequestProtocol> *)getDirectMessagesSinceID:(NSString *)sinceID
                                                            maxID:(NSString *)maxID
                                                            count:(NSString *)count
+                                                        fullText:(NSNumber *)fullText
                                                             page:(NSString *)page
                                                  includeEntities:(NSNumber *)includeEntities
                                                     successBlock:(void(^)(NSArray *messages))successBlock
@@ -655,6 +657,7 @@ authenticateInsteadOfAuthorize:(BOOL)authenticateInsteadOfAuthorize // use NO if
  */
 
 - (NSObject<STTwitterRequestProtocol> *)getDirectMessagesShowWithID:(NSString *)messageID
+                                                           fullText:(NSNumber *)fullText
                                                        successBlock:(void(^)(NSArray *statuses))successBlock
                                                          errorBlock:(void(^)(NSError *error))errorBlock;
 
@@ -911,6 +914,7 @@ authenticateInsteadOfAuthorize:(BOOL)authenticateInsteadOfAuthorize // use NO if
 
 - (NSObject<STTwitterRequestProtocol> *)getAccountVerifyCredentialsWithIncludeEntites:(NSNumber *)includeEntities
                                                                            skipStatus:(NSNumber *)skipStatus
+                                                                         includeEmail:(NSNumber *)includeEmail
                                                                          successBlock:(void(^)(NSDictionary *account))successBlock
                                                                            errorBlock:(void(^)(NSError *error))errorBlock;
 
@@ -1379,6 +1383,11 @@ authenticateInsteadOfAuthorize:(BOOL)authenticateInsteadOfAuthorize // use NO if
  */
 
 - (NSObject<STTwitterRequestProtocol> *)postListsMembersDestroyForListID:(NSString *)listID
+                                                                    slug:(NSString *)slug
+                                                                  userID:(NSString *)userID
+                                                              screenName:(NSString *)screenName
+                                                         ownerScreenName:(NSString *)ownerScreenName
+                                                                 ownerID:(NSString *)ownerID
                                                             successBlock:(void(^)(id response))successBlock
                                                               errorBlock:(void(^)(NSError *error))errorBlock;
 
@@ -2005,11 +2014,11 @@ authenticateInsteadOfAuthorize:(BOOL)authenticateInsteadOfAuthorize // use NO if
                                                            successBlock:(void(^)(NSString *mediaID, NSString *expiresAfterSecs))successBlock
                                                              errorBlock:(void(^)(NSError *error))errorBlock;
 
-- (NSObject<STTwitterRequestProtocol> *)postMediaUploadAPPENDWithVideoURL:(NSURL *)videoMediaURL
-                                                                  mediaID:(NSString *)mediaID
-                                                      uploadProgressBlock:(void(^)(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite))uploadProgressBlock
-                                                             successBlock:(void(^)(id response))successBlock
-                                                               errorBlock:(void(^)(NSError *error))errorBlock;
+- (void)postMediaUploadAPPENDWithVideoURL:(NSURL *)videoMediaURL
+                                  mediaID:(NSString *)mediaID
+                      uploadProgressBlock:(void(^)(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite))uploadProgressBlock
+                             successBlock:(void(^)(id response))successBlock
+                               errorBlock:(void(^)(NSError *error))errorBlock;
 
 - (NSObject<STTwitterRequestProtocol> *)postMediaUploadFINALIZEWithMediaID:(NSString *)mediaID
                                                               successBlock:(void(^)(NSString *mediaID, NSString *size, NSString *expiresAfter, NSString *videoType))successBlock

@@ -9,6 +9,9 @@
 #import "FLListPhotoCustomViewCellTableViewCell.h"
 #import "FLPhotoModel.h"
 #import "FLManageImage.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "FLImageHelper.h"
+#import "MHGalleryItem.h"
 
 @implementation FLListPhotoCustomViewCellTableViewCell
 
@@ -22,12 +25,11 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
-- (void)valueForCell:(FLPhotoModel*)photoModel{
-    [self.imgView setImage:[FLManageImage getImage:photoModel.uuid folderID:photoModel.folderUUID]];
+- (void)valueForCell:(FLPhotoModel*)photoModel galleryItem:(MHGalleryItem*)item{
+    [self.imgView sd_setImageWithURL:[[NSURL alloc] initWithString:item.thumbnailURL] placeholderImage:[UIImage imageNamed:kImageDetault]];
     self.lbName.text = photoModel.name;
     self.lbDateCreate.text = photoModel.stringCreateDate;
 }

@@ -7,8 +7,25 @@
 //
 
 #import "FLManageImage.h"
-
+static NSString *thumbnail = @"_thumbnail";
 @implementation FLManageImage
+
++ (NSString *)getURLPathImage:(NSString*)nameImage folderID:(NSString*)folderID {
+    NSString *folderPath = [self getPathWithFolder:folderID];
+    NSString *getImagePath = [folderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", nameImage]];
+    NSURL *URL = [NSURL fileURLWithPath:getImagePath];
+    NSString *stringURL = [URL absoluteString];
+    return stringURL;
+}
+
++ (NSString*)getURLPathThumbnailImage:(NSString *)nameImage folderID:(NSString *)folderID {
+    NSString *folderPath = [self getPathWithFolder:folderID];
+    NSString *stringThumbnail = [NSString stringWithFormat:@"%@%@", nameImage, thumbnail];
+    NSString *getImagePath = [folderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", stringThumbnail]];
+    NSURL *URL = [NSURL fileURLWithPath:getImagePath];
+    NSString *stringURL = [URL absoluteString];
+    return stringURL;
+}
 
 + (NSString*)getContentOfFilemage:(NSString*)nameImage folderID:(NSString*)folderID {
     NSString *folderPath = [self getPathWithFolder:folderID];
@@ -26,8 +43,13 @@
 + (void)saveImage:(UIImage*)image withName:(NSString*)nameImage folderUUID:(NSString *)folderUUID{
     NSString *folderPath = [self getPathWithFolder:folderUUID];
     NSString *savedImagePath = [folderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", nameImage]];
-    NSData *imageData = UIImagePNGRepresentation(image);
+    NSString *savedImageThumbnailPath = [folderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", [NSString stringWithFormat:@"%@%@", nameImage, thumbnail]]];
+    UIImage *imageFull = [self fillImage:image];
+    NSData *imageData = UIImagePNGRepresentation(imageFull);
     [imageData writeToFile:savedImagePath atomically:NO];
+    
+    NSData *imageDataThumbnail = UIImageJPEGRepresentation(imageFull, 0.5f);
+    [imageDataThumbnail writeToFile:savedImageThumbnailPath atomically:NO];
 }
 
 + (NSString*)getPathWithFolder:(NSString*)folderUUID{
@@ -54,5 +76,18 @@
     for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:folderPath error:&error]) {
         [[NSFileManager defaultManager] removeItemAtPath:[folderPath stringByAppendingPathComponent:file] error:&error];
     }
+}
+
++(UIImage*)fillImage:(UIImage*)image{
+    if(!(image.imageOrientation == UIImageOrientationUp ||
+         image.imageOrientation == UIImageOrientationUpMirrored))
+    {
+        CGSize imgsize = image.size;
+        UIGraphicsBeginImageContext(imgsize);
+        [image drawInRect:CGRectMake(0.0, 0.0, imgsize.width, imgsize.height)];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    return image;
 }
 @end

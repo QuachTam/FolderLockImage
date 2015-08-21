@@ -14,4 +14,6 @@
 + (void)saveImage:(UIImage*)image withName:(NSString*)nameImage folderUUID:(NSString *)folderUUID;
 +(void)deleteImageWithName:(NSString*)nameImage folderUUID:(NSString*)folderUUID;
 +(void)deleteFolder:(NSString*)folderUUID;
++ (NSString *)getURLPathImage:(NSString*)nameImage folderID:(NSString*)folderID;
++ (NSString*)getURLPathThumbnailImage:(NSString *)nameImage folderID:(NSString *)folderID;
 @end

@@ -12,4 +12,5 @@
 + (NSString *)convertStringFromDate:(NSDate *)date;
 + (NSString *)convertStringDateDetailFromDate:(NSDate *)date;
 + (NSArray *)sortPhotoWithCreateDate:(NSArray *)array asceding:(BOOL)ascending;
++ (BOOL)countShowAds;
 @end

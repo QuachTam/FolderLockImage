@@ -31,4 +31,23 @@
     NSArray *sortedArray = [array sortedArrayUsingDescriptors:sortDescriptors];
     return sortedArray;
 }
+
++ (BOOL)countShowAds {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *string = [defaults valueForKey:@"countShowAds"];
+    NSInteger count = [string integerValue];
+    if (count<3) {
+        count++;
+    }else{
+        count = 0;
+    }
+    [defaults setValue:[NSString stringWithFormat:@"%ld", count] forKey:@"countShowAds"];
+    if (count==0) {
+        return YES;
+    }else{
+        return NO;
+    }
+    return YES;
+}
+
 @end
